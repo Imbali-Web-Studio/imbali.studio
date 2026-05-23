@@ -1,0 +1,438 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Poppins:wght@600&display=swap");
+
+body {
+    font-family: "Lato", sans-serif;
+    color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Poppins", sans-serif;
+}
+
+.row>* {
+    position: relative;
+}
+
+p {
+    line-height: 1.8;
+}
+
+/* ----------------------------------------------------- service 1 ------------------------------------------------------- */
+
+.service-8 h6 {
+    font-size: 14px;
+}
+
+.service-8 a {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+@media (min-width: 1200px) {
+    .service-8 .container {
+        max-width: 1140px !important;
+    }
+}
+
+.service-8 .btn-sm {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.service-8 .shadow {
+    box-shadow: 0px 40px 40px rgba(0, 0, 0, 0.05) !important;
+}
+
+.service-8 .text-success {
+    color: #20d699 !important;
+}
+
+.service-8 {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    position: relative;
+}
+
+.service-8 .f-16 {
+    font-size: 16px;
+}
+
+.service-8 .f-18 {
+    font-size: 18px;
+}
+
+.service-8 .text {
+    background: linear-gradient(to bottom, #0fa4f8, #9359ff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/* ----------------------------------------------------- service 2 ------------------------------------------------------- */
+
+.service-9 {
+    padding: 70px 0px;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #041c5c;
+}
+
+.service-9 h6 {
+    font-size: 14px;
+}
+
+.service-9 .text-info {
+    color: #21b1d6 !important;
+}
+
+.service-9 .text-muted {
+    color: #878e94 !important;
+}
+
+.service-9 .bg-light {
+    background-color: #f2f7fa !important;
+}
+
+.service-9 .flex-1 {
+    flex: 1;
+}
+
+.service-9 .avatar-sm {
+    height: 3rem;
+    width: 3rem;
+}
+
+.service-9 .avatar-title {
+    align-items: center;
+    background-color: #4a2fb4;
+    color: #ffffff;
+    display: flex;
+    font-weight: 400;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.service-9 .text-bg {
+    background-color: #e4f5e5;
+}
+
+.service-9 .text {
+    background: linear-gradient(to right, #56ab2f, #a8e063);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ----------------------------------------------------- service 3 ------------------------------------------------------- */
+
+.service-10 p {
+    margin-bottom: 0px;
+}
+
+.service-10 {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.service-10 .play-icon {
+    font-size: 100px;
+    color: #f76999;
+}
+
+.service-10 .feachers-card {
+    background-color: transparent;
+    border: 0;
+    color: #ffffff;
+    padding-left: 100px;
+}
+
+.service-10 .feachers-icon {
+    font-size: 40px;
+}
+
+.service-10 .feachers-text {
+    color: #aca5ec;
+    font-size: 10px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.service-10 .feature-bg {
+    background-color: #6054c2;
+}
+
+.service-10 .card-icon .mdi-check {
+    font-size: 15px;
+}
+
+.service-10 .feachers-check::before {
+    border-radius: 50%;
+    padding: 7px 8px;
+    background-color: #8276e2;
+    font-size: 9px;
+}
+
+@media (max-width: 768px) {
+    .service-10 {
+        height: auto;
+        padding: 0;
+    }
+
+    .service-10 .feachers-card {
+        padding-left: 0;
+    }
+
+    .service-10 .play-icon {
+        font-size: 50px;
+    }
+}
+
+/* ----------------------------------------------------- service 4 ------------------------------------------------------- */
+
+.service-11 .btn {
+    padding: 12px 28px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.service-11 .btn:focus {
+    box-shadow: none;
+}
+
+.service-11 .text-primary {
+    color: #f46749 !important;
+}
+
+.service-11 .btn-success {
+    background: #48e5ca;
+    border-color: #48e5ca !important;
+}
+
+.service-11 .btn-success:hover,
+.service-11 .btn-success:focus,
+.service-11 .btn-success:active,
+.service-11 .btn-success:not(:disabled):not(.disabled):active,
+.service-11 .btn-success:not(:disabled):not(.disabled):active:focus,
+.service-11 .btn-success .open>.dropdown-toggle.btn-primary {
+    background: #36e2c5;
+    border-color: #48e5ca !important;
+}
+
+.service-11 .text-muted {
+    color: #758094 !important;
+}
+
+.service-11 {
+    padding: 80px 0px;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.service-11 .service-title {
+    font-size: 17px;
+}
+
+/* ----------------------------------------------------- service 5 ------------------------------------------------------- */
+
+@media (min-width: 1200px) {
+    .service-12 .container {
+        max-width: 1140px !important;
+    }
+}
+
+.service-12 .bg-primary {
+    background-color: #3598db !important;
+}
+
+.service-12 .text-primary {
+    color: #3598db !important;
+}
+
+.service-12 .text-muted {
+    color: #808a93 !important;
+}
+
+.service-12 .bg-white {
+    background-color: #ffffff !important;
+}
+
+.service-12 {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    position: relative;
+    background-color: #f8f9fa !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.service-12 .f-16 {
+    font-size: 16px;
+}
+
+.service-12 .bottom-line {
+    width: 60px;
+    height: 2px;
+}
+
+.service-12 .service-box {
+    border-radius: 8px;
+    border-bottom: 3px solid transparent;
+}
+
+.service-12 .service-box .plan-line {
+    width: 50px;
+    height: 2px;
+    background-color: #c9ced2;
+}
+
+.service-12 .service-box:hover {
+    box-shadow: 0px 40px 40px rgba(0, 0, 0, 0.05);
+    border-bottom: 3px solid #3598db;
+}
+
+.service-12 .service-box:hover h5 {
+    color: #3598db;
+}
+
+.service-12 .service-box:hover .plan-line {
+    background-color: #3598db;
+}
+
+/* ----------------------------------------------------- service 6 ------------------------------------------------------- */
+
+.service-13 .btn {
+    padding: 12px 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.service-13 .btn-primary {
+    background: #24c5be;
+    border-color: #24c5be;
+}
+
+.service-13 .btn-primary:hover,
+.service-13 .btn-primary:focus,
+.service-13 .btn-primary:active,
+.service-13 .btn-primary:active:focus {
+    background: #21b4ad;
+    border-color: #21b4ad;
+    box-shadow: 0px 8px 20px -6px rgba(36, 197, 190, 0.6);
+}
+
+.service-13 .btn-dark {
+    background: #000000;
+    border-color: #000000;
+}
+
+.service-13 .btn-dark,
+.service-13 .btn-dark:hover,
+.service-13 .btn-dark:focus,
+.service-13 .btn-dark:active,
+.service-13 .btn-dark:active:focus {
+    background: black;
+    border-color: black;
+    box-shadow: 0px 8px 20px -6px rgba(0, 0, 0, 0.6);
+}
+
+.service-13 {
+    /* Was 100vh; cumulative trim from full viewport: −400px (= −300px prior + −60px top + −40px bottom) */
+    height: calc(100vh - 400px);
+    position: relative;
+}
+
+.service-13 .service-box {
+    transition: all 0.35s ease;
+    border-radius: 5px;
+}
+
+.service-13 .service-icon .icon {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    background: transparent;
+    text-align: center;
+    font-size: 30px;
+    color: #0a4a63;
+    transition: all 0.35s ease;
+}
+
+.service-13 .service-box:hover {
+    background-color: rgba(10, 74, 99, 0.1);
+}
+
+.service-13 .service-box:hover .service-icon .icon {
+    background: #0a4a63;
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .service-13 {
+        height: auto;
+        /* Original 70px vertical padding, −50px more each side (already floored at 0 after prior −100) */
+        padding-top: max(0px, calc(70px - 150px));
+        padding-bottom: max(0px, calc(70px - 150px));
+    }
+}
+
+/* ----------------------------------------------------- service 7 ------------------------------------------------------- */
+
+.service-14 h6 {
+    font-size: 15px;
+}
+
+@media (min-width: 1200px) {
+    .service-14 .container {
+        max-width: 1150px !important;
+    }
+}
+
+.service-14 .text-muted {
+    color: #848ea9 !important;
+}
+
+.service-14 {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0px;
+    position: relative;
+}
+
+.service-14 .text {
+    background: linear-gradient(to right, #097661, #2eaa2e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Our Process heading (matches main index + imbali when only kainzy.css is loaded) */
+section.service-13 .imbali-service-13-heading {
+    text-align: center;
+    width: 100%;
+}
+
+section.service-13 .imbali-service-13-heading .subtitle__icon__two {
+    color: #212121;
+    font-weight: 700;
+}
+
+section.service-13 .imbali-service-13-heading .content__title.h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    color: #0a4a63;
+    font-weight: 600;
+    text-transform: uppercase;
+}

@@ -1,0 +1,4948 @@
+/* ============================= */
+/* IMBALI CUSTOM CSS */
+/* ============================= */
+/* 1. 
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+14.
+15.
+
+================================== */
+/* ============================= */
+/* GLOBAL TYPOGRAPHY OVERRIDES  */
+/* ============================= */
+:root {
+    /* Footer + matching CTAs (About “Learn More”, Our Process buttons) */
+    --imbali-footer-surface: #151515;
+    /* Full-width header: nudge wordmark left to match section labels (About Us) on tablet + desktop */
+    --imbali-logo-align-pull: clamp(10px, 1.85vw, 22px);
+    --imbali-letter-spacing: .06em;
+    /* VIEW PACKAGES / MENU / panel links: same em track, 2px tighter */
+    --imbali-header-letter-spacing: calc(var(--imbali-letter-spacing) - 2px);
+    --imbali-body-letter-spacing: 0;
+    /* Titles / headings: tight em track (2px tighter than prior) */
+    --imbali-heading-letter-spacing: -0.03em;
+    /* Fixed strip above header (contact + social) */
+    --imbali-top-bar-h: 40px;
+}
+
+html,
+body {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    letter-spacing: var(--imbali-body-letter-spacing);
+}
+
+/* ≤659.98px: root 12px vs typical 16px (−4px) — rem-based type (Bootstrap + theme) scales together */
+@media screen and (max-width: 659.98px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4:not(.rent), .h5,
+.section__title,
+.widget__title,
+.video__text__slider__title,
+.content__title {
+    font-family: var(--glida);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--imbali-heading-letter-spacing);
+}
+
+/*
+ * Eyebrows: span.h6 + .subtitle__icon__* were in the h1–h5 rule at 600 — too light vs main titles.
+ * Keep them bolder than section h2/h3 stacks (700). Not grouped with .subtitle__icon in the 600 rule above.
+ */
+h6,
+.h6:not(label),
+.subtitle__icon__two,
+.subtitle__icon__three,
+.subtitle__icon__four,
+.subtitle__icon__five {
+    font-family: var(--glida);
+    font-size: calc(var(--h6, 24px) + 4px);
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: calc(var(--imbali-heading-letter-spacing) + 1px);
+}
+
+footer h6,
+footer .h6:not(label),
+.rts__footer h6,
+.rts__footer .h6:not(label) {
+    font-weight: 600 !important;
+}
+
+/* Below hero only: looser track (+1px) on section/footer headings — excludes .banner__area */
+.rts__section:not(.banner__area) :is(
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    .h1,
+    .h2,
+    .h3,
+    .h4:not(.rent),
+    .h5,
+    .section__title,
+    .widget__title,
+    .content__title
+) {
+    letter-spacing: calc(var(--imbali-heading-letter-spacing) + 1px);
+}
+
+/* h6 + eyebrow spans: +1px tighter track vs h1–h5 block above (matches hero title kerning bump) */
+.rts__section:not(.banner__area) :is(
+    h6,
+    .h6:not(label),
+    .subtitle__icon__two,
+    .subtitle__icon__three,
+    .subtitle__icon__four,
+    .subtitle__icon__five
+) {
+    letter-spacing: calc(var(--imbali-heading-letter-spacing) + 2px);
+}
+
+p,
+a,
+li,
+label,
+input,
+textarea,
+button {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Site header: match heading stack (overrides Inter on `a` / `button` in nav) */
+.site-header,
+.site-header .nav-packages,
+.site-header .nav-menu-toggle,
+.site-header .menu-panel-inner a,
+.site-header .menu-text {
+    font-family: var(--glida);
+    font-weight: 700;
+}
+
+/* HERO TITLE TYPOGRAPHY */
+.video__text__slider__title {
+    font-weight: 600;
+}
+
+/* ============================= */
+/* HERO SECTION HEIGHT            */
+/* ============================= */
+.banner__area.is__home__video {
+    height: 690px;
+}
+
+/* Stack: video is position:absolute (out of flow) — only .container flexes.
+   flex-end anchors copy toward the lower third instead of dead-center in the hero. */
+.banner__area.is__home__video .banner__video__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 690px;
+    position: relative;
+}
+
+.banner__area.is__home__video .banner__video__section > .container {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    width: 100%;
+    padding-bottom: calc(clamp(56px, 10vh, 140px) - 20px);
+    box-sizing: border-box;
+}
+
+/* Home index only: pin copy block from bottom — flex + theme 800px height made “nudge” rules invisible */
+#imbali-hero.banner__area.is__home__video .banner__video__section {
+    justify-content: flex-start;
+}
+
+#imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: calc(clamp(56px, 10vh, 140px) + 40px) !important;
+    z-index: 2 !important;
+    flex: none !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    width: 100% !important;
+}
+
+/* Keep hero text column centered in the row (col + one-line type) */
+.banner__area.is__home__video .container .row {
+    justify-content: center;
+}
+
+/* Row was align-items-center — stretch so the text column can fill width; vertical comes from section above */
+.banner__area.is__home__video .row.align-items-center {
+    align-items: stretch !important;
+}
+
+.banner__area.is__home__video .video__section__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* theme `style.css` sets 800px here — must win or flex-bottom layout won’t nudge */
+    height: auto !important;
+    min-height: 0;
+    text-align: center;
+}
+
+/* Wide start-state: clip only outer hero + video section — inner copy wrappers must stay overflow visible or type is cropped. */
+#imbali-hero.banner__area.is__home__video {
+    position: relative;
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#imbali-hero.banner__area.is__home__video .banner__video__section {
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#imbali-hero.banner__area.is__home__video .banner__video__section .col-lg-10 {
+    min-width: 0;
+}
+
+/* Hero MP4: decorative layer — hide native controls UI (esp. iOS/Android); interaction stays on overlay/Hero copy */
+#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video {
+    position: relative;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls,
+#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls-enclosure,
+#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls-panel,
+#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls-play-button,
+#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video:focus {
+    outline: none;
+}
+
+/*
+ * Nudge headline + subtitle + CTA down on desktop.
+ * Padding/margin on inner blocks often won’t read here: the column is bottom-anchored (flex-end),
+ * so extra height grows upward. translateY shifts the whole stack visibly on-screen.
+ */
+@media (min-width: 768px) {
+    .banner__area.is__home__video .banner__video__section > .container .video__section__text {
+        transform: translateY(60px) !important;
+    }
+
+    /*
+     * Index hero only: same bottom pin + stack nudge from md up as lg (992+).
+     * Avoids copy jumping upward when crossing 991→992; keeps CTA baseline stable 769–991 vs wider desktops.
+     */
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        bottom: calc(clamp(56px, 10vh, 140px) + 40px - 48px) !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container .video__section__text {
+        transform: translateY(74px) !important;
+    }
+}
+
+/*
+ * Index hero: use full container width for copy (not col-lg-10 / 12) so title + CTAs center on the hero shell.
+ * Narrow columns + justify-center still skew visually when the headline is one fitted line.
+ */
+@media (min-width: 768px) {
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container > .row {
+        justify-content: center !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container > .row > .col-lg-10 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-inline: 0 !important;
+        padding-inline: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
+
+.banner__area .video__area {
+    height: 690px;
+}
+.banner__area.is__home__video .video__text__slider__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    /* Shift headline + subtitle + CTA together */
+    transform: translateY(10px);
+}
+
+/* Full column width for first headline (parent uses align-items: center) so one-line sizing tracks viewport */
+.banner__area.is__home__video .video__section__text > .video__text__slider__item {
+    container-type: inline-size;
+    align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    align-items: center;
+    text-align: center;
+}
+
+.banner__area.is__home__video .video__text__slider__title {
+    margin: 0;
+    text-transform: none;
+    letter-spacing: calc(var(--imbali-body-letter-spacing) + 2px);
+}
+
+/* First hero headline: one line; shrink-wrap + auto margins keeps true horizontal center */
+.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+    white-space: nowrap;
+    letter-spacing: 2px;
+    max-width: 100%;
+    min-width: 0;
+    width: fit-content;
+    margin-inline: auto;
+    box-sizing: border-box;
+    padding-inline: clamp(4px, 2vw, 16px);
+    text-align: center;
+    font-size: 2.2rem;
+    transform-origin: center center;
+}
+
+@media (min-width: 768px) {
+    .banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        margin-top: -20px !important;
+    }
+}
+
+/* lg+ (992px): hero H1 size / weight / tracking */
+@media (min-width: 992px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title,
+    .banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        font-size: 2.5rem !important;
+        font-weight: 550;
+        letter-spacing: 1.5px;
+        padding-inline: 0;
+    }
+}
+
+/* Hero second line only (under main H1). Scoped to video banner — not About `.content__title`. */
+.banner__area.is__home__video .video__hero__subtitle {
+    margin: 0.75rem 0 0;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(226, 226, 226, 0.88);
+    text-transform: none;
+    letter-spacing: var(--imbali-body-letter-spacing);
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* First hero block only: subtitle +20% max size, one line, fluid fit */
+.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+    color: #e2e2e2;
+    align-self: center;
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 0 !important;
+    margin-inline: auto;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    padding-inline: clamp(4px, 2vw, 16px);
+    white-space: nowrap;
+    text-align: center;
+    /* Subtitle vertical offset (hero inline style with !important wins — keep in sync with index.html) */
+    position: relative;
+    transform: translateY(0);
+    transform-origin: center center;
+    font-size: 1.1rem;
+}
+
+/* Row of text CTAs: pill rule sets margin-inline:auto — reset so flex gap (esp. ≤576px) actually applies */
+#imbali-hero.banner__area.is__home__video .video__hero__cta-row .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text {
+    margin-inline: 0;
+}
+
+/* Space below hero buttons before section edge / next block */
+#imbali-hero.banner__area.is__home__video .video__hero__cta-row {
+    padding-bottom: clamp(20px, 3.2vh, 40px) !important;
+    box-sizing: border-box;
+}
+
+/* Hero CTA — outer pill stays fixed; inner dot animates downward. */
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill {
+    position: relative;
+    align-self: center;
+    margin-top: 1.8rem;
+    margin-inline: auto;
+    width: 30px;
+    height: 55px;
+    padding: 0 !important;
+    min-height: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px !important;
+    overflow: hidden;
+    border: 5px solid rgba(242, 242, 242, 0.5) !important;
+    background: transparent !important;
+    color: #e2e2e2 !important;
+    text-decoration: none;
+    isolation: isolate;
+    box-shadow: none;
+    transition:
+        background 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+        border-color 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill::before {
+    content: none !important;
+}
+
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill::after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(242, 242, 242, 0.5);
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translate(-50%, 3px);
+    opacity: 1;
+    animation: imbali-hero-cta-dot-slide 1.71s linear infinite;
+    will-change: transform, opacity;
+    transition:
+        background 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+        opacity 0.45s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:hover,
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:focus-visible {
+    border-color: #f2f2f2 !important;
+    background: transparent !important;
+}
+
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:hover::after,
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:focus-visible::after {
+    background: #f2f2f2;
+    animation: none !important;
+    opacity: 1;
+    /* Bottom of the slide track (matches keyframes 68% / 84%). */
+    transform: translate(-50%, 28px);
+    /* Fade border/dot first, then ease the dot down so hover feels layered, not abrupt. */
+    transition:
+        background 0.55s cubic-bezier(0.33, 1, 0.68, 1),
+        opacity 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+        transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) 0.08s;
+}
+
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:hover span,
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:focus-visible span {
+    color: #e2e2e2 !important;
+}
+
+.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/*
+ * No hold at top (removed old 10% keyframe). Slide uses same timeline span as before (58% ≈ old 10→68%)
+ * so descent speed is unchanged; fade + invisible reset follow.
+ */
+@keyframes imbali-hero-cta-dot-slide {
+    0% {
+        transform: translate(-50%, 3px);
+        opacity: 1;
+    }
+    58% {
+        transform: translate(-50%, 28px);
+        opacity: 1;
+    }
+    74% {
+        transform: translate(-50%, 28px);
+        opacity: 0;
+    }
+    85%,
+    100% {
+        transform: translate(-50%, 3px);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill::after {
+        animation: none;
+        opacity: 1;
+        transform: translate(-50%, 3px);
+    }
+
+    .banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:hover::after,
+    .banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill:focus-visible::after {
+        background: #f2f2f2;
+        transform: translate(-50%, 28px);
+    }
+}
+
+@media screen and (max-width: 767.98px) {
+    .banner__area.is__home__video .video__hero__subtitle {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+
+    .banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+/* Hero md-only (768–991): title between mobile base and lg; tracking slightly tighter than default 2px (+0.2rem vs pre-660 tiers) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title,
+    .banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        font-size: calc(2.2rem - 3px + 0.2rem);
+        letter-spacing: 1px;
+    }
+}
+
+/* ≤991px: second hero line never smaller than About body copy (15px on `.content__subtitle`) */
+@media (max-width: 991.98px) {
+    .banner__area.is__home__video .video__hero__subtitle,
+    .banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+        font-size: max(15px, 1.1rem);
+    }
+}
+
+/* Flat tint — base + fallback when CSS masking is unsupported or mask asset fails */
+.banner__area .video__area .video__area__overlay {
+    background: rgba(0, 0, 0, 0.284);
+}
+
+/*
+ * Hero flower: real DOM layer (`.imbali-hero-flower-mark`) — mask-composite + external SVG was flaky in WebKit / some Chromium builds.
+ * Mirrors packages `#packages .section__shape` — bottom-right hang; above tint, below hero copy.
+ */
+#imbali-hero.banner__area.is__home__video .video__area .video__area__overlay {
+    z-index: 1;
+}
+
+#imbali-hero.banner__area.is__home__video .imbali-hero-flower-mark {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    width: min(50.4vw, 504px);
+    max-width: none;
+    top: auto;
+    right: -14vw;
+    bottom: calc(-2% + 20px);
+    left: auto;
+    line-height: 0;
+}
+
+#imbali-hero.banner__area.is__home__video .imbali-hero-flower-mark img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.22;
+}
+
+@media screen and (max-width: 991.98px) {
+    #imbali-hero.banner__area.is__home__video .imbali-hero-flower-mark {
+        width: min(61.6vw, 364px);
+        right: -18vw;
+    }
+}
+
+@media screen and (max-width: 659.98px) {
+    #imbali-hero.banner__area.is__home__video .imbali-hero-flower-mark {
+        display: none !important;
+    }
+}
+
+/* Hero title: line break after comma only ≤659.98px; hidden ≥660px */
+#imbali-hero.banner__area.is__home__video .imbali-hero-title-br {
+    display: none;
+}
+
+/* ≤767.98px: xs-style hero — 515px shell, 32px H1, no subtitle / hero View Packages; pin + CTA stack */
+@media screen and (max-width: 767.98px) {
+    .banner__area.is__home__video .banner__video__section > .container {
+        padding-bottom: calc(clamp(32px, 8vh, 72px) - 20px);
+    }
+
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        bottom: calc(clamp(32px, 8vh, 72px) + 40px - 48px) !important;
+        z-index: 10 !important;
+    }
+
+    .banner__area.is__home__video .video__section__text {
+        height: auto !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        transform: none !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        align-items: center;
+        text-align: center;
+        transform: translateY(56px) !important;
+        width: 100%;
+        max-width: 100%;
+        padding-inline: 0;
+        box-sizing: border-box;
+    }
+
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container > .row > .col-lg-10 {
+        margin-inline: auto !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video {
+        height: 515px !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .banner__video__section {
+        min-height: 515px !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__area {
+        height: 515px !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item {
+        align-items: center;
+        text-align: center;
+        gap: 0.35rem;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        font-size: 33px !important;
+        font-weight: 700 !important;
+        line-height: calc(1.2em + 7px);
+        text-align: center;
+        margin-top: 70px !important;
+        margin-inline: auto;
+        white-space: normal;
+        letter-spacing: 0.5px !important;
+        padding-inline: 0 !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__hero__subtitle,
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+        display: none !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__hero__cta-row {
+        margin-top: calc(1.75rem + 10px) !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 20px;
+        flex-wrap: nowrap;
+        white-space: normal;
+        position: relative;
+        z-index: 11;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages {
+        display: none !important;
+    }
+}
+
+/* ≤600px: extra lift on narrow phones (stacks with ≤659.98px nudge below) */
+@media screen and (max-width: 600px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        transform: translateY(26px) !important;
+    }
+}
+
+/* 660–767.98px: single-line hero title (centered); subtitle = About `.content__subtitle` (15px / 1.6) */
+@media screen and (min-width: 660px) and (max-width: 767.98px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item {
+        gap: 0.5rem;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        display: block;
+        white-space: nowrap;
+        font-size: calc(clamp(23px, 5vw - 7px, 29px) + 0.1rem) !important;
+        margin-inline: auto !important;
+        text-align: center !important;
+        letter-spacing: 0.5px !important;
+        padding-inline: 0 !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .video__hero__subtitle,
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+        display: block !important;
+        font-size: clamp(11px, 1.65vw + 3px, 15px) !important;
+        line-height: 1.6 !important;
+        font-weight: 400 !important;
+        white-space: nowrap !important;
+        text-align: center !important;
+        max-width: none !important;
+        margin-inline: auto !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0 !important;
+        color: rgba(226, 226, 226, 0.88) !important;
+        letter-spacing: normal !important;
+        padding-inline: 0 !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .imbali-hero-title-br {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 659.98px) {
+    #imbali-hero.banner__area.is__home__video .imbali-hero-title-br {
+        display: block;
+    }
+
+    /* Hero H1 uses fixed px at ≤767 — nudge −4px here so it tracks the root scale */
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        font-size: 29px !important;
+        margin-top: 60px !important;
+    }
+
+    /* ~20px visual lift vs ≤767 translateY(56px) — phones sit closer to chrome/UI chrome than desktop simulators */
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        transform: translateY(36px) !important;
+    }
+}
+
+/* ============================= */
+/* SIDE INSET + narrower max-w   */
+/* (beats Bootstrap load order)   */
+/* ============================= */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    :root {
+        --imbali-logo-align-pull: clamp(12px, 2.05vw, 24px);
+    }
+
+    body .container {
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
+    }
+
+    body .container > .row {
+        margin-left: calc(var(--bs-gutter-x, 1.5rem) * -0.5 - 50px) !important;
+        margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5 - 50px) !important;
+    }
+}
+
+@media (min-width: 992px) {
+    :root {
+        --imbali-desktop-side-inset: 50px;
+    }
+
+    body .container {
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + var(--imbali-desktop-side-inset)) !important;
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + var(--imbali-desktop-side-inset)) !important;
+        /* Stock BS @992 is 960px — pull in so the page reads less wide */
+        max-width: 900px !important;
+    }
+
+    body .container > .row {
+        margin-left: calc(var(--bs-gutter-x, 1.5rem) * -0.5 - var(--imbali-desktop-side-inset)) !important;
+        margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5 - var(--imbali-desktop-side-inset)) !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    body .container {
+        max-width: 1000px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    body .container {
+        max-width: 1100px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Below hero: keep section side inset visible (don't cancel it with extra negative row offsets). */
+    .rts__section:not(.banner__area) .container > .row {
+        margin-left: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
+        margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
+    }
+}
+
+/* ============================= */
+/* DESKTOP HEADER SPACING        */
+/* ============================= */
+@media (min-width: 768px) {
+    /* reserve space so content doesn’t sit under the header + top contact bar */
+    .header__absolute {
+        padding-top: calc(20px + var(--imbali-top-bar-h));
+    }
+    /* fix header row when pill is NOT visible (collapsed state only) */
+    .site-header:not(.is-compact):not(.is-top) {
+        position: fixed;
+        top: calc(var(--imbali-top-bar-h) - 20px);
+        left: 0;
+        right: 0;
+    }
+    /* when pill is visible: only pill layout (no full-width bar) */
+    /* pill: same vertical position as header row */
+    .site-header.is-compact,
+    .site-header.is-top {
+        position: fixed;
+        top: calc(70px + var(--imbali-top-bar-h));
+        left: 8px;
+        right: 8px;
+        max-width: 588px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ============================= */
+/* IMBALI BASE HEADER */
+/* ============================= */
+/* Theme `.header__absolute` is z-index: 2 — same as hero `.container`, so hero text stacks above the pill */
+.header__absolute {
+    z-index: 100;
+    /* Mobile: reserve height for fixed top bar */
+    padding-top: var(--imbali-top-bar-h);
+}
+
+/* ============================= */
+/* TOP CONTACT BAR (above header) */
+/* ============================= */
+.imbali-top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100000;
+    height: var(--imbali-top-bar-h);
+    min-height: var(--imbali-top-bar-h);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ============================= */
+/* PILL ENTRANCE (desktop): prelude = two motions, then pill slide-in */
+/* 1) Logo + MENU fade out  2) Contact bar slides up — separate easing/duration */
+/* html.imbali-pill-compact-active keeps bar tucked + lifts pill while compact */
+/* ============================= */
+@media (min-width: 768px) {
+    /* Match `.main__nav__custom` so this isn’t overridden by the full-bar logo rule (opacity:1; transition:none). */
+    #siteHeader.site-header:not(.is-compact) .main__nav__custom .main__logo,
+    #siteHeader.site-header:not(.is-compact) .main__nav__custom .nav-menu-toggle {
+        transition: opacity 0.34s ease;
+    }
+
+    html.imbali-pill-prelude #siteHeader.site-header:not(.is-compact) .main__nav__custom .main__logo,
+    html.imbali-pill-prelude #siteHeader.site-header:not(.is-compact) .main__nav__custom .nav-menu-toggle {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.34s ease;
+    }
+
+    /*
+     * Tuck contact bar: use --imbali-top-bar-h (not -100%) so reflow/menu layout can’t change the offset mid-frame.
+     * :has(#menuPanel.open) keeps it tucked for the whole time the panel is open (covers menu-click reflow).
+     */
+    html.imbali-pill-prelude .imbali-top-bar,
+    html.imbali-pill-compact-active .imbali-top-bar,
+    html:has(#menuPanel.open) .imbali-top-bar {
+        transform: translateY(calc(-1 * (var(--imbali-top-bar-h) + 1px)));
+        pointer-events: none;
+    }
+
+    /* Scroll-only prelude: smooth tuck. When menu is open, tuck faster so a reflow frame isn’t visible. */
+    html.imbali-pill-prelude .imbali-top-bar {
+        transition: transform 0.42s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    html:has(#menuPanel.open) .imbali-top-bar {
+        transition: transform 0.14s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    html.imbali-pill-compact-active .header__absolute {
+        padding-top: 0 !important;
+    }
+
+    html.imbali-pill-compact-active .site-header.is-compact,
+    html.imbali-pill-compact-active .site-header.is-top {
+        top: 50px !important;
+    }
+}
+
+.imbali-top-bar__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #f2f2f2;
+    line-height: 1.3;
+}
+
+.imbali-top-bar__left,
+.imbali-top-bar__right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+}
+
+/* Desktop: must come AFTER base `.imbali-top-bar__inner { flex-wrap: wrap }` or the bar reflows to two rows
+   when the menu opens (scrollbar/viewport width tick) and reads as “expands” before the tuck animation. */
+@media (min-width: 768px) {
+    .imbali-top-bar {
+        max-height: var(--imbali-top-bar-h);
+    }
+
+    .imbali-top-bar__inner {
+        flex-wrap: nowrap;
+        min-height: 0;
+    }
+
+    .imbali-top-bar__left,
+    .imbali-top-bar__right {
+        flex-wrap: nowrap;
+        min-width: 0;
+    }
+}
+
+.imbali-top-bar__link {
+    color: #f2f2f2 !important;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 500;
+    transition: color 0.15s ease;
+}
+
+.imbali-top-bar__link:hover,
+.imbali-top-bar__link:focus-visible {
+    color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 700;
+}
+
+.imbali-top-bar__sep {
+    opacity: 0.45;
+    user-select: none;
+}
+
+.imbali-top-bar__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: #f2f2f2;
+    text-decoration: none;
+    border-radius: 50%;
+    background: rgba(242, 242, 242, 0.14);
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.imbali-top-bar__icon:hover,
+.imbali-top-bar__icon:focus-visible {
+    color: #fff;
+    background: rgba(242, 242, 242, 0.26);
+}
+
+.imbali-top-bar__icon i {
+    font-size: 15px;
+    line-height: 1;
+}
+
+.imbali-top-bar__icon svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+/* Letter “f” sits left in the 24×24 viewBox; nudge so it looks centered in the circle */
+.imbali-top-bar__icon--facebook svg {
+    transform: translateX(1px);
+}
+
+.imbali-top-bar__loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #f2f2f2;
+    white-space: nowrap;
+}
+
+.imbali-top-bar__loc i {
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.95;
+}
+
+/* Same horizontal inset as main layout (50px + half gutter), every breakpoint */
+.imbali-top-bar > .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
+    padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
+}
+
+/* Don’t pull rows inward (header logo nudge): that cancelled container padding and hid the true side inset. */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .imbali-top-bar__left {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .imbali-top-bar__left {
+        margin-left: 0;
+    }
+
+    .imbali-top-bar__right {
+        margin-right: 0;
+    }
+}
+
+/* Phones + small tablets: hide contact bar; 40px inset via SECTION padding (beats Bootstrap container-only tweaks) */
+@media (max-width: 767.98px) {
+    :root {
+        --imbali-top-bar-h: 0px;
+    }
+
+    .imbali-top-bar {
+        display: none !important;
+    }
+
+    /* Inset from viewport — pad the section shell so About/Packages/Footer visibly narrow (hero stays full-bleed). */
+    html body .rts__section:not(#imbali-hero) {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Inner container: grid gutter only (section already added the 40px). */
+    html body .rts__section:not(#imbali-hero) .container {
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5) !important;
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5) !important;
+        padding-inline: calc(var(--bs-gutter-x, 1.5rem) * 0.5) !important;
+    }
+
+    html body .rts__section:not(#imbali-hero) .container > .row {
+        margin-left: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
+        margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
+    }
+
+    .site-header {
+        position: sticky;
+        top: var(--imbali-top-bar-h);
+    }
+
+    /* Pill: same vertical offset as xs (20px below bar; bar hidden here) — was base 50px on 577–767 */
+    #siteHeader.site-header.is-compact,
+    #siteHeader.site-header.is-top {
+        top: calc(var(--imbali-top-bar-h) + 20px) !important;
+        left: 30px !important;
+        right: 30px !important;
+    }
+}
+
+/* ≤576px: narrower pill inset (−20px each side vs tablet/mobile 767 rule above) */
+@media (max-width: 576px) {
+    #siteHeader.site-header.is-compact,
+    #siteHeader.site-header.is-top {
+        left: 10px !important;
+        right: 10px !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    /* Pill (compact header): xs spacing — font sizes see max-width:576px block below */
+    .site-header.is-compact .main__nav__custom .nav-packages {
+        padding: 2px 0px;
+        margin-left: -8px;
+    }
+
+    .site-header.is-compact .main__nav__custom .nav-menu-toggle {
+        padding: 2px 0px;
+        margin-right: -8px;
+    }
+
+    .site-header.is-compact .logo,
+    .site-header.is-compact .navbar-brand {
+        transform: none;
+    }
+
+    .site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo,
+    .site-header.is-top .main__nav__custom:not(.menu-open) .main__logo {
+        max-width: 95px;
+    }
+
+    .site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact,
+    .site-header.is-top .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact {
+        width: 95px;
+        max-width: 95px;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+    }
+}
+
+/* Pill compact: Bootstrap sm–md (no xs-only ±8px margins; those stay in max-width:575.98px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .site-header.is-compact .main__nav__custom .nav-packages,
+    .site-header.is-compact .main__nav__custom .nav-menu-toggle {
+        font-size: 12px;
+        letter-spacing: calc(var(--imbali-header-letter-spacing) + 2px);
+        padding: 2px 0px;
+    }
+}
+
+/* ≤576px: VIEW PACKAGES, MENU, panel links −1px; menu icon (− / X) slightly smaller; beats sm–md rule at 576px */
+@media (max-width: 576px) {
+    .site-header.is-compact .main__nav__custom .nav-packages,
+    .site-header.is-top .main__nav__custom .nav-packages,
+    .site-header.is-compact .main__nav__custom .nav-menu-toggle,
+    .site-header.is-top .main__nav__custom .nav-menu-toggle,
+    .site-header.is-compact .nav-menu-toggle .menu-text,
+    .site-header.is-top .nav-menu-toggle .menu-text {
+        font-size: 11px !important;
+        letter-spacing: calc(var(--imbali-header-letter-spacing) + 2px);
+    }
+
+    /* Expanded pill: same 12px as `.menu-panel-inner a` — beats 11px above */
+    .site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+    .site-header.is-top .main__nav__custom.menu-open .nav-packages {
+        font-size: 12px !important;
+    }
+
+    .site-header.is-compact .nav-menu-toggle .menu-icon,
+    .site-header.is-top .nav-menu-toggle .menu-icon {
+        width: 21px;
+        height: 13px;
+    }
+
+    .site-header.is-compact .nav-menu-toggle .menu-icon span,
+    .site-header.is-top .nav-menu-toggle .menu-icon span {
+        width: 17px;
+        margin-left: -8.5px;
+    }
+
+    .site-header.is-compact .nav-menu-toggle.active .menu-icon,
+    .site-header.is-top .nav-menu-toggle.active .menu-icon {
+        height: 13px;
+    }
+
+    .site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle.active .menu-icon,
+    .site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle.active .menu-icon {
+        transform: translateY(-9px);
+    }
+
+    /* Closed pill: tighter “=” baseline (touch has no real hover; avoids sticky :hover spread from hero rules) */
+    #siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle .menu-icon span:nth-child(1),
+    #siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle .menu-icon span:nth-child(1) {
+        transform: translateY(-3px);
+    }
+
+    #siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle .menu-icon span:nth-child(2),
+    #siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle .menu-icon span:nth-child(2) {
+        transform: translateY(3px);
+    }
+}
+
+.main__header__wrapper {
+    width: 100%;
+}
+
+.site-header {
+    z-index: 9999;
+    left: 0;
+    transform: none;
+    width: 100%;
+    background: transparent;
+    /* ensure no default border shows on desktop */
+    border: none !important;
+}
+
+/* PILL STYLING — single source for scroll + menu open. Edit here only. */
+/* Base `top` below; desktop ≥768px and `imbali-pill-compact-active` adjust further. */
+.site-header.is-compact,
+.site-header.is-top {
+    position: fixed;
+    top: calc(var(--imbali-top-bar-h) + 50px);
+    left: 8px;
+    right: 8px;
+    margin: 0 auto;
+    max-width: 558px;
+    width: auto;
+    border-radius: 32px;
+    /* Frosted tint (reduced by 10% opacity) */
+    background: rgba(0, 0, 0, 0.425);
+    backdrop-filter: blur(25.2px);
+    -webkit-backdrop-filter: blur(25.2px);
+    /* Match .nav-packages pill buttons */
+    border: 0.5px solid rgba(226, 226, 226, 0.11) !important;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+
+    /* tighter padding = more “mobile-focused” */
+    padding: 2px;
+}
+
+/* Entrance: animation always runs from 0% so slide works on first open */
+@-webkit-keyframes pill-slide-in {
+    from { -webkit-transform: translateY(-200px); transform: translateY(-200px); opacity: 0.01; }
+    to   { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+@keyframes pill-slide-in {
+    from { -webkit-transform: translateY(-200px); transform: translateY(-200px); opacity: 0.01; }
+    to   { -webkit-transform: translateY(0); transform: translateY(0); opacity: 1; }
+}
+
+.site-header.is-compact {
+    /* Default = above (for exit transition when we remove .header-visible) */
+    -webkit-transform: translateY(-200px);
+    transform: translateY(-200px);
+    opacity: 0.01;
+    -webkit-transition: -webkit-transform 1s cubic-bezier(0.42, 0, 0.58, 1),
+                        opacity 1s cubic-bezier(0.42, 0, 0.58, 1);
+    transition: transform 1s cubic-bezier(0.42, 0, 0.58, 1),
+                opacity    1s cubic-bezier(0.42, 0, 0.58, 1),
+                padding    .18s ease,
+                background-color .18s ease,
+                box-shadow .18s ease;
+    will-change: transform, opacity;
+}
+
+/* Visible: run slide-in animation (no dependency on previous paint) */
+.site-header.is-compact.header-visible {
+    -webkit-animation: pill-slide-in 0.3s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+    animation: pill-slide-in 0.3s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
+
+/* Pill: links move with pill only — no separate transition so no vertical bounce */
+.site-header.is-compact .main__nav__custom .nav-packages,
+.site-header.is-compact .main__nav__custom .nav-menu-toggle {
+    transition: none;
+}
+
+/* Optional: tighten nav spacing in compact mode */
+.site-header.is-compact .nav,
+.site-header.is-compact nav {
+    min-height: 44px;
+}
+
+/* Optional: slightly shrink logo in compact mode */
+.site-header.is-compact .logo,
+.site-header.is-compact .navbar-brand {
+    transform: scale(.92);
+    transform-origin: left center;
+    transition: transform .35s ease;
+}
+
+/* Logo .svg display fix */
+.logo__class {
+    height: 50px;
+    width: auto;
+    display: block;
+    max-width: 200px;
+    min-width: 140px;
+    align-self: center;
+}
+
+/* Header logo swap: wordmark in full bar; pill shows symbol; menu-open reveal uses imbali_logo_wht.svg */
+.main__nav__custom .main__logo .header-logo-compact,
+.main__nav__custom .main__logo .header-logo-menu-reveal {
+    display: none;
+}
+.site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo .header-logo-default,
+.site-header.is-top .main__nav__custom:not(.menu-open) .main__logo .header-logo-default {
+    display: none;
+}
+.site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact,
+.site-header.is-top .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact {
+    display: block;
+}
+
+/* ============================= */
+/* IMBALI CUSTOM NAVIGATION */
+/* ============================= */
+.main__nav__custom {
+    display: grid;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr;
+    justify-items: stretch;
+    column-gap: 12px;
+    padding: 10px 0;
+}
+
+/* When pill is visible (scroll or menu click): one consistent layout so buttons stay inward */
+.header__absolute .site-header.is-compact .container,
+.site-header.is-top.is-compact .container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.header__absolute .site-header.is-compact .container .row,
+.site-header.is-top.is-compact .container .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Collapsed pill only: same tight vertical padding at all breakpoints (matches former mobile-only trim) */
+.site-header.is-compact .main__nav__custom:not(.menu-open),
+.site-header.is-top .main__nav__custom:not(.menu-open) {
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open,
+.site-header.is-top .main__nav__custom.menu-open {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: -15px;
+}
+
+/* Extra space between first row and panel when expanded (gap only, not below panel) */
+.main__nav__custom:has(.menu-panel.open) {
+    row-gap: 10px;
+}
+
+.main__nav__custom .nav-packages {
+    grid-row: 1;
+    grid-column: 1;
+    justify-self: start;
+    align-self: center;
+    /* scroll-driven: move inward as pill appears (set by imbali.js --nav-inward-progress) */
+    transform: translateX(calc(var(--nav-inward-progress, 0) * 20px));
+    transition: transform .1s ease;
+}
+
+.main__nav__custom .main__logo {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: center;
+    align-self: center;
+    position: static;
+    min-width: 80px;
+    max-width: 150px;
+}
+
+.main__nav__custom .nav-menu-toggle {
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: end;
+    align-self: center;
+    /* scroll-driven: move inward as pill appears (set by imbali.js --nav-inward-progress) */
+    transform: translateX(calc(var(--nav-inward-progress, 0) * -20px));
+    transition: transform .1s ease;
+}
+
+/*
+ * Dropdown just closed: fade logo + MENU + VIEW PACKAGES back in.
+ * JS adds `.imbali-toprow-reveal` in the same sync turn as removing `.menu-open`, then
+ * `.imbali-toprow-reveal-active` on the next frames so opacity never flashes 1 between
+ * losing the close fade and starting the reveal (keyframe `from` caused that snap).
+ */
+.site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .main__logo > a,
+.site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .main__logo > a,
+.site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-menu-toggle,
+.site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-menu-toggle,
+.site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-packages,
+.site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-packages {
+    opacity: 0;
+    transition: none;
+}
+
+.site-header.is-compact .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .main__logo > a,
+.site-header.is-top .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .main__logo > a,
+.site-header.is-compact .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-menu-toggle,
+.site-header.is-top .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-menu-toggle,
+.site-header.is-compact .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-packages,
+.site-header.is-top .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-packages {
+    opacity: 1;
+    transition: opacity 0.62s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .main__logo > a,
+    .site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .main__logo > a,
+    .site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-menu-toggle,
+    .site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-menu-toggle,
+    .site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-packages,
+    .site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.imbali-toprow-reveal-active) .nav-packages,
+    .site-header.is-compact .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .main__logo > a,
+    .site-header.is-top .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .main__logo > a,
+    .site-header.is-compact .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-menu-toggle,
+    .site-header.is-top .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-menu-toggle,
+    .site-header.is-compact .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-packages,
+    .site-header.is-top .main__nav__custom.imbali-toprow-reveal.imbali-toprow-reveal-active .nav-packages {
+        opacity: 1;
+        transition: none;
+    }
+}
+
+@keyframes imbali-pill-compact-logo-in {
+    from {
+        opacity: 0;
+        transform: scale(0.72);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.menu-open) .main__logo .header-logo-compact,
+.site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.menu-open) .main__logo .header-logo-compact {
+    animation: imbali-pill-compact-logo-in 0.62s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header.is-compact .main__nav__custom.imbali-toprow-reveal:not(.menu-open) .main__logo .header-logo-compact,
+    .site-header.is-top .main__nav__custom.imbali-toprow-reveal:not(.menu-open) .main__logo .header-logo-compact {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/*
+ * Expanded pill: align top-row controls with bottom `.menu-panel-inner a` edges.
+ * Inset = 14px (inner horizontal padding) + 10px (half of width calc(100% - 20px)) = 24px.
+ * No horizontal translate here — it would fight this alignment when --nav-inward-progress is 1.
+ */
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages {
+    transform: translateY(-24px);
+    margin-left: 21px;
+}
+
+/* Same motion as `.menu-panel-inner a` (fade + 8px rise); packages label ≤576px */
+@keyframes imbali-nav-packages-line-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Expanded pill ≤576px: single-line “PACKAGES” at 12px (matches `.menu-panel-inner a`); nowrap beats wrap */
+@media (max-width: 576px) {
+    .site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+    .site-header.is-top .main__nav__custom.menu-open .nav-packages {
+        white-space: nowrap;
+        line-height: 1.2;
+        text-align: left;
+        /* Beat by #siteHeader … !important — keep in sync with ≤576px #siteHeader block below */
+        transform: translateY(-27px);
+    }
+
+    .site-header.is-compact .main__nav__custom.menu-open .nav-packages .nav-packages-label,
+    .site-header.is-top .main__nav__custom.menu-open .nav-packages .nav-packages-label {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        column-gap: 0.35em;
+    }
+
+    .site-header.is-compact .main__nav__custom.menu-open .nav-packages .nav-packages-packages,
+    .site-header.is-top .main__nav__custom.menu-open .nav-packages .nav-packages-packages {
+        display: inline-block;
+        line-height: 1.2;
+        vertical-align: baseline;
+    }
+
+    /* Panel closing (or before open): baseline matches closed `.menu-panel-inner a` */
+    .site-header.is-compact .main__nav__custom.menu-open:not(:has(.menu-panel.open)) .nav-packages .nav-packages-packages,
+    .site-header.is-top .main__nav__custom.menu-open:not(:has(.menu-panel.open)) .nav-packages .nav-packages-packages {
+        animation: none !important;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition:
+            opacity 0.34s cubic-bezier(0.22, 0.61, 0.36, 1),
+            transform 0.34s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .site-header.is-compact .main__nav__custom.menu-open:has(.menu-panel.open) .nav-packages .nav-packages-packages,
+    .site-header.is-top .main__nav__custom.menu-open:has(.menu-panel.open) .nav-packages .nav-packages-packages {
+        animation: imbali-nav-packages-line-in 0.54s cubic-bezier(0.22, 0.61, 0.36, 1) 0.36s both;
+    }
+
+    @media (max-width: 575px) {
+        .site-header.is-compact .main__nav__custom.menu-open:not(:has(.menu-panel.open)) .nav-packages .nav-packages-packages,
+        .site-header.is-top .main__nav__custom.menu-open:not(:has(.menu-panel.open)) .nav-packages .nav-packages-packages {
+            transition:
+                opacity 0.22s cubic-bezier(0.22, 0.61, 0.36, 1),
+                transform 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .site-header.is-compact .main__nav__custom.menu-open:has(.menu-panel.open) .nav-packages .nav-packages-packages,
+        .site-header.is-top .main__nav__custom.menu-open:has(.menu-panel.open) .nav-packages .nav-packages-packages {
+            animation: imbali-nav-packages-line-in 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) 0.16s both;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .site-header.is-compact .main__nav__custom.menu-open .nav-packages .nav-packages-packages,
+        .site-header.is-top .main__nav__custom.menu-open .nav-packages .nav-packages-packages {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+        }
+    }
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+    transform: translate(16px, -8px);
+    margin-right: 42px;
+}
+
+@media (min-width: 768px) {
+    .site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+    .site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+        transform: translate(16px, -8px);
+        margin-right: 42px;
+    }
+}
+
+/* Desktop header layout overrides */
+@media (min-width: 768px) {
+    /* Full bar: pin grid to the start edge (avoids odd free-space distribution vs body copy) */
+    .site-header:not(.is-compact):not(.is-top) .main__nav__custom {
+        justify-content: start;
+        column-gap: 0;
+    }
+
+    .main__nav__custom {
+        grid-template-columns: auto 1fr auto;
+    }
+    .site-header:not(.is-compact):not(.is-top) .main__nav__custom .nav-packages {
+        display: none;
+    }
+    .site-header.is-compact .main__nav__custom .nav-packages,
+    .site-header.is-top .main__nav__custom .nav-packages {
+        display: inline-flex;
+    }
+    /* Full bar: logo aligned with section copy; transform (not margin) so grid + cascade can’t drop the shift */
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo {
+        grid-column: 1;
+        justify-self: start;
+        margin-inline-start: 0;
+        margin-top: 35px;
+        opacity: 1;
+        transition: none;
+        transform: translateX(calc(-1 * (var(--imbali-logo-align-pull, 14px) + 8px)));
+    }
+
+    .site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo > a {
+        display: block;
+        line-height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    .site-header.is-compact .main__nav__custom .main__logo,
+    .site-header.is-top .main__nav__custom .main__logo {
+        grid-column: 2;
+        justify-self: center;
+    }
+    .main__nav__custom .nav-menu-toggle {
+        grid-column: 3;
+        transform: none;
+        transition: none;
+        opacity: 1;
+    }
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .nav-menu-toggle {
+        margin-top: 35px;
+    }
+    .site-header:not(.is-compact) .main__nav__custom .nav-packages,
+    .site-header:not(.is-compact) .main__nav__custom .nav-menu-toggle {
+        transform: none;
+        opacity: 1;
+        transition: none;
+    }
+    .site-header .main__nav__custom .main__logo .header-logo-default,
+    .site-header .main__nav__custom .main__logo .header-logo-compact,
+    .site-header .main__nav__custom .main__logo .header-logo-menu-reveal {
+        height: 120px;
+        width: auto;
+        max-width: none;
+        min-width: 0;
+        transform: none;
+    }
+
+}
+
+@media (min-width: 992px) {
+    /* Desktop full-width nav only: keep logo/menu near screen edges with fixed gutters */
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .container {
+        max-width: none !important;
+        width: 100% !important;
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+    }
+
+    /* Undo global desktop `.container > .row` negative margins for header only */
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .container > .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Desktop full bar only: pull logo + MENU inward by 20px each */
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo {
+        transform: translateX(calc(-1 * (var(--imbali-logo-align-pull, 14px) + 8px) + 20px));
+    }
+
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .nav-menu-toggle {
+        transform: translateX(-20px);
+    }
+}
+
+/* Full bar wordmark: tablet vs desktop height; shift SVG 10px left inside img box */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo .header-logo-default {
+        height: 70px;
+        object-fit: contain;
+        object-position: left center;
+        transform: translateX(-10px);
+    }
+}
+
+@media (min-width: 992px) {
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo .header-logo-default {
+        height: 70px;
+        object-fit: contain;
+        object-position: left center;
+        transform: translateX(-10px);
+    }
+
+    /* Home video hero only: larger wordmark (desktop) */
+    body:has(.banner__area.is__home__video) #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo .header-logo-default {
+        height: 70px;
+    }
+}
+
+/* Compact pill: symbol logo (overrides desktop 120px and .logo__class on small screens) */
+.site-header.is-compact .main__nav__custom .main__logo,
+.site-header.is-top .main__nav__custom .main__logo {
+    max-width: 130px;
+    min-width: 0;
+    margin-top: 0;
+}
+
+/* Collapsed pill only: tighter stack (−20px vs prior logo + nav padding); expanded uses .menu-open rules below */
+.site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo,
+.site-header.is-top .main__nav__custom:not(.menu-open) .main__logo {
+    padding-top: 0;
+    padding-bottom: 0;
+    box-sizing: border-box;
+}
+
+/* Explicit height: `height:auto` on SVG here collapsed to 0 in the pill grid (closed: +10px vs prior 70px height) */
+.site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact,
+.site-header.is-top .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact {
+    display: block;
+    height: 80px;
+    max-height: 80px;
+    width: auto;
+    max-width: 130px;
+    min-width: 0;
+    object-fit: contain;
+    opacity: 1;
+    transform: none;
+    transform-origin: center;
+}
+
+/* Pill + menu open: imbali_logo_wht.svg reveal (hide hz wordmark + compact symbol) */
+.site-header.is-compact:has(.main__nav__custom.menu-open),
+.site-header.is-top:has(.main__nav__custom.menu-open) {
+    overflow: visible;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .main__logo,
+.site-header.is-top .main__nav__custom.menu-open .main__logo {
+    max-width: min(420px, 90vw);
+    min-width: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .main__logo > a,
+.site-header.is-top .main__nav__custom.menu-open .main__logo > a {
+    opacity: 1;
+    transition: opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .main__logo .header-logo-compact,
+.site-header.is-top .main__nav__custom.menu-open .main__logo .header-logo-compact {
+    display: none !important;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .main__logo .header-logo-default,
+.site-header.is-top .main__nav__custom.menu-open .main__logo .header-logo-default {
+    display: none !important;
+}
+
+/* Wordmark visible for entire menu-open (including menu-closing) — expand clip/animation only while opening/open */
+.site-header.is-compact .main__nav__custom.menu-open .main__logo .header-logo-menu-reveal,
+.site-header.is-top .main__nav__custom.menu-open .main__logo .header-logo-menu-reveal {
+    display: block !important;
+    height: 130px;
+    max-height: 130px;
+    width: auto;
+    max-width: 100%;
+    min-width: 0 !important;
+    object-fit: contain;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open:not(.menu-closing) .main__logo .header-logo-menu-reveal,
+.site-header.is-top .main__nav__custom.menu-open:not(.menu-closing) .main__logo .header-logo-menu-reveal {
+    transform: none;
+    clip-path: inset(0 0 100% 0);
+    animation: imbali-pill-wordmark-expand 0.72s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    transition: transform 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.42s ease;
+}
+
+@keyframes imbali-pill-wordmark-expand {
+    from {
+        clip-path: inset(0 0 100% 0);
+        opacity: 0.88;
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-header.is-compact .main__nav__custom.menu-open:not(.menu-closing) .main__logo .header-logo-menu-reveal,
+    .site-header.is-top .main__nav__custom.menu-open:not(.menu-closing) .main__logo .header-logo-menu-reveal {
+        animation: none;
+        clip-path: inset(0 0 0 0);
+    }
+
+    .site-header.is-compact .main__nav__custom.menu-open.menu-closing .main__logo .header-logo-menu-reveal,
+    .site-header.is-top .main__nav__custom.menu-open.menu-closing .main__logo .header-logo-menu-reveal {
+        animation: none !important;
+        transition: none !important;
+        opacity: 0;
+        transform: translateX(0) scale(0.72);
+        transform-origin: center;
+        clip-path: inset(0 0 0 0);
+    }
+
+    .site-header.is-compact .main__nav__custom.menu-open.menu-closing .main__logo > a,
+    .site-header.is-top .main__nav__custom.menu-open.menu-closing .main__logo > a,
+    .site-header.is-compact .main__nav__custom.menu-open.menu-closing .nav-menu-toggle,
+    .site-header.is-top .main__nav__custom.menu-open.menu-closing .nav-menu-toggle,
+    .site-header.is-compact .main__nav__custom.menu-open.menu-closing .nav-packages,
+    .site-header.is-top .main__nav__custom.menu-open.menu-closing .nav-packages {
+        opacity: 0;
+        transition: none !important;
+    }
+}
+
+/* left link */
+.nav-packages {
+    order: 1;
+    flex: 0 0 auto;
+    font-size: 10px;
+    letter-spacing: var(--imbali-header-letter-spacing);
+    text-transform: uppercase;
+    color: #e2e2e2;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 2px 14px;
+    white-space: nowrap;
+    border-radius: 18px;
+    border: .5px solid rgba(226,226,226,.06);
+    background: rgba(226,226,226,.03);
+    transition:
+        background .1s ease-out,
+        border-color .1s ease-out,
+        color .1s ease-out;
+}
+
+.nav-packages:hover {
+    background: rgba(226,226,226,.08);
+    border-color: rgba(226,226,226,.14);
+}
+
+/* VIEW PACKAGES: no border/background when pill is visible (compact) */
+.site-header.is-compact .nav-packages,
+.site-header.is-compact .nav-packages:hover {
+    background: transparent;
+    border: none;
+}
+
+/* Compact pill: centered labels */
+.site-header.is-compact .nav-packages,
+.site-header.is-top .nav-packages {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    /* +2px vs full-width bar (still uses --imbali-header-letter-spacing as base) */
+    letter-spacing: calc(var(--imbali-header-letter-spacing) + 2px);
+}
+
+.site-header.is-compact .nav-menu-toggle,
+.site-header.is-top .nav-menu-toggle {
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: calc(var(--imbali-header-letter-spacing) + 2px);
+}
+
+.site-header.is-compact .menu-panel-inner a,
+.site-header.is-top .menu-panel-inner a {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: calc(var(--imbali-header-letter-spacing) + 2px);
+}
+
+/* Pill only: label / link color — align with light logo, improve legibility on frosted bar */
+.site-header.is-compact .nav-packages,
+.site-header.is-top .nav-packages,
+.site-header.is-compact .nav-menu-toggle,
+.site-header.is-top .nav-menu-toggle,
+.site-header.is-compact .nav-menu-toggle .menu-text,
+.site-header.is-top .nav-menu-toggle .menu-text,
+.site-header.is-compact .menu-panel-inner a,
+.site-header.is-top .menu-panel-inner a {
+    color: #f2f2f2;
+}
+
+.site-header.is-compact .nav-menu-toggle .menu-icon span,
+.site-header.is-top .nav-menu-toggle .menu-icon span {
+    background: #f2f2f2;
+}
+
+/* Collapsed pill: bold “=” bars (2px); hover can thicken further via #siteHeader rules */
+.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle .menu-icon span,
+.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle .menu-icon span {
+    height: 2px;
+    margin-top: -1px;
+    transition:
+        transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+        height 0.15s ease,
+        margin-top 0.15s ease;
+}
+
+/* Expanded pill: VIEW PACKAGES medium; MENU/X lighter (packages hover below) */
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages,
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+    align-self: center;
+    line-height: 1;
+    transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages {
+    font-weight: 700;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+    font-weight: 700;
+}
+
+/* Expanded pill only: show X icon without MENU text */
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle .menu-text,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle .menu-text {
+    display: none;
+}
+
+/* Expanded pill only: keep logo pinned to exact center column */
+.site-header.is-compact .main__nav__custom.menu-open .main__logo,
+.site-header.is-top .main__nav__custom.menu-open .main__logo {
+    justify-self: center;
+}
+
+/* Expanded pill only: VIEW PACKAGES matches lower button treatment */
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages {
+    background: transparent;
+    border: none;
+    padding: 4px 6px;
+}
+
+/* Expanded pill: `.menu-open … .menu-icon { transform: none }` was overriding `.active` — must combine selectors */
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle:not(.active) .menu-icon,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle:not(.active) .menu-icon {
+    transform: none;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle.active .menu-icon,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle.active .menu-icon {
+    transform: translateY(-10px);
+}
+
+/* ============================= */
+/* GLOBAL BUTTON TYPOGRAPHY     */
+/* Match `VIEW PACKAGES` style  */
+/* ============================= */
+button,
+.theme-btn,
+.btn-style,
+.slider__navigation .nav__btn,
+.footer__newsletter form button[type=submit],
+.is__social button {
+    font-size: 10px;
+    letter-spacing: var(--imbali-letter-spacing);
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 18px;
+}
+
+/* Pill chrome: MENU stays pre-bump radius; compact/top still use 12px !important below */
+#siteHeader .nav-menu-toggle {
+    border-radius: 10px;
+}
+
+.nav-menu-toggle {
+    order: 3;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 14px; /* match .nav-packages side padding */
+    background: none;
+    border: none;
+    color: #e2e2e2;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: var(--imbali-header-letter-spacing);
+    cursor: pointer;
+    grid-column-start: 3;
+    justify-self: end;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-menu-toggle:focus,
+.nav-menu-toggle:focus-visible,
+.nav-menu-toggle:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.nav-menu-toggle::-moz-focus-inner {
+    border: 0;
+}
+
+/* Floating pill (compact / is-top): no focus ring on header controls or dropdown links */
+#siteHeader.site-header.is-compact .nav-packages:focus,
+#siteHeader.site-header.is-compact .nav-packages:focus-visible,
+#siteHeader.site-header.is-compact .nav-packages:active,
+#siteHeader.site-header.is-top .nav-packages:focus,
+#siteHeader.site-header.is-top .nav-packages:focus-visible,
+#siteHeader.site-header.is-top .nav-packages:active,
+#siteHeader.site-header.is-compact .main__logo > a:focus,
+#siteHeader.site-header.is-compact .main__logo > a:focus-visible,
+#siteHeader.site-header.is-compact .main__logo > a:active,
+#siteHeader.site-header.is-top .main__logo > a:focus,
+#siteHeader.site-header.is-top .main__logo > a:focus-visible,
+#siteHeader.site-header.is-top .main__logo > a:active,
+#siteHeader.site-header.is-compact .menu-panel-inner a:focus,
+#siteHeader.site-header.is-compact .menu-panel-inner a:focus-visible,
+#siteHeader.site-header.is-compact .menu-panel-inner a:active,
+#siteHeader.site-header.is-top .menu-panel-inner a:focus,
+#siteHeader.site-header.is-top .menu-panel-inner a:focus-visible,
+#siteHeader.site-header.is-top .menu-panel-inner a:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Desktop only: MENU +2px track vs VIEW PACKAGES (pill: override shared pill rule) */
+@media (min-width: 768px) {
+    .main__nav__custom .nav-menu-toggle {
+        letter-spacing: calc(var(--imbali-header-letter-spacing) + 2px);
+    }
+
+    .site-header.is-compact .main__nav__custom .nav-menu-toggle,
+    .site-header.is-top .main__nav__custom .nav-menu-toggle {
+        letter-spacing: calc(var(--imbali-header-letter-spacing) + 4px);
+    }
+
+    /* Full-width header only (not pill): larger MENU label (tablet / small desktop) */
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .nav-menu-toggle {
+        font-size: 17px;
+    }
+}
+
+/* Full-width header only: MENU +2px on large desktop (pill unchanged) */
+@media (min-width: 992px) {
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .nav-menu-toggle {
+        font-size: 19px;
+    }
+}
+
+/* Hamburger / close: lines share one center so the X stays square (rotate+translate order was skewing it) */
+.menu-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.menu-icon span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 2px;
+    margin-left: -9px;
+    margin-top: -1px;
+    background: #e2e2e2;
+    border-radius: 1px;
+    display: block;
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transform-origin: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* 2px bars + 6px gap between line centers (was flex gap + 1px lines) */
+.menu-icon span:nth-child(1) {
+    transform: translateY(-5px);
+}
+
+.menu-icon span:nth-child(2) {
+    transform: translateY(5px);
+}
+
+/* ============================= */
+/* MENU ICON ANIMATION */
+/* ============================= */
+.nav-menu-toggle.active .menu-icon {
+    height: 14px;
+    transform: translateY(-6px);
+}
+
+.nav-menu-toggle.active .menu-icon span:nth-child(1) {
+    transform: translateY(0) rotate(45deg);
+}
+
+.nav-menu-toggle.active .menu-icon span:nth-child(2) {
+    transform: translateY(0) rotate(-45deg);
+}
+
+/* Home hero, desktop only: pill row keeps 12px; icon tweaks apply to MENU in both states — full bar MENU 17px (md) / 19px (lg+) */
+@media (min-width: 992px) {
+    body:has(.banner__area.is__home__video) #siteHeader.site-header.is-compact .nav-menu-toggle,
+    body:has(.banner__area.is__home__video) #siteHeader.site-header.is-top .nav-menu-toggle {
+        font-size: 12px;
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader.site-header.is-compact .main__nav__custom .nav-packages,
+    body:has(.banner__area.is__home__video) #siteHeader.site-header.is-top .main__nav__custom .nav-packages {
+        font-size: 12px;
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .nav-menu-toggle .menu-icon {
+        width: 24px;
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .nav-menu-toggle .menu-icon span {
+        width: 20px;
+        margin-left: -10px;
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .nav-menu-toggle .menu-icon span:nth-child(1) {
+        transform: translateY(-4px);
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .nav-menu-toggle .menu-icon span:nth-child(2) {
+        transform: translateY(4px);
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .nav-menu-toggle.active .menu-icon span:nth-child(1) {
+        transform: translateY(0) rotate(45deg);
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .nav-menu-toggle.active .menu-icon span:nth-child(2) {
+        transform: translateY(0) rotate(-45deg);
+    }
+
+    /* Tighter default bar spacing on hero lg+; match hover spread to +2px each way vs that baseline */
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span:nth-child(1),
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span:nth-child(1) {
+        transform: translateY(-6px) !important;
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span:nth-child(2),
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span:nth-child(2) {
+        transform: translateY(6px) !important;
+    }
+}
+
+/* ============================= */
+/* IMBALI DROPDOWN PANEL */
+/* ============================= */
+/* IMBALI: menu expands as ONE component from the pill */
+.menu-panel {
+    /* Shorter duration removes end-of-close "hang" and feels continuous. */
+    --imbali-menu-panel-dur: 0.48s;
+    --imbali-menu-panel-ease: cubic-bezier(.25, .8, .25, 1);
+
+    /* KEY CHANGE: it must be IN FLOW so the pill background grows */
+    order: 4;
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    /* force it onto its own row inside the flex wrapper */
+    flex: 0 0 100%;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    /* IMPORTANT: remove the “second card” styling */
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    transform: translateY(-8px);
+    /* Base rule applies on close: linear max-height avoids decelerating "pause" near fully closed. */
+    transition:
+        max-height var(--imbali-menu-panel-dur) linear,
+        opacity .22s ease-out,
+        transform .34s cubic-bezier(.22, .61, .36, 1);
+}
+
+/* When open: expand downward */
+.menu-panel.open {
+    max-height: 520px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition:
+        max-height 0.68s var(--imbali-menu-panel-ease),
+        opacity 0.68s var(--imbali-menu-panel-ease),
+        transform 0.68s var(--imbali-menu-panel-ease);
+}
+
+/* Inner menu styling – side padding matches outer 14px of VIEW PACKAGES / MENU */
+.menu-panel-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px 12px;
+    gap: 10px;
+
+    /* seam line at the top for the “one component” feel */
+    border-top: 1px solid rgba(226,226,226,.10);
+}
+
+.menu-panel-inner a {
+    display: block;
+    padding: 14px 14px;
+    border-radius: 18px;
+    color: #e2e2e2;
+    text-decoration: none;
+    background: rgba(226,226,226,.03);
+    border: 1px solid rgba(226,226,226,.06);
+    font-size: 12px;
+    letter-spacing: var(--imbali-header-letter-spacing);
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0;
+    /* fade-in-down: start slightly above, move downward */
+    transform: translateY(-8px);
+    transition:
+        opacity .54s cubic-bezier(.22,.61,.36,1),
+        transform .54s cubic-bezier(.22,.61,.36,1),
+        background .1s ease-out,
+        border-color .1s ease-out;
+}
+
+.menu-panel-inner a:hover {
+    background: rgba(226,226,226,.08);
+    border-color: rgba(226,226,226,.14);
+}
+
+/* Expanded pill only: bottom links align with top-row edge rhythm */
+.site-header.is-compact .main__nav__custom.menu-open .menu-panel-inner a,
+.site-header.is-top .main__nav__custom.menu-open .menu-panel-inner a {
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
+/* Staggered entrance when panel opens (delay only on opacity/transform so hover stays instant) */
+.menu-panel.open .menu-panel-inner a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Expanded pill only: gap between rows + extra outer space above first / below last button (not inside links) */
+.site-header.is-compact .main__nav__custom.menu-open .menu-panel-inner,
+.site-header.is-top .main__nav__custom.menu-open .menu-panel-inner {
+    gap: 17px;
+    /* Base `.menu-panel-inner` is 12px top/bottom — add ~20px breathing room outside the stack */
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+/* Bottom (Contact) – shortest delay */
+.menu-panel.open .menu-panel-inner a:nth-child(4) {
+    transition: opacity .54s cubic-bezier(.22,.61,.36,1) .12s,
+                transform .54s cubic-bezier(.22,.61,.36,1) .12s,
+                background .1s ease-out 0s,
+                border-color .1s ease-out 0s;
+}
+
+/* Work */
+.menu-panel.open .menu-panel-inner a:nth-child(3) {
+    transition: opacity .54s cubic-bezier(.22,.61,.36,1) .24s,
+                transform .54s cubic-bezier(.22,.61,.36,1) .24s,
+                background .1s ease-out 0s,
+                border-color .1s ease-out 0s;
+}
+
+/* Process */
+.menu-panel.open .menu-panel-inner a:nth-child(2) {
+    transition: opacity .54s cubic-bezier(.22,.61,.36,1) .36s,
+                transform .54s cubic-bezier(.22,.61,.36,1) .36s,
+                background .1s ease-out 0s,
+                border-color .1s ease-out 0s;
+}
+
+/* Top (Packages) – longest delay */
+.menu-panel.open .menu-panel-inner a:nth-child(1) {
+    transition: opacity .54s cubic-bezier(.22,.61,.36,1) .48s,
+                transform .54s cubic-bezier(.22,.61,.36,1) .48s,
+                background .1s ease-out 0s,
+                border-color .1s ease-out 0s;
+}
+
+/* ============================= */
+/* ADVANCE SEARCH FORM TYPOGRAPHY */
+/* Match labels to .h6, inputs/selects to body */
+/* ============================= */
+.advance__search .query__input label,
+.advance__search .query__input label.h6 {
+    font-family: var(--glida);
+    font-weight: 600;
+    font-size: var(--h6, 24px);
+    line-height: 30px;
+    color: var(--rts-heading);
+}
+@media screen and (max-width: 575.98px) {
+    .advance__search .query__input label,
+    .advance__search .query__input label.h6 {
+        font-size: 16px;
+    }
+}
+.advance__search .query__input input,
+.advance__search .query__input select,
+.advance__search .query__input .form-select {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: var(--p, 16px);
+    font-weight: 400;
+    color: var(--rts-para);
+}
+.advance__search .query__input input::placeholder {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: var(--p, 16px);
+    color: var(--rts-para);
+}
+
+/* ============================= */
+/* IMBALI MOBILE TUNNING */
+/* ============================= */
+@media (max-width: 767.98px){
+    .site-header.is-compact {
+        top: 50px;
+        left: 40px;
+        right: 40px;
+        max-width: 720px;
+        /* Was 2px — tighter so the symbol reads larger inside the same pill footprint */
+        padding: 0;
+
+        /* optional; keeps it from getting huge on tablets */
+        width: auto;
+        /* Keep the compact pill aligned; the slide-in animation controls translateY. */
+        transform: translateY(-200px);
+    }
+
+    /* Menu open: restore a hair of inset so the sheet doesn’t kiss the frosted edge */
+    .site-header.is-compact:has(.main__nav__custom.menu-open),
+    .site-header.is-top:has(.main__nav__custom.menu-open) {
+        padding: 2px;
+    }
+
+    /* Closed pill: strip inner vertical padding (defaults are 2.5px / nav buttons 2px in theme) */
+    .site-header.is-compact .main__nav__custom:not(.menu-open),
+    .site-header.is-top .main__nav__custom:not(.menu-open) {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .site-header.is-compact .main__nav__custom:not(.menu-open) .nav-packages,
+    .site-header.is-top .main__nav__custom:not(.menu-open) .nav-packages,
+    .site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle,
+    .site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .main__nav__custom {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+    }
+
+    .main__nav__custom .nav-packages {
+        grid-column: 1;
+        justify-self: start;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    .main__nav__custom .main__logo {
+        position: static;
+        grid-column: 2;
+        justify-self: center;
+        min-width: 80px;
+        max-width: 150px;
+    }
+
+    /* Closed pill only: 95px logo width at ≤767px; menu-open uses .menu-open rules above */
+    .site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo,
+    .site-header.is-top .main__nav__custom:not(.menu-open) .main__logo {
+        max-width: 95px;
+        min-width: 0;
+    }
+
+    .site-header.is-compact .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact,
+    .site-header.is-top .main__nav__custom:not(.menu-open) .main__logo .header-logo-compact {
+        width: 95px;
+        max-width: 95px;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+        object-position: center center;
+    }
+
+    .main__nav__custom .nav-menu-toggle {
+        grid-column: 3;
+        justify-self: end;
+        font-size: 12px;
+        color: #e2e2e2;
+    }
+}
+
+/* ============================= */
+/* FACILITIES SECTION (HOME)     */
+/* ============================= */
+.facilities__area.has__background {
+    background: #0a4a63 !important;
+}
+
+/* Packages block: theme py-90 baseline (was +50px each side; tightened −50 top/bottom) */
+.facilities__area.has__background.py-90 {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+/* Our Packages: +20px top/bottom vs the shared py-90 block (after prior −20px top nudge) */
+#packages.facilities__area.has__background.py-90 {
+    padding-top: 90px;
+    padding-bottom: 110px;
+    /* Hash links (#packages): extra offset above target so fixed pill/top bar don’t cover the heading */
+    scroll-margin-top: 50px;
+}
+
+/* Clip absolute flower decoration so it doesn’t paint into the next section */
+.facilities__area.has__shape {
+    overflow: hidden;
+}
+
+/* Shape: wider + negative `right` so part of the pattern sits past the viewport (body clips). */
+.facilities__area.has__shape .section__shape {
+    z-index: 0;
+    pointer-events: none;
+    width: min(50.4vw, 504px);
+    max-width: none;
+    right: -14vw;
+    top: calc(-2% - 50px);
+    left: auto;
+}
+
+/* Packages flower: bottom-right; same `right` hang as desktop/mobile base + vertical nudge from bottom (mirrors prior top formula) */
+#packages.facilities__area.has__shape .section__shape {
+    top: auto;
+    bottom: calc(-2% + 20px);
+}
+
+.facilities__area .container {
+    position: relative;
+    z-index: 1;
+}
+
+.facilities__area.has__shape .section__shape img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* White symbol asset — no invert (flower pattern used invert for dark linework) */
+    filter: none;
+    opacity: 0.2;
+}
+
+/* Packages flower: 50% softer than default facilities shape (0.2 → 0.1) */
+#packages.facilities__area.has__shape .section__shape img {
+    opacity: 0.1;
+}
+
+/* Theme hides this under 992px — show the webp pattern on smaller screens too */
+@media screen and (max-width: 991.98px) {
+    .facilities__area.has__shape .section__shape {
+        display: block;
+        width: min(61.6vw, 364px);
+        right: -18vw;
+    }
+
+    .facilities__area.has__shape .section__shape img {
+        filter: none;
+        opacity: 0.17;
+    }
+
+    /* Packages: half of 0.17 */
+    #packages.facilities__area.has__shape .section__shape img {
+        opacity: 0.085;
+    }
+}
+
+/* “Facilities” label on teal bg */
+.facilities__area .subtitle__icon__three,
+.facilities__area .subtitle__icon__four {
+    color: rgba(226, 226, 226, 0.95);
+}
+
+/* Remove line + diamond ornaments beside “Facilities” (this section only) */
+.facilities__area .subtitle__icon__three::before,
+.facilities__area .subtitle__icon__three::after {
+    display: none !important;
+}
+
+/*
+ * Feature cards: gray section strip. Photo (`features-cards-bg.jpg`; bump `?v=` in url when the asset changes — bypasses aggressive JPEG caching).
+ * Desktop/tablet: one image tiled across cards via background-size/position per `.imbali-feature-thumb-parallax-shift`.
+ * ≤767px: same JPEG sliced vertically across four stacked cards (gray section shows in gutters — no row-wide photo layer).
+ */
+.imbali-feature-cards-section.rts__section {
+    position: relative;
+    overflow: hidden;
+    background-color: #cccccc;
+    background-image: linear-gradient(
+        to top right,
+        rgba(0, 0, 0, 0.05) 0%,
+        rgba(0, 0, 0, 0.018) 42%,
+        transparent 68%
+    );
+}
+
+.imbali-feature-cards-section .imbali-feature-cards-row > [class*="col-"] {
+    display: flex;
+}
+
+.imbali-feature-cards-section .imbali-feature-parallax.imbali-feature-parallax-card.room__slide__box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    max-width: 300px;
+    min-height: calc(clamp(380px, 48vw, 500px) - 80px);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 24px;
+    overflow: hidden;
+    isolation: isolate;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    border: 1px solid rgba(226, 226, 226, 0.14);
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+/* Full-card photo layer (parallax target for JS) */
+.imbali-feature-thumb-parallax-shift {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -22%;
+    bottom: -22%;
+    z-index: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    background-image: url("../images/features-cards-bg.jpg?v=515");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: blur(1px);
+    will-change: transform, filter;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* Readability: darken entire card, not just the top pane */
+.imbali-feature-cards-section .imbali-feature-parallax.imbali-feature-parallax-card.room__slide__box::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 23px;
+    background: rgba(0, 0, 0, 0.56);
+    pointer-events: none;
+}
+
+/* 2×2 tablet layout: quadrants of one image */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .imbali-feature-cards-row > [class*="col-"]:nth-child(1) .imbali-feature-thumb-parallax-shift {
+        background-size: 200% 200%;
+        background-position: 0% 0%;
+    }
+
+    .imbali-feature-cards-row > [class*="col-"]:nth-child(2) .imbali-feature-thumb-parallax-shift {
+        background-size: 200% 200%;
+        background-position: 100% 0%;
+    }
+
+    .imbali-feature-cards-row > [class*="col-"]:nth-child(3) .imbali-feature-thumb-parallax-shift {
+        background-size: 200% 200%;
+        background-position: 0% 100%;
+    }
+
+    .imbali-feature-cards-row > [class*="col-"]:nth-child(4) .imbali-feature-thumb-parallax-shift {
+        background-size: 200% 200%;
+        background-position: 100% 100%;
+    }
+}
+
+/* XL 4-across: horizontal panorama strip */
+@media (min-width: 1200px) {
+    .imbali-feature-cards-row > .col-xl-3:nth-child(1) .imbali-feature-thumb-parallax-shift {
+        background-size: 400% 100%;
+        background-position: 0% 50%;
+    }
+
+    .imbali-feature-cards-row > .col-xl-3:nth-child(2) .imbali-feature-thumb-parallax-shift {
+        background-size: 400% 100%;
+        background-position: 33.333333% 50%;
+    }
+
+    .imbali-feature-cards-row > .col-xl-3:nth-child(3) .imbali-feature-thumb-parallax-shift {
+        background-size: 400% 100%;
+        background-position: 66.666667% 50%;
+    }
+
+    .imbali-feature-cards-row > .col-xl-3:nth-child(4) .imbali-feature-thumb-parallax-shift {
+        background-size: 400% 100%;
+        background-position: 100% 50%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .imbali-feature-thumb-parallax-shift {
+        transform: none !important;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+/* Narrow stack: photo only inside each card — gutters stay section gray; vertical slices = one continuous image */
+@media (max-width: 767.98px) {
+    .imbali-feature-cards-section .imbali-feature-thumb-parallax-shift {
+        transform: none !important;
+        will-change: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        filter: none;
+    }
+
+    .imbali-feature-cards-section .imbali-feature-cards-row > [class*="col-"]:nth-child(1) .imbali-feature-thumb-parallax-shift {
+        background-size: 100% 400%;
+        background-position: center 0%;
+    }
+
+    .imbali-feature-cards-section .imbali-feature-cards-row > [class*="col-"]:nth-child(2) .imbali-feature-thumb-parallax-shift {
+        background-size: 100% 400%;
+        background-position: center 33.333333%;
+    }
+
+    .imbali-feature-cards-section .imbali-feature-cards-row > [class*="col-"]:nth-child(3) .imbali-feature-thumb-parallax-shift {
+        background-size: 100% 400%;
+        background-position: center 66.666667%;
+    }
+
+    .imbali-feature-cards-section .imbali-feature-cards-row > [class*="col-"]:nth-child(4) .imbali-feature-thumb-parallax-shift {
+        background-size: 100% 400%;
+        background-position: center 100%;
+    }
+}
+
+.imbali-feature-parallax__content {
+    position: relative;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 26px 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent !important;
+    border-radius: 0;
+    z-index: 2;
+    min-height: 0;
+}
+
+@media screen and (max-width: 1399.98px) {
+    .imbali-feature-parallax__content {
+        padding: 0 20px 0;
+    }
+}
+
+.imbali-feature-parallax__content .card-title,
+.imbali-feature-parallax__content .card-text {
+    color: #f2f2f2 !important;
+}
+
+.imbali-feature-parallax__content .card-title.h6,
+.imbali-feature-parallax__content .card-title {
+    font-size: calc(var(--h6, 24px) - 2px) !important;
+}
+
+.imbali-feature-parallax__content .card-text {
+    line-height: 1.5em;
+    margin-bottom: 0;
+    align-self: stretch;
+    width: 100%;
+    text-align: center;
+}
+
+/*
+ * Icon grid: fixed “slot” (same as Material / Font Awesome style sheets).
+ */
+.imbali-feature-parallax__content .icon {
+    --facilities-icon-slot: 62px;
+    width: var(--facilities-icon-slot);
+    height: var(--facilities-icon-slot);
+    min-width: var(--facilities-icon-slot);
+    min-height: var(--facilities-icon-slot);
+    flex-shrink: 0;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imbali-feature-cards-section .imbali-feature-cards-row > .col-xl-3:first-child .imbali-feature-parallax__content .icon {
+    --facilities-icon-slot: 49px;
+}
+
+.imbali-feature-cards-section .imbali-feature-cards-row > .col-xl-3:last-child .imbali-feature-parallax__content .icon {
+    --facilities-icon-slot: 55px;
+}
+
+.imbali-feature-parallax__content .icon img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+/*
+ * Feature cards 2-up (Bootstrap md–lg: 768px–1199.98px before xl 4-up).
+ * Theme .room__slide__box { max-width: max-content } can shrink cards; stretch row + flex column fills each half-row.
+ */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .imbali-feature-cards-section .imbali-feature-cards-row {
+        align-items: stretch;
+    }
+
+    .imbali-feature-cards-section .imbali-feature-cards-row > [class*="col-"] {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .imbali-feature-cards-section .imbali-feature-parallax.imbali-feature-parallax-card.room__slide__box {
+        align-self: stretch;
+        min-height: calc(clamp(420px, 52vw, 560px) - 80px);
+    }
+}
+
+/* ============================= */
+/* PACKAGES: static 3-up (no Swiper) */
+/* ============================= */
+/*
+ * Global `.container` is max 900px @992px — three 280px cards + 10px side margins need ~940px inner.
+ * Without this, cols ~267px wide and fixed cards overlap / read “bunched” from 992–1199px.
+ */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #packages .container {
+        max-width: 1040px !important;
+    }
+}
+
+/* Slightly wider gutters + card side margins so 280px tiles don’t visually bunch */
+#packages .imbali-packages-grid.row {
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 1.75rem;
+}
+
+/* Columns stretch to row height; cards stay 280px wide (centered) — no flex-shrink below 280. */
+.imbali-packages-grid.row > [class*="col-"] {
+    display: flex;
+    justify-content: center;
+}
+
+.imbali-packages-grid.row > [class*="col-"] > .room__slide__box {
+    flex: 0 0 280px;
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    margin-inline: 10px;
+}
+
+.imbali-packages-grid .room__slide__box {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    margin-inline: 10px;
+    box-sizing: border-box;
+    border: 1px solid rgba(226, 226, 226, 0.1);
+    overflow: hidden;
+    border-radius: 24px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Image strip collapsed — content sizes card height so copy isn’t clipped */
+.imbali-packages-grid .room__thumbnail.imbali-packages-static-photo {
+    position: relative;
+    min-height: 0 !important;
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.imbali-packages-grid .room__thumbnail .imbali-packages-cover-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Photo layer hidden — package cards are solid #f2f2f2 (no image strip at top). */
+.imbali-packages-grid .room__slide__box .room__thumbnail::before {
+    z-index: 1;
+    opacity: 0 !important;
+    pointer-events: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: transparent !important;
+}
+
+
+.imbali-packages-grid .room__slide__box .room__content ul li {
+    color: #141414;
+    font-weight: 500;
+    font-size: calc(1em - 1px);
+    line-height: calc(1.5em + 4px);
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Outlined teal circle + stroked check (#0a4a63) */
+.imbali-packages-grid .room__slide__box .room__content ul li::before {
+    content: "";
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 1.5px solid #0a4a63;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%230a4a63' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.75 6.1 5.15 8.5 9.25 3.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.28em;
+}
+
+.imbali-packages-grid .room__slide__box .room__content ul {
+    /* Natural height; gap to tier title is via .room__title { margin-top: auto } so titles line up across cards. */
+    flex: 0 0 auto;
+    margin: 0 0 12px;
+    padding-top: 15px;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 9px;
+    overflow: visible;
+}
+
+.imbali-packages-grid .room__slide__box .room__content ul li:not(:last-child) {
+    margin-bottom: 0;
+}
+
+/* In-flow panel — card height follows content (deposit line no longer clipped). */
+.imbali-packages-grid .room__slide__box .room__content {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: 0;
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 16px 34px 22px !important;
+    box-sizing: border-box;
+    z-index: 2;
+    background-color: #f2f2f2;
+    color: #141414;
+    border-radius: 24px;
+    min-height: 0;
+}
+
+/* Single flex child below the list: margin-top:auto aligns package tiers across cards (same top edge). */
+.imbali-packages-grid .room__slide__box .room__content .package-card-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-shrink: 0;
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-bottom .room__title {
+    flex-shrink: 0;
+    margin-top: 0;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 0;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* Tier divider: 1px bar, inset 20px each side, centered; −5px translate doesn’t shift sibling layout */
+.imbali-packages-grid .room__slide__box .room__content .package-card-bottom .room__title::before {
+    content: "";
+    display: block;
+    height: 1px;
+    margin-bottom: 9px;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 40px);
+    max-width: 100%;
+    border-radius: 1px;
+    background: #0a4a63;
+    transform: translateY(-5px);
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-bottom .room__content__meta {
+    flex-shrink: 0;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-bottom .package-card-footer,
+.imbali-packages-grid .room__slide__box .room__content .package-card-bottom .package-card-deposit {
+    flex-shrink: 0;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .room__content__meta {
+    margin-top: 5px;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .room__title {
+    color: #141414;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .room__title h5 {
+    font-size: calc(var(--h5) - 9px);
+    margin: 0;
+    color: #141414;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .room__content__meta span,
+.imbali-packages-grid .room__slide__box .room__content .room__content__meta span i {
+    color: #141414;
+    font-size: calc(1em - 1px);
+}
+
+.imbali-packages-grid .room__slide__box .room__content .rent.h4,
+.imbali-packages-grid .room__slide__box .room__content .rent {
+    font-size: calc(var(--h4) - 11px);
+    color: #141414;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-footer {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 0;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-footer .rent {
+    transform: translateY(-7px);
+    font-size: calc(var(--h4) - 7px);
+    width: 110px;
+    text-align: right;
+    flex: 0 0 110px;
+    color: #141414;
+}
+
+/* First two cards: price left-aligned; 20px gap to button unchanged (footer gap) */
+.imbali-packages-grid > .col-12:first-child .room__slide__box .room__content .package-card-footer,
+.imbali-packages-grid > .col-12:nth-child(2) .room__slide__box .room__content .package-card-footer {
+    justify-content: flex-start;
+}
+
+.imbali-packages-grid > .col-12:first-child .room__slide__box .room__content .package-card-footer .rent,
+.imbali-packages-grid > .col-12:nth-child(2) .room__slide__box .room__content .package-card-footer .rent {
+    text-align: left;
+    width: auto;
+    flex: 0 0 auto;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-deposit {
+    margin: 10px 0 0;
+    padding: 0;
+    text-align: center;
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    color: #141414;
+}
+
+/* Card CTAs — match Process “Book Now” (`.imbali-service-13-cta--primary`) */
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 16px 22px !important;
+    border-radius: 18px;
+    background: #0a4a63 !important;
+    border: 1px solid rgba(10, 74, 99, 0.4) !important;
+    color: #f2f2f2 !important;
+    text-decoration: none !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: var(--imbali-letter-spacing);
+    line-height: 1.2;
+    overflow: visible;
+    isolation: isolate;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill::before,
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill::after {
+    display: none !important;
+    content: none !important;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill span {
+    mix-blend-mode: normal !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    color: #f2f2f2 !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    transition: color 0.35s ease;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill:hover,
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill:focus-visible {
+    background: #e2e2e2 !important;
+    border-color: rgba(226, 226, 226, 0.55) !important;
+    color: #0a4a63 !important;
+}
+
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill:hover span,
+.imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill:focus-visible span {
+    color: #0a4a63 !important;
+}
+
+@media screen and (max-width: 767.98px) {
+    .imbali-packages-grid .room__thumbnail:not(.imbali-packages-static-photo) {
+        min-height: 385px;
+    }
+}
+
+/* Packages heading: titles + intro share row ≥lg (992px) — same breakpoint as 3-up cards → 2-up (`col-lg-4` grid) */
+#packages .imbali-packages-heading-intro {
+    min-width: 0;
+}
+
+#packages .imbali-packages-intro {
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(242, 242, 242, 0.92);
+    letter-spacing: var(--imbali-body-letter-spacing, 0.02em);
+    text-wrap: pretty;
+}
+
+@media (max-width: 991.98px) {
+    #packages .imbali-packages-intro {
+        max-width: 40rem;
+    }
+}
+
+/* Packages header: drop section arrow line; eyebrow matches hero subtitle */
+#packages .section__content__left .subtitle__icon__two {
+    left: 0;
+    color: #f2f2f2;
+}
+
+#packages .section__content__left .subtitle__icon__two::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* In-page anchor: fixed pill/header offset */
+#about.about__area {
+    scroll-margin-top: 50px;
+}
+
+/* Anchor target for menu “See the Process” (#work); offset for fixed pill/header */
+section.service-13#work {
+    scroll-margin-top: 50px;
+    /* Let the shared section wrapper control spacing; avoid fixed-height clipping from template CSS. */
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* Our Process (service-13): same heading stack as Packages; brand teal on light bg */
+section.service-13 .imbali-service-13-heading {
+    text-align: center;
+    width: 100%;
+}
+
+section.service-13 .imbali-service-13-heading .subtitle__icon__two {
+    left: auto;
+    color: #212121 !important;
+}
+
+section.service-13 .imbali-service-13-heading .subtitle__icon__two::before {
+    display: none !important;
+    content: none !important;
+}
+
+section.service-13 .imbali-service-13-heading .content__title {
+    color: #0a4a63 !important;
+    letter-spacing: calc(var(--imbali-heading-letter-spacing) + 1px - 0.5px) !important;
+}
+
+/* Step markers: large numeral + period; solid tile — same rgba as .service-box:hover tint (−6px vs kainzy 54×54 base) */
+section.service-13 .service-icon .icon {
+    width: 48px !important;
+    height: 48px !important;
+    line-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 1 !important;
+    background: rgba(10, 74, 99, 0.1) !important;
+    color: #0a4a63 !important;
+}
+
+/* Hover: solid brand tile + white numerals (inverse vs default tint) */
+section.service-13 .service-box:hover .service-icon .icon {
+    background: #0a4a63 !important;
+    color: #ffffff !important;
+}
+
+section.service-13 .service-icon .icon .imbali-service-13-step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: #0a4a63;
+    font-weight: 700;
+    font-size: clamp(14px, 4.5vw, 22px) !important;
+    line-height: 0.95;
+    /* Slight gap between digit and period (was −0.02em tight) */
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    padding: 0 2px;
+    transform: none;
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
+    box-shadow: none;
+}
+
+section.service-13 .service-box:hover .service-icon .icon .imbali-service-13-step {
+    color: #ffffff !important;
+}
+
+/* Card titles: title case + brand black; −4px vs global h6 stack; −0.5px track vs other section h6 */
+section.service-13 .service-box h6 {
+    color: #212121 !important;
+    font-size: calc(var(--h6, 24px) - 3px) !important;
+    text-transform: none !important;
+    letter-spacing: calc(var(--imbali-heading-letter-spacing) + 2px - 0.5px) !important;
+}
+
+/* Service-13 (Our Process): CTAs — “View Packages” = footer surface; “Book Now” = brand teal + gradient */
+section.service-13 .imbali-service-13-cta-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 14px 18px;
+}
+
+section.service-13 .imbali-service-13-cta.theme-btn.btn-style.fill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    isolation: isolate;
+    padding: 16px 22px !important;
+    border-radius: 18px;
+    border: 1px solid transparent !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    font-size: 11px !important;
+    letter-spacing: var(--imbali-letter-spacing);
+    line-height: 1.2;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+}
+
+section.service-13 .imbali-service-13-cta.theme-btn.btn-style.fill::before,
+section.service-13 .imbali-service-13-cta.theme-btn.btn-style.fill::after {
+    display: none !important;
+    content: none !important;
+}
+
+section.service-13 .imbali-service-13-cta.theme-btn.btn-style.fill span {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: 0 !important;
+    mix-blend-mode: normal !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+    font-size: 11px !important;
+    transition: color 0.35s ease;
+}
+
+/* Secondary — footer surface */
+section.service-13 .imbali-service-13-cta--secondary.theme-btn.btn-style.fill {
+    background: var(--imbali-footer-surface) !important;
+    color: #f2f2f2 !important;
+}
+
+section.service-13 .imbali-service-13-cta--secondary.theme-btn.btn-style.fill span {
+    color: #f2f2f2 !important;
+}
+
+section.service-13 .imbali-service-13-cta--secondary.theme-btn.btn-style.fill:hover,
+section.service-13 .imbali-service-13-cta--secondary.theme-btn.btn-style.fill:focus-visible {
+    background-color: #e2e2e2 !important;
+    border-color: rgba(226, 226, 226, 0.45) !important;
+    color: var(--heading-color) !important;
+}
+
+section.service-13 .imbali-service-13-cta--secondary.theme-btn.btn-style.fill:hover span,
+section.service-13 .imbali-service-13-cta--secondary.theme-btn.btn-style.fill:focus-visible span {
+    color: var(--heading-color) !important;
+}
+
+/* Primary — flat brand teal */
+section.service-13 .imbali-service-13-cta--primary.theme-btn.btn-style.fill {
+    background: #0a4a63 !important;
+    border: 1px solid rgba(10, 74, 99, 0.4) !important;
+    color: #f2f2f2 !important;
+}
+
+section.service-13 .imbali-service-13-cta--primary.theme-btn.btn-style.fill span {
+    color: #f2f2f2 !important;
+}
+
+section.service-13 .imbali-service-13-cta--primary.theme-btn.btn-style.fill:hover,
+section.service-13 .imbali-service-13-cta--primary.theme-btn.btn-style.fill:focus-visible {
+    background: #e2e2e2 !important;
+    border-color: rgba(226, 226, 226, 0.55) !important;
+    color: #0a4a63 !important;
+}
+
+section.service-13 .imbali-service-13-cta--primary.theme-btn.btn-style.fill:hover span,
+section.service-13 .imbali-service-13-cta--primary.theme-btn.btn-style.fill:focus-visible span {
+    color: #0a4a63 !important;
+}
+
+/* ≤659px: About “Learn More” + Process footer CTAs + package “Book Now” — 2px tighter (padding only; font-size still 11px) */
+@media screen and (max-width: 659.98px) {
+    #about.about__area.is__home__one .theme-btn.btn-style.fill,
+    section#work.service-13 .imbali-service-13-cta.theme-btn.btn-style.fill,
+    .imbali-packages-grid .room__slide__box .room__content .package-card-cta.theme-btn.btn-style.fill {
+        padding: 15px 21px !important;
+    }
+}
+
+/* Eyebrows only: About Us, Start Today, How It Works (+2px vs global h6 stack; title case + bold) */
+.about__area.is__home__one .content .subtitle__icon__two,
+#packages .section__content__left .subtitle__icon__two,
+.offer__area.is__home__one .section__content__left .subtitle__icon__two,
+section.service-13 .section__content__left .subtitle__icon__two {
+    font-size: calc(var(--h6, 24px) + 6px);
+    font-weight: 700 !important;
+    text-transform: none;
+}
+
+/* ============================= */
+/* LARGE TITLES: match About “Welcome…” (36px / 1.2); colors unchanged */
+/* ============================= */
+.rts__section.section__padding:has(.imbali-packages-grid) .section__content__left .content__title.h2,
+#packages .section__content__left .content__title.h2,
+.offer__area.is__home__one .section__content__left .content__title.h2,
+section.service-13 .section__content__left .content__title.h2 {
+    font-size: 40px !important;
+    line-height: 1.2 !important;
+}
+
+@media screen and (max-width: 576px) {
+    .about__area.is__home__one .about__wrapper .content__title,
+    .rts__section.section__padding:has(.imbali-packages-grid) .section__content__left .content__title.h2,
+    #packages .section__content__left .content__title.h2,
+    .offer__area.is__home__one .section__content__left .content__title.h2,
+    section.service-13 .section__content__left .content__title.h2 {
+        font-size: 38px !important;
+        line-height: 1.2 !important;
+    }
+}
+
+/* Footer strip: dark surface (matches white logo + mist body copy in this theme) */
+.rts__footer.is__common__footer.footer__background {
+    background-color: var(--imbali-footer-surface) !important;
+    position: relative;
+    z-index: 5;
+}
+
+/* Theme preloader: after `.loaded`, theme hides loader but leaves it full-viewport — clicks must pass through */
+body.loaded .loader-wrapper {
+    pointer-events: none !important;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper a {
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+#siteHeader .nav-packages,
+#siteHeader.site-header .menu-panel.open .menu-panel-inner a {
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+/* Pill menu: mailto row must never stay opacity 0 / inert from stagger timing */
+#siteHeader.site-header .menu-panel.open .menu-panel-inner a[href^="mailto:"] {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
+
+/* All footer links → brand teal on hover (beats theme .footer__widget__wrapper … a:hover) */
+.rts__footer.is__common__footer a:hover,
+.rts__footer.is__common__footer a:focus-visible {
+    color: #0a4a63 !important;
+}
+
+.rts__footer.is__common__footer a:hover i,
+.rts__footer.is__common__footer a:focus-visible i,
+.rts__footer.is__common__footer a:hover i::before,
+.rts__footer.is__common__footer a:focus-visible i::before,
+.rts__footer.is__common__footer a:hover svg,
+.rts__footer.is__common__footer a:focus-visible svg {
+    color: #0a4a63 !important;
+}
+
+/* Footer titles: −4px vs those large h2s / global h6 (+4px) stack */
+.rts__footer.is__common__footer .footer__newsletter > span.h2 {
+    font-size: 32px !important;
+    line-height: 1.2 !important;
+    color: #f2f2f2 !important;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper h6 {
+    font-size: var(--h6, 24px) !important;
+    color: #f2f2f2 !important;
+    line-height: calc(1.5em - 3px) !important;
+    /* Title case: override global h6 { text-transform: uppercase } */
+    text-transform: none !important;
+}
+
+/* ============================= */
+/* SPECIAL OFFER (HOME ONE)      */
+/* ============================= */
+.offer__area.is__home__one {
+    background-color: #e2e2e2 !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 130px;
+    padding-bottom: 120px;
+}
+
+@media screen and (max-width: 991.98px) {
+    .offer__area.is__home__one {
+        padding-bottom: 100px;
+    }
+}
+
+.offer__area.is__home__one .section__wrapper {
+    justify-content: center;
+}
+
+.offer__area.is__home__one .section__content__left {
+    text-align: center;
+    width: 100%;
+}
+
+/* First line only (“Special Offer” eyebrow) */
+.offer__area.is__home__one .subtitle__icon__two {
+    left: 0;
+    color: #0a4a63;
+}
+
+.offer__area.is__home__one .subtitle__icon__two::before {
+    display: none !important;
+}
+
+/* Main “Special Offer” heading + card titles → dark */
+.offer__area.is__home__one .section__wrapper .content__title {
+    color: #212121 !important;
+}
+
+.offer__area.is__home__one .single__offer__content h6 a,
+.offer__area.is__home__one .single__offer__content .offer__included li {
+    color: #212121;
+}
+
+.offer__area.is__home__one .single__offer__content h6 a:hover,
+.offer__area.is__home__one .single__offer__content h6 a:focus {
+    color: #151515;
+}
+
+.offer__area.is__home__one .single__offer__content .offer__included li i {
+    color: #212121;
+}
+
+/* Match about “Learn More”: black fill, light label */
+.offer__area.is__home__one .single__offer__content .theme-btn.btn-style.fill {
+    background: #212121;
+    border-color: #212121;
+    color: #e2e2e2;
+}
+
+.offer__area.is__home__one .single__offer__content .theme-btn.btn-style.fill span {
+    color: #e2e2e2;
+}
+
+.offer__area.is__home__one .single__offer__content .theme-btn.btn-style.fill {
+    display: none;
+}
+
+/* ============================= */
+/* ABOUT SECTION (HOME ONE)      */
+/* ============================= */
+/* WOW default fadeInUp uses translate(0, 30%) — tall body copy moves much farther than the title. Fixed offset matches travel across blocks. */
+@keyframes imbali-about-fade-in-up {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 28px, 0);
+        transform: translate3d(0, 28px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.about__area.is__home__one .imbali-about-fade-in-up,
+#packages .imbali-about-fade-in-up,
+.imbali-feature-cards-section .imbali-about-fade-in-up,
+section.service-13 .imbali-about-fade-in-up {
+    -webkit-animation-name: imbali-about-fade-in-up;
+    animation-name: imbali-about-fade-in-up;
+}
+
+/*
+ * Scroll-linked entrances (CSS animation-timeline: view()). Animation progress is tied to scroll,
+ * not a separate timed reveal — avoids JS/IO/WOW competing with the scroll thread.
+ * Unsupported browsers: no animation (content visible immediately).
+ */
+@supports (animation-timeline: view()) {
+    @keyframes imbali-scroll-fade-in {
+        from {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 22px, 0);
+            transform: translate3d(0, 22px, 0);
+        }
+
+        to {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+        }
+    }
+
+    .imbali-scroll-fade {
+        -webkit-animation: imbali-scroll-fade-in 1s cubic-bezier(0.33, 1, 0.68, 1) both;
+        animation: imbali-scroll-fade-in 1s cubic-bezier(0.33, 1, 0.68, 1) both;
+        -webkit-animation-timeline: view();
+        animation-timeline: view();
+        -webkit-animation-range: entry 0% cover 38%;
+        animation-range: entry 0% cover 38%;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @supports (animation-timeline: view()) {
+        .imbali-scroll-fade {
+            -webkit-animation: none !important;
+            animation: none !important;
+            opacity: 1 !important;
+            -webkit-transform: none !important;
+            transform: none !important;
+        }
+    }
+}
+
+.about__area.is__home__one {
+    background: #f3f6f8;
+}
+
+/* Remove decorative elements in this section */
+.about__area.is__home__one .section__shape {
+    display: none;
+}
+.about__area.is__home__one .subtitle__icon__two {
+    left: 0;
+    color: #212121;
+}
+.about__area.is__home__one .subtitle__icon__two::before {
+    display: none;
+}
+
+.about__area.is__home__one .about__wrapper {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 48px;
+}
+
+.about__area.is__home__one .about__wrapper .content {
+    max-width: 500px;
+}
+
+.about__area.is__home__one .about__wrapper .content__title {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 34px;
+    color: #0a4a63;
+}
+
+.about__area.is__home__one .about__wrapper .content__subtitle {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 26px;
+    color: #212121;
+}
+
+/* Learn More: same motion as package “Book Now” — no theme ripple/span lift, 0.35s color/bg */
+.about__area.is__home__one .theme-btn.btn-style.fill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    isolation: isolate;
+    padding: 16px 22px !important;
+    background: var(--imbali-footer-surface) !important;
+    border: 1px solid transparent !important;
+    color: #f2f2f2 !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    font-size: 11px !important;
+    letter-spacing: var(--imbali-letter-spacing);
+    line-height: 1.2;
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.about__area.is__home__one .theme-btn.btn-style.fill::before,
+.about__area.is__home__one .theme-btn.btn-style.fill::after {
+    display: none !important;
+    content: none !important;
+}
+
+.about__area.is__home__one .theme-btn.btn-style.fill span {
+    color: #f2f2f2 !important;
+    font-weight: 500 !important;
+    mix-blend-mode: normal !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    transition: color 0.35s ease;
+}
+
+.about__area.is__home__one .theme-btn.btn-style.fill:hover,
+.about__area.is__home__one .theme-btn.btn-style.fill:focus-visible {
+    background-color: #e2e2e2 !important;
+    border-color: rgba(226, 226, 226, 0.45) !important;
+    color: var(--heading-color) !important;
+}
+
+.about__area.is__home__one .theme-btn.btn-style.fill:hover span,
+.about__area.is__home__one .theme-btn.btn-style.fill:focus-visible span {
+    color: var(--heading-color) !important;
+}
+
+.about__area.is__home__one .about__wrapper .image {
+    margin-right: 0;
+    flex: 1 1 44%;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.about__area.is__home__one .about__wrapper .image .image-height {
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Remove ratio spacer above the About image and keep rounded frame */
+.about__area.is__home__one .about__wrapper .image .jara-mask-1.image-height {
+    padding-top: 0;
+    height: auto;
+}
+
+.about__area.is__home__one .about__wrapper .image .imbali-about-parallax-frame {
+    overflow: hidden;
+}
+
+/* Parallax transform lives here — keep <img> transform-free so WOW can animate the outer .wow host reliably */
+.about__area.is__home__one .about__wrapper .image .imbali-about-parallax-shift {
+    will-change: transform;
+    transform: translate3d(0, 0, 0) scale(1.16);
+}
+
+.about__area.is__home__one .about__wrapper .image .imbali-about-parallax-frame img.imbali-about-parallax-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* ≤992px only: cap About image column width (no max-height — keeps mobile photo from feeling short) */
+@media (max-width: 992px) {
+    .about__area.is__home__one .about__wrapper .image {
+        max-width: 300px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about__area.is__home__one .about__wrapper .image .imbali-about-parallax-shift {
+        transform: none;
+        will-change: auto;
+    }
+}
+
+/*
+ * Tablet (768–992): keep copy left + photo right — overrides theme `.about__wrapper { flex-wrap: wrap }` at max-width 992px.
+ */
+@media (min-width: 768px) and (max-width: 992px) {
+    .about__area.is__home__one .about__wrapper {
+        flex-wrap: nowrap !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: left !important;
+    }
+
+    .about__area.is__home__one .about__wrapper .content {
+        flex: 1 1 auto !important;
+        max-width: min(500px, 56%) !important;
+        width: auto !important;
+    }
+
+    .about__area.is__home__one .about__wrapper .image {
+        flex: 0 1 300px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* Mobile: stacked column (was erroneously starting at 992; narrows to phone layouts only) */
+@media (max-width: 767.98px) {
+    .about__area.is__home__one .about__wrapper {
+        justify-content: center;
+        align-items: stretch;
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .about__area.is__home__one .about__wrapper .content {
+        max-width: 100%;
+        width: 100%;
+        flex: 1 1 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .about__area.is__home__one .about__wrapper .about__heading,
+    .about__area.is__home__one .about__wrapper .content__title {
+        text-align: center !important;
+    }
+
+    .about__area.is__home__one .about__wrapper .content__subtitle {
+        text-align: left;
+    }
+
+    .about__area.is__home__one .about__wrapper .image .image-height {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+        min-height: 0;
+    }
+
+    .about__area.is__home__one .about__wrapper .image {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        flex: 1 1 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .about__area.is__home__one .about__wrapper .image .jara-mask-1.image-height {
+        height: auto;
+    }
+}
+
+/* Back-to-top: sit above cookie / chat overlays so clicks reach the button */
+.rts__back__top {
+    z-index: 100002;
+}
+
+/* ============================= */
+/* FOOTER WIDGET ROW — align logo column with Quick Links + narrow first column */
+/* ============================= */
+.rts__footer.is__common__footer .footer__widget__wrapper {
+    align-items: flex-start;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:first-child {
+    flex: 0 1 340px;
+    max-width: min(340px, 100%);
+    min-width: 0;
+    width: min(340px, 100%);
+    box-sizing: border-box;
+}
+
+/* Footer grid (theme switches to grid ≤768px): center logo column in its cell */
+@media screen and (max-width: 767.98px) {
+    .rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:first-child {
+        justify-self: center;
+        text-align: center;
+    }
+}
+
+/* Flex row (≥768px): logo + blurb align to column start like other footer columns */
+@media screen and (min-width: 768px) {
+    .rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:first-child {
+        text-align: left;
+    }
+}
+
+/* Intro blurb under logo: match footer link size (body --p), explicit mist gray */
+.rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:first-child > p {
+    font-size: var(--p);
+    color: #e2e2e2;
+    line-height: calc(1.5em - 3px);
+}
+
+/* Remove inline-gap under logo image so tops line up with sibling column headings */
+.rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:first-child > a:first-of-type {
+    display: block;
+    line-height: 0;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:not(:first-child) > h6:first-child {
+    margin-top: 0;
+}
+
+/* Theme uses `li { margin-bottom: 20px }` — !important wins over theme + any plugin scope */
+.rts__footer.is__common__footer .footer__widget__wrapper .rts__widget ul li {
+    line-height: calc(1.5em - 3px) !important;
+    margin-bottom: 18px !important;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper .rts__widget ul li:last-child {
+    margin-bottom: 0 !important;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper .rts__widget ul li a {
+    line-height: calc(1.5em - 3px) !important;
+}
+
+/* Contact column: phone / email / social — icons align left like top bar */
+.rts__footer.is__common__footer .imbali-footer-contact ul li a {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.rts__footer.is__common__footer .imbali-footer-contact ul li a .imbali-footer-social-svg {
+    flex-shrink: 0;
+}
+
+/* Copyright row: social links moved into Contact — center single line */
+.rts__footer.is__common__footer .copyright__wrapper {
+    justify-content: center;
+}
+
+/* ============================= */
+/* FOOTER LOGO — match hero wordmark (full SVG color + scale) */
+/* ============================= */
+@keyframes imbali-footer-logo-scale-down {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0) scale(1.08);
+        transform: translate3d(0, 0, 0) scale(1.08);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+/* Chained from #work CTA row animationend (see inline script in index.html); hold = hidden until play */
+.rts__footer.is__common__footer .imbali-footer-logo-entrance {
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:first-child > .imbali-footer-logo-entrance {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .rts__footer.is__common__footer .footer__widget__wrapper > .rts__widget:first-child > .imbali-footer-logo-entrance {
+        margin-inline: 0;
+    }
+}
+
+.rts__footer.is__common__footer .imbali-footer-logo-entrance--hold {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) scale(1.08);
+    transform: translate3d(0, 0, 0) scale(1.08);
+}
+
+.rts__footer.is__common__footer .imbali-footer-logo-entrance--play {
+    -webkit-animation: imbali-footer-logo-scale-down 0.75s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+    animation: imbali-footer-logo-scale-down 0.75s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rts__footer.is__common__footer .imbali-footer-logo-entrance {
+        -webkit-animation: none !important;
+        animation: none !important;
+        opacity: 1 !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+    }
+
+    .rts__footer.is__common__footer .imbali-footer-logo-entrance--hold {
+        opacity: 1 !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+    }
+}
+
+/* Theme dark mode forces a white silhouette; hero wordmark uses native SVG colors */
+[data-theme=dark] .rts__footer.is__common__footer .footer__widget__wrapper .rts__widget .footer__logo {
+    filter: none !important;
+}
+
+.rts__footer.is__common__footer .footer__widget__wrapper .rts__widget img.footer__logo {
+    height: 120px;
+    width: auto;
+    max-width: min(400px, 100%);
+    min-width: 0 !important;
+    object-fit: contain;
+    display: block;
+}
+
+@media screen and (max-width: 575.98px) {
+    .rts__footer.is__common__footer .footer__widget__wrapper .rts__widget img.footer__logo {
+        height: 120px;
+        max-width: 100%;
+    }
+}
+
+/* ============================= */
+/* RADIUS: IMAGES + CARDS (pill radius set on .site-header.is-compact / .is-top above) */
+/* (intentionally excludes buttons) */
+/* ============================= */
+.jara-mask-1,
+.jara-mask-2,
+.room__slide__box,
+.room__slide__box .room__thumbnail,
+.room__slide__box .room__thumbnail::before,
+.room__slide__box .room__thumbnail img,
+.room__card,
+.room__card__top .room__price__tag,
+.room__card.is__style__four .room__card__top .room__card__image,
+.room__card.is__style__four .room__card__top .room__card__image img,
+.single__offer__image,
+.single__offer__image img,
+.single__offer__card,
+.facility .facility__thumb,
+.facility .facility__thumb img,
+.blog__item.is__has__radius,
+.blog__item.is__has__radius .blog__item__thumb,
+.blog__item.is__full.is__event,
+.blog__item.is__full.is__event .blog__item__thumb img,
+.event__newsletter__contact .contact__method {
+    border-radius: 24px;
+}
+
+/* ============================= */
+/* EXPANDED PILL: FINAL OVERRIDES */
+/* keep at end so mobile/media rules can't override */
+/* ============================= */
+.site-header.is-compact .main__nav__custom.menu-open,
+.site-header.is-top .main__nav__custom.menu-open {
+    position: static;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .main__logo,
+.site-header.is-top .main__nav__custom.menu-open .main__logo {
+    position: static;
+    left: auto;
+    justify-self: center;
+    align-self: center;
+    grid-row: 1;
+    margin: 0 auto;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open:not(.menu-closing) .main__logo .header-logo-menu-reveal,
+.site-header.is-top .main__nav__custom.menu-open:not(.menu-closing) .main__logo .header-logo-menu-reveal {
+    transform: none;
+}
+
+/* Top-row close fade: imbali.js Web Animations API (imbaliStartTopRowCloseFade) — not CSS, so theme cannot block it. */
+
+/* Stop wordmark expand/shrink on the img so the `.main__logo > a` opacity fade is the only exit motion */
+.site-header.is-compact .main__nav__custom.menu-open.menu-closing .main__logo .header-logo-menu-reveal,
+.site-header.is-top .main__nav__custom.menu-open.menu-closing .main__logo .header-logo-menu-reveal {
+    animation: none !important;
+    clip-path: inset(0 0 0 0) !important;
+    transition: none !important;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages,
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages:hover,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages:hover,
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages:focus-visible,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages:focus-visible {
+    padding-top: 16px !important;
+    padding-right: 16px !important;
+    padding-bottom: 16px !important;
+    padding-left: 16px !important;
+    font-size: 12px !important;
+    margin-left: 21px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: normal !important;
+    box-sizing: border-box;
+}
+
+/* Expanded pill only: match bottom-button hover treatment */
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages:hover,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages:hover,
+.site-header.is-compact .main__nav__custom.menu-open .nav-packages:focus-visible,
+.site-header.is-top .main__nav__custom.menu-open .nav-packages:focus-visible {
+    background: transparent !important;
+    border: none !important;
+    font-weight: 700 !important;
+}
+
+/* Expanded pill: X control — semibold on hover (icon gets slight scale; font-weight alone doesn’t affect bars) */
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle:hover,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle:hover,
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle:focus-visible,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle:focus-visible {
+    font-weight: 600 !important;
+}
+
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle.active:hover .menu-icon,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle.active:hover .menu-icon,
+.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle.active:focus-visible .menu-icon,
+.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle.active:focus-visible .menu-icon {
+    transform: translateY(-10px) scale(1.06);
+    transition: transform 0.15s ease;
+}
+
+/* Pill only: 12px radius for top + bottom pill buttons */
+.site-header.is-compact .nav-packages,
+.site-header.is-top .nav-packages,
+.site-header.is-compact .nav-menu-toggle,
+.site-header.is-top .nav-menu-toggle,
+.site-header.is-compact .menu-panel-inner a,
+.site-header.is-top .menu-panel-inner a {
+    border-radius: 12px !important;
+}
+
+/* Expanded pill only: bottom panel links — rounder than top row (12px) */
+.site-header.is-compact .main__nav__custom.menu-open .menu-panel-inner a,
+.site-header.is-top .main__nav__custom.menu-open .menu-panel-inner a {
+    border-radius: 18px !important;
+}
+
+/* Closed pill: nudge PACKAGES + bold MENU / label ( #id beats transition:none ) */
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-packages,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-packages {
+    margin-left: -11px !important;
+    font-weight: 700 !important;
+    transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-packages:hover,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-packages:hover,
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-packages:focus-visible,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-packages:focus-visible {
+    font-weight: 800 !important;
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle {
+    font-weight: 700 !important;
+    transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover,
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible {
+    font-weight: 800 !important;
+}
+
+/* Closed pill: “=” hover / focus — fine pointer only so touch doesn’t stick lines in the “spread” pose */
+@media (hover: hover) and (pointer: fine) {
+    /* Hamburger reads bolder on hover (1px → 2px bars; #id beats base .menu-icon span height) */
+    #siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span,
+    #siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span,
+    #siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span,
+    #siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span {
+        height: 2px !important;
+        margin-top: -1px !important;
+    }
+
+    /* Home hero: “=” lines ease slightly apart on MENU hover */
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span:nth-child(1),
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span:nth-child(1) {
+        transform: translateY(-7px) !important;
+    }
+
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span:nth-child(2),
+    body:has(.banner__area.is__home__video) #siteHeader .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span:nth-child(2) {
+        transform: translateY(7px) !important;
+    }
+}
+
+/* Packages section title */
+#packages .section__content__left .content__title {
+    color: #cccccc !important;
+}
+
+/* Expanded pill top row — final wins over theme / duplicate rules */
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages {
+    transform: translateY(-32px) !important;
+    margin-left: 9px !important;
+    font-weight: 700 !important;
+    transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ≤576 expanded: offset vs desktop −32px; 12px matches bottom `.menu-panel-inner a` */
+@media (max-width: 576px) {
+    #siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+    #siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages {
+        transform: translateY(-27px) !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Same #id specificity as rule above — otherwise weight !important ties need :hover */
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages:hover,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages:hover,
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages:focus-visible,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages:focus-visible {
+    font-weight: 700 !important;
+}
+
+/* Expanded pill: bottom buttons match VIEW PACKAGES hover weight */
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .menu-panel-inner a:hover,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .menu-panel-inner a:hover,
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .menu-panel-inner a:focus-visible,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .menu-panel-inner a:focus-visible {
+    font-weight: 700 !important;
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+    transform: translate(16px, -18px) !important;
+    margin-right: 50px !important;
+    transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+    #siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+    #siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+        transform: translate(16px, -18px) !important;
+        margin-right: 50px !important;
+        transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+}
+
+/* Pill: geometric center logo — equal 1fr side tracks (desktop) + logo spans row 1 under controls */
+@media (min-width: 768px) {
+    #siteHeader.site-header.is-compact .main__nav__custom,
+    #siteHeader.site-header.is-top .main__nav__custom {
+        grid-template-columns: 1fr auto 1fr !important;
+    }
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom .main__logo,
+#siteHeader.site-header.is-top .main__nav__custom .main__logo {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    transform: none !important;
+    margin-inline: 0 !important;
+    width: max-content;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .main__logo,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .main__logo {
+    transform: translate(1px, 14px) !important;
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom .main__logo > a,
+#siteHeader.site-header.is-top .main__nav__custom .main__logo > a {
+    pointer-events: auto;
+}
+
+#siteHeader.site-header.is-compact .main__nav__custom .nav-packages,
+#siteHeader.site-header.is-top .main__nav__custom .nav-packages,
+#siteHeader.site-header.is-compact .main__nav__custom .nav-menu-toggle,
+#siteHeader.site-header.is-top .main__nav__custom .nav-menu-toggle {
+    position: relative;
+    z-index: 2;
+}
+
+/*
+ * Top-row opacity baseline (close fade is JS WAAPI in imbali.js — survives Live Server + theme).
+ */
+#siteHeader .main__nav__custom.menu-open .main__logo > a,
+#siteHeader .main__nav__custom.menu-open .nav-packages,
+#siteHeader .main__nav__custom.menu-open .nav-menu-toggle {
+    opacity: 1;
+}
+/*
+ * =============================================================================
+ * INDEX PAGE — migrated from index.html <style> blocks (keep rules here; no new inline CSS in index.html)
+ * =============================================================================
+ */
+
+/* ----- HERO — title color + tracking (was inline on h1) ----- */
+
+#imbali-hero .video__text__slider__title {
+    color: #e2e2e2;
+}
+
+
+/* ----- HERO — shell clip, keyframes, CTAs, responsive stack ----- */
+
+/*
+ * Clip horizontal spill from scaled hero type. Use overflow-x: clip (not hidden): hidden forces
+ * overflow-y to compute to auto on the same box, which adds a second vertical scrollbar on nested sections.
+ */
+html {
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    overflow-y: auto !important;
+    width: 100%;
+}
+body {
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+    width: 100%;
+    position: relative;
+}
+.imbali-service-13-step {
+    font-weight: 800 !important;
+}
+/*
+ * ARCHIVED — hero entrance animations (title / subtitle / CTA). Uncomment this whole block to restore.
+ *
+ * Scale first (0→48%), then opacity eases in (48%→100%) — per-keyframe timing keeps both readable.
+ * @keyframes imbali-hero-title-in {
+ *     0% {
+ *         opacity: 0;
+ *         transform: translateY(5px) scaleX(2.2) scaleY(1.08);
+ *         animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+ *     }
+ *     48% {
+ *         opacity: 0.06;
+ *         transform: translateY(5px) scaleX(1) scaleY(1);
+ *         animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+ *     }
+ *     100% {
+ *         opacity: 1;
+ *         transform: translateY(5px) scaleX(1) scaleY(1);
+ *     }
+ * }
+ * @keyframes imbali-hero-subtitle-in {
+ *     0% {
+ *         opacity: 0;
+ *         transform: translateY(-15px) scaleX(1.98) scaleY(1.06);
+ *         animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+ *     }
+ *     48% {
+ *         opacity: 0.06;
+ *         transform: translateY(-15px) scaleX(1) scaleY(1);
+ *         animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+ *     }
+ *     100% {
+ *         opacity: 1;
+ *         transform: translateY(-15px) scaleX(1) scaleY(1);
+ *     }
+ * }
+ * @keyframes imbali-hero-cta-in {
+ *     0% {
+ *         opacity: 0;
+ *         transform: translateY(20px);
+ *         animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+ *     }
+ *     100% {
+ *         opacity: 1;
+ *         transform: translateY(0);
+ *         animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+ *     }
+ * }
+ */
+/*
+ * Title/subtitle rest +20px vs translateY(0): offsets the whole hero stack being raised via bottom pin,
+ * so type doesn’t ride higher on the video than before that nudge.
+ */
+@keyframes imbali-hero-title-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(calc(1.125rem + 20px));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+}
+@keyframes imbali-hero-subtitle-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(calc(1.125rem + 20px));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+}
+/* ≤767.98px: same rest as xs — wider tablet band was keeping translateY(20px) from default keyframes (reads lower than 576) */
+@media (max-width: 767.98px) {
+    @keyframes imbali-hero-title-fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(1.125rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes imbali-hero-subtitle-fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(1.125rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+/*
+ * Clip only at the hero shell + video section so scaled type can’t widen the page.
+ * Do NOT clip .container / .row / copy column — that trims glyph edges, letter-spacing, and last-line words.
+ */
+#imbali-hero.banner__area.is__home__video {
+    position: relative;
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+#imbali-hero.banner__area.is__home__video .banner__video__section {
+    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+#imbali-hero.banner__area.is__home__video .banner__video__section .col-lg-10 {
+    min-width: 0;
+}
+/*
+ * ARCHIVED — animation application + reduced-motion overrides (pair with keyframes block above).
+ * #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+ *     transform-origin: center center;
+ *     animation-name: imbali-hero-title-in !important;
+ *     animation-duration: 1.25s !important;
+ *     animation-timing-function: ease-out !important;
+ *     animation-delay: 0s !important;
+ *     animation-fill-mode: both !important;
+ *     animation-iteration-count: 1 !important;
+ *     animation-direction: normal !important;
+ * }
+ * #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+ *     transform-origin: center center;
+ *     animation-name: imbali-hero-subtitle-in !important;
+ *     animation-duration: 1.1s !important;
+ *     animation-timing-function: ease-out !important;
+ *     animation-delay: 0.22s !important;
+ *     animation-fill-mode: both !important;
+ *     animation-iteration-count: 1 !important;
+ *     animation-direction: normal !important;
+ * }
+ * #imbali-hero.banner__area.is__home__video .video__text__slider__item:first-child .video__hero__cta.theme-btn.btn-style.fill {
+ *     transform-origin: center center;
+ *     animation-name: imbali-hero-cta-in !important;
+ *     animation-duration: 0.95s !important;
+ *     animation-timing-function: ease-out !important;
+ *     animation-delay: 0.44s !important;
+ *     animation-fill-mode: both !important;
+ *     animation-iteration-count: 1 !important;
+ *     animation-direction: normal !important;
+ * }
+ * @media (prefers-reduced-motion: reduce) {
+ *     #imbali-hero.banner__area.is__home__video .video__text__slider__item:first-child .video__text__slider__title,
+ *     #imbali-hero.banner__area.is__home__video .video__text__slider__item:first-child .video__hero__subtitle,
+ *     #imbali-hero.banner__area.is__home__video .video__text__slider__item:first-child .video__hero__cta.theme-btn.btn-style.fill {
+ *         animation: none !important;
+ *         opacity: 1 !important;
+ *     }
+ *     #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+ *         transform: translateY(5px);
+ *     }
+ *     #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+ *         transform: translateY(-15px);
+ *     }
+ *     #imbali-hero.banner__area.is__home__video .video__text__slider__item:first-child .video__hero__cta.theme-btn.btn-style.fill {
+ *         transform: none;
+ *     }
+ * }
+ */
+
+/* Visible text button — overrides scroll-pill + sr-only span rules from imbali.css for #imbali-hero only */
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text {
+    width: auto !important;
+    height: auto !important;
+    padding: 10px 22px !important;
+    margin-top: calc(1.75rem + 30px) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+    border: 0.5px solid rgba(226, 226, 226, 0.11) !important;
+    background: #0a4a63 !important;
+    color: #f2f2f2 !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    isolation: isolate !important;
+    text-decoration: none !important;
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text::before {
+    content: none !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text::after {
+    content: none !important;
+    animation: none !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text span {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: 0 !important;
+    color: inherit !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    mix-blend-mode: normal !important;
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Same inverse + fade as About “Learn More” / package CTAs */
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text:hover,
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text:focus-visible {
+    background: #e2e2e2 !important;
+    color: #0a4a63 !important;
+    border: 0.5px solid rgba(226, 226, 226, 0.11) !important;
+    box-shadow: none !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text:hover span,
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text:focus-visible span {
+    color: #0a4a63 !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--consultation {
+    font-weight: 500 !important;
+    background: #0a4a63 !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--consultation span {
+    font-weight: 500 !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--consultation:hover,
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--consultation:focus-visible {
+    background: #e2e2e2 !important;
+    color: #0a4a63 !important;
+    border: 0.5px solid rgba(226, 226, 226, 0.11) !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--consultation:hover span,
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--consultation:focus-visible span {
+    color: #0a4a63 !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages {
+    font-weight: 500 !important;
+    background: #151515 !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages span {
+    font-weight: 500 !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta-row {
+    margin-top: calc(1.75rem + 20px) !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta-row .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text {
+    margin-top: 0 !important;
+    /* Pill base uses margin-inline:auto — that absorbs flex space and hides row gap; strip for gap-only spacing */
+    margin-inline: 0 !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages:hover,
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages:focus-visible {
+    background: #e2e2e2 !important;
+    color: #0a4a63 !important;
+    border: 0.5px solid rgba(226, 226, 226, 0.11) !important;
+}
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages:hover span,
+#imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages:focus-visible span {
+    color: #0a4a63 !important;
+}
+
+/* Hero H1: fade-in; negative margin desktop-only; ≤767.98px uses xs keyframes + margin-top in phone block */
+#imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+    animation: imbali-hero-title-fade-in 1.2s cubic-bezier(0.33, 0, 0.2, 1) 0s both !important;
+}
+@media (min-width: 768px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        margin-top: -10px !important;
+    }
+}
+#imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+    margin-top: 0 !important;
+    animation: imbali-hero-subtitle-fade-in 1.15s cubic-bezier(0.33, 0, 0.2, 1) 0.22s both !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title,
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+    /* Match animated band: +20px rest only ≥768 (phone hero ≤767.98 stays flush like xs) */
+    @media (min-width: 768px) {
+        #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title,
+        #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+            transform: translateY(20px) !important;
+        }
+    }
+}
+/* Tablet/md + lg: same subtitle ↔ CTA spacing as lg so vertical baseline doesn’t shift below 992px */
+@media (min-width: 768px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+        margin-top: -0.5rem !important;
+    }
+    #imbali-hero.banner__area.is__home__video .video__hero__cta-row {
+        margin-top: calc(1.75rem + 36px) !important;
+    }
+}
+/* ≤767.98px: same phone hero as xs — imbali.css; pin nudge in imbali-hero-pin-fallback */
+@media (max-width: 767.98px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        align-items: center !important;
+        text-align: center !important;
+    }
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item {
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0.35rem !important;
+    }
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+        font-size: 33px !important;
+        font-weight: 700 !important;
+        line-height: calc(1.2em + 7px) !important;
+        text-align: center !important;
+        margin-top: 70px !important;
+        margin-inline: auto !important;
+        white-space: normal !important;
+        letter-spacing: 0.5px !important;
+        padding-inline: 0 !important;
+    }
+    #imbali-hero.banner__area.is__home__video .video__hero__subtitle,
+    #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+        display: none !important;
+    }
+    /* 660–767.98px: single-line title + About-sized subtitle (matches imbali.css) */
+    @media (min-width: 660px) {
+        #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item {
+            gap: 0.5rem !important;
+        }
+        #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+            display: block !important;
+            white-space: nowrap !important;
+            font-size: calc(clamp(23px, 5vw - 7px, 29px) + 0.1rem) !important;
+            margin-inline: auto !important;
+            text-align: center !important;
+            letter-spacing: 0.5px !important;
+            padding-inline: 0 !important;
+        }
+        #imbali-hero.banner__area.is__home__video .video__hero__subtitle,
+        #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__hero__subtitle {
+            display: block !important;
+            font-size: clamp(11px, 1.65vw + 3px, 15px) !important;
+            line-height: 1.6 !important;
+            font-weight: 400 !important;
+            white-space: nowrap !important;
+            text-align: center !important;
+            max-width: none !important;
+            margin-inline: auto !important;
+            margin-top: 0.5rem !important;
+            color: rgba(226, 226, 226, 0.88) !important;
+            letter-spacing: normal !important;
+            padding-inline: 0 !important;
+        }
+    }
+    /* ≤659.98px: fixed title px — beats 33px base above */
+    @media (max-width: 659.98px) {
+        #imbali-hero.banner__area.is__home__video .video__section__text > .video__text__slider__item .video__text__slider__title {
+            font-size: 29px !important;
+            margin-top: 60px !important;
+        }
+    }
+    /* xs: title→button; matches imbali.css calc(1.75rem + 10px) */
+    #imbali-hero.banner__area.is__home__video .video__hero__cta-row {
+        margin-top: calc(1.75rem + 10px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 20px !important;
+        flex-wrap: nowrap !important;
+        white-space: normal !important;
+    }
+    /* CTA sizing: same as base hero buttons (10px 22px / 11px / 9px radius) */
+    /* Must match .imbali-hero-cta-text chain or inline-flex !important wins over display:none */
+    #imbali-hero.banner__area.is__home__video .video__hero__cta.theme-btn.btn-style.fill.imbali-hero-cta-text.imbali-hero-cta-text--packages {
+        display: none !important;
+    }
+}
+
+/* ----- HEADER / PILL — expanded menu top row + closed hovers ----- */
+
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages {
+    transform: translateY(-32px) !important;
+    margin-left: 9px !important;
+    font-weight: 700 !important;
+}
+@media (max-width: 576px) {
+    #siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages,
+    #siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages {
+        transform: translateY(-27px) !important;
+        font-size: 12px !important;
+    }
+}
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages:hover,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages:hover,
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-packages:focus-visible,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-packages:focus-visible {
+    font-weight: 700 !important;
+}
+/* translateX: grid + justify-self:end makes margin-only shifts easy to miss; combine with margin for alignment */
+#siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+#siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+    transform: translate(16px, -18px) !important;
+    margin-right: 50px !important;
+}
+@media (min-width: 768px) {
+    #siteHeader.site-header.is-compact .main__nav__custom.menu-open .nav-menu-toggle,
+    #siteHeader.site-header.is-top .main__nav__custom.menu-open .nav-menu-toggle {
+        transform: translate(16px, -18px) !important;
+        margin-right: 50px !important;
+    }
+}
+/* Closed pill: bold PACKAGES + MENU (keep in sync with imbali.css) */
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-packages,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-packages {
+    font-weight: 700 !important;
+    transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+}
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-packages:hover,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-packages:hover,
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-packages:focus-visible,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-packages:focus-visible {
+    font-weight: 800 !important;
+}
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle {
+    font-weight: 700 !important;
+    transition: font-weight 0.15s ease, opacity 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+}
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover,
+#siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible,
+#siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible {
+    font-weight: 800 !important;
+}
+@media (hover: hover) and (pointer: fine) {
+    #siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span,
+    #siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:hover .menu-icon span,
+    #siteHeader.site-header.is-compact .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span,
+    #siteHeader.site-header.is-top .main__nav__custom:not(.menu-open) .nav-menu-toggle:focus-visible .menu-icon span {
+        height: 2px !important;
+        margin-top: -1px !important;
+    }
+}
+
+/* ----- PACKAGES — card grid fallback ----- */
+
+#packages .imbali-packages-grid .room__slide__box {
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+    background-color: #f2f2f2 !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    max-width: 280px !important;
+    flex: 0 0 280px !important;
+    margin-inline: 10px !important;
+}
+#packages .imbali-packages-grid .room__thumbnail.imbali-packages-static-photo {
+    min-height: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #f2f2f2 !important;
+}
+#packages .imbali-packages-grid .room__thumbnail .imbali-packages-cover-img {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__thumbnail::before {
+    opacity: 0 !important;
+    background: transparent !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__content {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    flex: 1 1 auto !important;
+    padding: 16px 34px 22px !important;
+    background-color: #f2f2f2 !important;
+    color: #141414 !important;
+    z-index: 2 !important;
+    border-radius: 24px !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__content ul li {
+    color: #141414 !important;
+    font-weight: 500 !important;
+    line-height: calc(1.5em + 4px) !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__content .package-card-bottom .room__title {
+    border-top: none !important;
+    padding-top: 0 !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__content .package-card-bottom .room__title::before {
+    content: "" !important;
+    display: block !important;
+    height: 1px !important;
+    margin-bottom: 9px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: calc(100% - 40px) !important;
+    max-width: 100% !important;
+    border-radius: 1px !important;
+    background: #0a4a63 !important;
+    transform: translateY(-5px) !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__content .room__title,
+#packages .imbali-packages-grid .room__slide__box .room__content .room__title h5,
+#packages .imbali-packages-grid .room__slide__box .room__content .rent,
+#packages .imbali-packages-grid .room__slide__box .room__content .package-card-deposit {
+    color: #141414 !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__content .room__content__meta span,
+#packages .imbali-packages-grid .room__slide__box .room__content .room__content__meta span i {
+    color: #141414 !important;
+    font-size: calc(1em - 1px) !important;
+}
+/* Bottom stack: one flex item with margin-top:auto (see imbali.css) — evens tier titles across cards. */
+#packages .imbali-packages-grid .room__slide__box .room__content .package-card-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: auto !important;
+    padding-top: 15px !important;
+}
+#packages .imbali-packages-grid .room__slide__box .room__content .room__content__meta {
+    margin-top: 5px !important;
+}
+#packages .imbali-packages-grid .package-card-footer .rent {
+    transform: translateY(-7px) !important;
+    font-size: calc(var(--h4) - 5px) !important;
+}
+
+/* ----- HERO PIN — overlay tint + bottom pin (flower is `.imbali-hero-flower-mark` in markup) ----- */
+
+#imbali-hero.banner__area.is__home__video .video__area .video__area__overlay {
+    background: rgba(0, 0, 0, 0.284) !important;
+}
+#imbali-hero.banner__area.is__home__video .video__section__text {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+}
+#imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: calc(clamp(56px, 10vh, 140px) + 40px) !important;
+    z-index: 10 !important;
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+/* md–lg: match imbali.css lg pin + 74px nudge (see imbali.css @media min-width 768 #imbali-hero) */
+@media (min-width: 768px) {
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        bottom: calc(clamp(56px, 10vh, 140px) + 40px - 48px) !important;
+    }
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container .video__section__text {
+        transform: translateY(74px) !important;
+    }
+}
+/* Must be 767.98px — at exactly 768px, min-width:768 also matches for desktop pin */
+@media (max-width: 767.98px) {
+    #imbali-hero.banner__area.is__home__video {
+        height: 515px !important;
+    }
+    #imbali-hero.banner__area.is__home__video .banner__video__section {
+        min-height: 515px !important;
+    }
+    #imbali-hero.banner__area.is__home__video .video__area {
+        height: 515px !important;
+    }
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        bottom: calc(clamp(32px, 8vh, 72px) + 40px - 48px) !important;
+        z-index: 10 !important;
+    }
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        transform: translateY(56px) !important;
+    }
+}
+/* Match imbali.css: ≥660 keeps 56px from block above; ≤659 lifts headline + CTA ~20px */
+@media screen and (max-width: 659.98px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        transform: translateY(36px) !important;
+    }
+}
+@media screen and (max-width: 600px) {
+    #imbali-hero.banner__area.is__home__video .video__section__text {
+        transform: translateY(26px) !important;
+    }
+}
+
+/* ----- MOBILE LAYOUT — contact bar hide + section inset + pill (≤767 / ≤576) ----- */
+
+@media (max-width: 767.98px) {
+    :root {
+        --imbali-top-bar-h: 0px !important;
+    }
+    html body #imbaliContactBar.imbali-top-bar {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+    html body .rts__section:not(#imbali-hero) {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        box-sizing: border-box !important;
+    }
+    html body .rts__section:not(#imbali-hero) .container {
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5) !important;
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5) !important;
+        padding-inline: calc(var(--bs-gutter-x, 1.5rem) * 0.5) !important;
+    }
+    html body .rts__section:not(#imbali-hero) .container > .row {
+        margin-left: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
+        margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
+    }
+    #siteHeader.site-header.is-compact,
+    #siteHeader.site-header.is-top {
+        top: calc(var(--imbali-top-bar-h) + 20px) !important;
+        left: 30px !important;
+        right: 30px !important;
+    }
+}
+@media (max-width: 576px) {
+    #siteHeader.site-header.is-compact,
+    #siteHeader.site-header.is-top {
+        left: 10px !important;
+        right: 10px !important;
+    }
+}
+
+/*
+ * Hero 660–991px: match lg `body .container` — max-width 900px, 50px + gutter horizontal pad, row margins.
+ * Pinned hero uses left/right stretch by default; use left:50% + translateX(-50%) so the capped width stays viewport-centered (same visual box as ≥992px).
+ */
+@media (min-width: 660px) and (max-width: 991.98px) {
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: min(100%, 900px) !important;
+        max-width: 900px !important;
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
+        box-sizing: border-box !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container > .row {
+        margin-left: calc(var(--bs-gutter-x, 1.5rem) * -0.5 - 50px) !important;
+        margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5 - 50px) !important;
+    }
+}

@@ -1,0 +1,985 @@
+<!DOCTYPE html> 
+<html lang="zxx" data-theme="dark"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="apple-mobile-web-app-capable" content="yes"> 
+        <meta name="description" content="Moonlit - Hotel and Resort HTML Template"> 
+        <meta name="keywords" content="hotel, resort, Spa"> 
+        <meta name="robots" content="index, follow"> 
+        <!-- for open graph social media -->         
+        <meta property="og:title" content="Imbali Studio | Web and Digital Design Studio"> 
+        <meta property="og:description" content="Moonlit - Hotel and Resort HTML Template"> 
+        <!-- for twitter sharing -->         
+        <meta name="twitter:card" content="summary_large_image"> 
+        <meta name="twitter:title" content="Imbali Studio | Web and Digital Design Studio"> 
+        <meta name="twitter:description" content="Moonlit - Hotel and Resort HTML Template"> 
+        <!-- favicon -->         
+        <link rel="icon" href="assets/images/logo/imbali_blu_symbol.svg" type="image/svg+xml"> 
+        <!-- title -->         
+        <title>Imbali Web Studio | Web and Digital Design Studio</title>         
+        <!-- google fonts -->         
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> 
+        <!-- icon font from flaticon -->         
+        <link rel="stylesheet" href="assets/fonts/flaticon_bokinn.css"> 
+        <!-- all plugin css -->         
+        <link rel="stylesheet" href="assets/css/plugins.min.css"> 
+       <!-- kainzy process section style custom css -->  
+           <link rel="stylesheet" href="assets/css/kainzy.css?v=8"> 
+
+
+       <!-- bootstrap -->
+       <link rel="stylesheet" href="assets/css/plugins/bootstrap.min.css" />
+       <!-- main style custom css -->    
+                    
+        <link rel="stylesheet" href="assets/css/style.css?v=525"> 
+            
+        <!-- Package card photos — desktop/tablet only so mobile first paint isn’t competing with three large JPEGs + hero video -->
+        <link rel="preload" as="image" href="assets/images/Ocean.jpg" media="(min-width: 992px)">
+        <!-- Feature cards JPEG — sync `?v=` with imbali.css `.imbali-feature-thumb-parallax-shift` -->
+        <link rel="preload" as="image" href="assets/images/features-cards-bg.jpg?v=515" media="(min-width: 768px)">
+        <link rel="preload" as="image" href="assets/images/features-cards-bg.jpg?v=515" media="(max-width: 767.98px)">
+        <!-- Package tile (middle card) -->
+        <link rel="preload" as="image" href="assets/images/Prairie.jpg?v=510" media="(min-width: 992px)">
+        <link rel="preload" as="image" href="assets/images/Mountains.jpg" media="(min-width: 992px)">
+        <!-- Decorative shape for #packages — decode before first scroll into teal section (avoids one-time hitch) -->
+        <link rel="preload" as="image" href="assets/images/logo/imbali_wht_symbol.svg">
+        <!-- Imbali overrides: hero, header/pill, packages, footer, mobile layout — keep styles in assets/css/imbali.css only -->
+        <link rel="stylesheet" href="assets/css/imbali.css?v=545">
+    </head>
+    <body> 
+        <div id="imbaliContactBar" class="imbali-top-bar" role="region" aria-label="Contact and location">
+            <div class="container imbali-top-bar__inner">
+                <div class="imbali-top-bar__left">
+                    <a class="imbali-top-bar__link" href="tel:+8325602525">(832) 560-2525</a>
+                    <span class="imbali-top-bar__sep" aria-hidden="true">·</span>
+                    <a class="imbali-top-bar__link" href="mailto:info@imbali.studio">info@imbali.studio</a>
+                </div>
+                <div class="imbali-top-bar__right">
+                    <a class="imbali-top-bar__icon imbali-top-bar__icon--facebook" href="https://facebook.com/imbali.web.studio" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.101 23.691v-9.3h3.127l.472-4.102h-3.599v-2.714c0-1.122.312-1.887 1.887-1.887h2.02V1.316c-1.002-.103-2.002-.156-3.005-.156-4.052 0-6.833 2.479-6.833 7.035v2.789H.465v4.102h4.984v9.3h3.652z"/></svg></a>
+                    <a class="imbali-top-bar__icon" href="https://www.linkedin.com/company/imbali-web-studio" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0 4.124 2.062 2.062 0 0 1 0-4.124zM7.119 20.452H3.555V9h3.564v11.452z"/></svg></a>
+                    <a class="imbali-top-bar__icon" href="https://www.instagram.com/imbali_web_studio" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+                    <span class="imbali-top-bar__sep" aria-hidden="true">·</span>
+                    <span class="imbali-top-bar__loc"><i class="flaticon-marker" aria-hidden="true"></i> Houston, TX</span>
+                </div>
+            </div>
+        </div>
+        <!-- header area -->         
+        <div class="header__absolute"> 
+            <header id="siteHeader" class="site-header"> 
+                <!-- class="main__header header__function is__home__two" [ORIGINAL CLASS]-->                 
+                <div class="container"> 
+                    <div class="row"> 
+                        <div class="main__header__wrapper"> 
+                            <div class="main__nav__custom"><a href="#packages" class="nav-packages"><span class="nav-packages-label"><span class="nav-packages-packages">Packages</span></span></a>
+                                <div class="main__logo"><a href="index.html"><img class="logo__class header-logo-default" src="./assets/images/logo/imbali_text_wht_b.svg" alt="imbali"><img class="logo__class header-logo-compact" src="./assets/images/logo/imbali_wht_symbol.svg" alt="imbali symbol"><img class="logo__class header-logo-menu-reveal" src="./assets/images/logo/imbali_logo_wht.svg" alt="imbali"></a>
+                                </div>
+                                <button class="nav-menu-toggle" id="menuToggle"><span class="menu-text">MENU</span><span class="menu-icon"><span></span><span></span></span>
+                                </button>
+                                <div class="menu-panel" id="menuPanel">
+                                    <nav class="menu-panel-inner"><a href="https://cal.com/imbali.studio">Book a Consultation</a><a href="#work">See the Process</a><a href="mailto:info@imbali.studio">Contact Us</a>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </header>             
+        </div>         
+        <!-- header area end -->         
+        <!-- banner area -->         
+        <div id="imbali-hero" class="rts__section banner__area is__home__video banner__height banner__center"> 
+            <div class="banner__video__section"> 
+                <div class="video__area"> 
+                    <video id="imbali-hero-video" class="imbali-hero-video" autoplay loop muted playsinline webkit-playsinline preload="metadata" poster="assets/images/Ocean.jpg" controlslist="nodownload nofullscreen noremoteplayback" disablepictureinpicture>
+                        <source src="assets/images/video/Imbali_Hero_576.mp4" type="video/mp4" media="(max-width: 576px)">
+                        <source src="assets/images/video/Imbali_Hero.mp4" type="video/mp4">
+                    </video>                     
+                    <div class="video__area__overlay"></div>
+                    <div class="imbali-hero-flower-mark" aria-hidden="true">
+                        <img src="assets/images/logo/imbali_wht_symbol.svg" width="504" height="504" alt="" decoding="async">
+                    </div>
+                </div>                 
+                <div class="container"> 
+                    <div class="row align-items-center justify-content-center"> 
+                        <div class="col-lg-10"> 
+                            <div class="video__section__text"> 
+                                <div class="video__text__slider__item"> 
+                                    <h1 class="video__text__slider__title">Mobile first websites, <br class="imbali-hero-title-br" aria-hidden="true" />built to grow with you.</h1> 
+                                    <p class="video__hero__subtitle">Clean. Responsive. Tailored to the natural flow of your business.</p>
+                                    <div class="video__hero__cta-row">
+                                        <a href="https://cal.com/imbali.studio" class="theme-btn btn-style fill no-border video__hero__cta imbali-hero-cta-text imbali-hero-cta-text--consultation"><span>Book a Consultation</span></a>
+                                        <a href="#packages" class="theme-btn btn-style fill no-border video__hero__cta imbali-hero-cta-text imbali-hero-cta-text--packages" aria-label="Scroll down to packages"><span>View Packages</span></a>
+                                    </div> 
+                                </div>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        <!-- banner area end -->         
+        <!-- advance search (commented out for now)
+        <div class="rts__section advance__search__section is__home__one"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <form action="room-two.html" method="post" class="advance__search"> 
+                        <div class="advance__search__wrapper wow fadeInUp"> 
+                            <div class="query__input"> 
+                                <label for="check__in" class="h6">Check In</label>                                 
+                                <input type="text" id="check__in" name="check__in" placeholder="15 Jun 2024" required> 
+                                <div class="query__input__icon"> <i class="flaticon-calendar"></i> 
+                                </div>                                 
+                            </div>                             
+                            <div class="query__input"> 
+                                <label for="check__out" class="h6">Check Out</label>                                 
+                                <input type="text" id="check__out" name="check__out" placeholder="15 May 2024" required> 
+                                <div class="query__input__icon"> <i class="flaticon-calendar"></i> 
+                                </div>                                 
+                            </div>                             
+                            <div class="query__input"> 
+                                <label for="adult" class="h6">Adult</label>                                 
+                                <select name="adult" id="adult" class="form-select"> 
+                                    <option value="1">1 Person</option>                                     
+                                    <option value="2">2 Person</option>                                     
+                                    <option value="3">3 Person</option>                                     
+                                    <option value="4">4 Person</option>                                     
+                                    <option value="5">5 Person</option>                                     
+                                    <option value="6">6 Person</option>                                     
+                                    <option value="7">7 Person</option>                                     
+                                    <option value="8">8 Person</option>                                     
+                                    <option value="9">9 Person</option>                                     
+                                </select>                                 
+                                <div class="query__input__icon"> <i class="flaticon-user"></i> 
+                                </div>                                 
+                            </div>                             
+                            <div class="query__input"> 
+                                <label for="child" class="h6">Child</label>                                 
+                                <select name="child" id="child" class="form-select"> 
+                                    <option value="1">1 Child</option>                                     
+                                    <option value="2">2 Child</option>                                     
+                                    <option value="3">3 Child</option>                                     
+                                    <option value="4">4 Child</option>                                     
+                                    <option value="5">5 Child</option>                                     
+                                    <option value="6">6 Child</option>                                     
+                                    <option value="7">7 Child</option>                                     
+                                    <option value="8">8 Child</option>                                     
+                                    <option value="9">9 Child</option>                                     
+                                </select>                                 
+                                <div class="query__input__icon"> <i class="flaticon-user"></i> 
+                                </div>                                 
+                            </div>                             
+                            <button class="theme-btn btn-style fill no-border search__btn"> <span>Check Now</span> 
+                            </button>                             
+                        </div>                         
+                    </form>                     
+                </div>                 
+            </div>             
+        </div>         
+        end advance search -->         
+        <!-- about us -->         
+        <div id="about" class="rts__section about__area is__home__one section__padding"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <div class="about__wrapper"> 
+                        <div class="content">
+                            <div class="about__heading wow imbali-about-fade-in-up" data-wow-duration="0.8s">
+                                <span class="h6 subtitle__icon__two d-block">About Us</span>
+                                <h2 class="content__title">Imbali Studio</h2>
+                            </div>
+                            <p class="content__subtitle wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.2s">IMBALI Studio is a mobile-first digital studio focused on designing responsive website solutions and automated systems for ambitious brands.<br><br>
+
+                                IMBALI was created to inspire entrepreneurs and business owners to level up their online presence and take charge of their digital footprint through structured, functional website solutions that don’t just serve as a brochure, but function as a true funnel, naturally improving the flow of your business. 
+                                
+                                <br><br>Every site is thoughtfully customized, not just with a logo and colors, but in layout and flow, to reflect your brand and how you operate. This work isn’t transactional. It's a commitment to helping entrepreneurs and business owners operate at their highest level.</p> <a href="#work" class="theme-btn btn-style fill no-border wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.4s"><span>Learn More</span></a> 
+                        </div>                         
+                        <div class="image "> 
+                            <div class="position-relative wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.2s"> 
+                                <div class="jara-mask-1 image-height imbali-about-parallax-frame"> 
+                                    <div class="imbali-about-parallax-shift">
+                                        <img class="imbali-about-parallax-img" src="assets/images/desk_w_devices.jpg" alt="">
+                                    </div>
+                                </div>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        <!-- about us end -->         
+        <!-- Packages (top): teal + flower — anchor id stays here for #packages links -->
+        <div id="packages" class="rts__section section__padding facilities__area has__background has__shape"> 
+            <div class="section__shape"> 
+                <img src="assets/images/logo/imbali_wht_symbol.svg" alt=""> 
+            </div>             
+            <div class="container"> 
+                <div class="row align-items-lg-start g-4 mb-40 imbali-packages-heading-row wow imbali-about-fade-in-up" data-wow-duration="0.8s">
+                    <div class="col-12 col-lg-5 section__content__left imbali-packages-heading-titles">
+                        <span class="h6 subtitle__icon__two d-block">Pricing Options</span>
+                        <h2 class="content__title h2 lh-1 mb-0">Our Packages</h2>
+                    </div>
+                    <div class="col-12 col-lg-7 imbali-packages-heading-intro mt-3 mt-lg-0">
+                        <p class="imbali-packages-intro mb-0">Choose the package that fits where you are today. Each package includes responsive design, branded styling, and a clear path to launch. When you’re ready for more pages, integrations, or support, move up as your business grows.</p>
+                    </div>
+                </div>
+                <!-- row end -->
+                <div class="row g-4 imbali-packages-grid"> 
+                    <div class="col-12 col-md-6 col-lg-4 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                        <div class="room__slide__box"> 
+                            <div class="room__thumbnail jara-mask-2 imbali-packages-static-photo"> 
+                                <img height="535" width="420" class="imbali-packages-cover-img" src="assets/images/Ocean.jpg" alt="" loading="eager" fetchpriority="high"> 
+                            </div>                                     
+                            <div class="room__content"> 
+                                <ul>
+                                    <li>1 to 3 Pages</li>
+                                    <li>Custom Branding</li>
+                                    <li>Responsive Design</li>
+                                    <li>General Contact Form</li>
+                                    <li>Basic SEO Setup</li>
+                                    <li>100 QR Cards</li>
+                                </ul>
+                                <div class="package-card-bottom">
+                                <div class="room__title"> <h5>Starter</h5> </div> 
+                                <div class="room__content__meta"> <span><i class="flaticon-calendar"></i> 7 Day Build, Starting at</span>
+                                </div>
+                                <div class="package-card-footer"><span class="h4 rent mb-0 mt-15 d-block">$749</span> <a href="https://cal.com/imbali.studio" class="theme-btn btn-style fill no-border package-card-cta"><span>Book Now</span></a>
+                                </div>
+                                <p class="package-card-deposit">($350 Deposit)</p>
+                                </div>
+                            </div>                                     
+                        </div>                                 
+                    </div>                     
+                    <div class="col-12 col-md-6 col-lg-4 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.32s">
+                        <div class="room__slide__box"> 
+                            <div class="room__thumbnail jara-mask-2 imbali-packages-static-photo"> 
+                                <img height="535" width="420" class="imbali-packages-cover-img" src="assets/images/Prairie.jpg?v=510" alt="" loading="eager"> 
+                            </div>                                     
+                            <div class="room__content"> 
+                                <ul>
+                                    <li>Up to 5 Pages</li>
+                                    <li>Custom Branding</li>
+                                    <li>Responsive Design</li>
+                                     <li>General Contact Form</li>
+                                    <li>Email Set Up</li>
+                                    <li>Booking Set Up</li>     
+                                    <li>Speed & SEO</li>
+                                    <li>100 QR Cards</li>
+                                   
+                                </ul>
+                                <div class="package-card-bottom">
+                                <div class="room__title"> <h5>Growth</h5> </div> 
+                                <div class="room__content__meta"> <span><i class="flaticon-calendar"></i> 10 Day Build, Starting at</span> 
+                                </div>
+                                <div class="package-card-footer"><span class="h4 rent mb-0 mt-15 d-block">$949</span> <a href="https://cal.com/imbali.studio" class="theme-btn btn-style fill no-border package-card-cta"><span>Book Now</span></a>
+                                </div>
+                                <p class="package-card-deposit">($450 Deposit)</p>
+                                </div>
+                            </div>                                     
+                        </div>                                 
+                    </div>                     
+                    <div class="col-12 col-md-6 col-lg-4 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.44s">
+                        <div class="room__slide__box"> 
+                            <div class="room__thumbnail jara-mask-2 imbali-packages-static-photo"> 
+                                <img height="535" width="420" class="imbali-packages-cover-img" src="assets/images/Mountains.jpg" alt="" loading="eager"> 
+                            </div>                                     
+                            <div class="room__content"> 
+                                <ul>
+                                    <li>5+ Pages</li>
+                                    <li>Custom Branding</li>
+                                    <li>Custom Integrations</li>
+                                    <li>Responsive Design</li>
+                                    <li>Advanced Contact Form</li>
+                                    <li>Email Set Up</li>
+                                    <li>Booking Setup</li>
+                                    <li>Digital Menu</li>
+                                    <li>Speed & SEO</li>
+                                    <li>200 QR Cards</li>
+                                </ul>
+                                <div class="package-card-bottom">
+                                <div class="room__title"> <h5>Pro</h5> </div> 
+                                <div class="room__content__meta"> <span><i class="flaticon-calendar"></i> 14 Day Build, Starting at</span> 
+                                </div>
+                                <div class="package-card-footer"><span class="h4 rent mb-0 mt-15 d-block">$1,399</span> <a href="https://cal.com/imbali.studio" class="theme-btn btn-style fill no-border package-card-cta"><span>Book Now</span></a>
+                                </div>
+                                <p class="package-card-deposit">($600 Deposit)</p>
+                                </div>
+                            </div>                                     
+                        </div>                                 
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        <!-- Feature cards: gray section strip; features-cards-bg.jpg fills each card with copy/icons on top (sliced panorama + overlay + parallax) -->
+        <div class="rts__section section__padding imbali-feature-cards-section">
+            <div class="container">
+                <div class="row g-4 imbali-feature-cards-row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                        <div class="imbali-feature-parallax imbali-feature-parallax-card room__slide__box">
+                            <div class="imbali-feature-thumb-parallax-shift" aria-hidden="true"></div>
+                            <div class="imbali-feature-parallax__content">
+                                <div class="icon">
+                                    <img src="assets/images/icon/experience.svg" alt="">
+                                </div>
+                                <h6 class="card-title h6 mb-15">10+ Years Experience</h6>
+                                <p class="card-text">Over a decade building websites and systems aligned with how businesses actually run.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.32s">
+                        <div class="imbali-feature-parallax imbali-feature-parallax-card room__slide__box">
+                            <div class="imbali-feature-thumb-parallax-shift" aria-hidden="true"></div>
+                            <div class="imbali-feature-parallax__content">
+                                <div class="icon">
+                                    <img src="assets/images/icon/process.svg" alt="">
+                                </div>
+                                <h6 class="card-title h6 mb-15">Clear Process</h6>
+                                <p class="card-text">Straightforward milestones from discovery to launch. You always know what happens next.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.44s">
+                        <div class="imbali-feature-parallax imbali-feature-parallax-card room__slide__box">
+                            <div class="imbali-feature-thumb-parallax-shift" aria-hidden="true"></div>
+                            <div class="imbali-feature-parallax__content">
+                                <div class="icon">
+                                    <img src="assets/images/icon/customer-service.svg" alt="">
+                                </div>
+                                <h6 class="card-title h6 mb-15">Optional Support</h6>
+                                <p class="card-text">Hands-on help after launch when you want updates, tuning, or someone in your corner.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.56s">
+                        <div class="imbali-feature-parallax imbali-feature-parallax-card room__slide__box">
+                            <div class="imbali-feature-thumb-parallax-shift" aria-hidden="true"></div>
+                            <div class="imbali-feature-parallax__content">
+                                <div class="icon">
+                                    <img src="assets/images/icon/device.svg" alt="">
+                                </div>
+                                <h6 class="card-title h6 mb-15">Responsive Design</h6>
+                                <p class="card-text">Mobile-first layouts that stay fast, readable, and on-brand on phones, tablets, and desktops.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <section id="work" class="rts__section section__padding service-13 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8">
+                    <div class="section__wrapper mb-40 wow imbali-about-fade-in-up" data-wow-duration="0.8s">
+                        <div class="section__content__left imbali-service-13-heading">
+                            <span class="h6 subtitle__icon__two d-block">How It Works</span>
+                            <h2 class="content__title h2 lh-1">Our Process</h2>
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                    <div class="service-box d-flex align-items-start mt-4 p-3">
+                        <div class="service-icon">
+                            <p class="icon"><span class="imbali-service-13-step">1.</span></p>
+                        </div>
+                        <div class="ms-4">
+                            <h6>Consultation</h6>
+                            <p class="text-muted mb-0">An initial 15-45 minute kick off call to discover your business needs and target improvements.</p>
+                        </div>
+                    </div>
+                    <!--end service-box-->
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-4 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.32s">
+                    <div class="service-box d-flex align-items-start mt-4 p-3">
+                        <div class="service-icon">
+                            <p class="icon"><span class="imbali-service-13-step">2.</span></p>
+                        </div>
+                        <div class="ms-4">
+                            <h6>Layout Selection</h6>
+                            <p class="text-muted mb-0">You will be provided with 2-3 layouts specific to your needs and aligned with your brand.</p>
+                        </div>
+                    </div>
+                    <!--end service-box-->
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-4 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.44s">
+                    <div class="service-box d-flex align-items-start mt-4 p-3">
+                        <div class="service-icon">
+                            <p class="icon"><span class="imbali-service-13-step">3.</span></p>
+                        </div>
+                        <div class="ms-4">
+                            <h6>Content Exchange</h6>
+                            <p class="text-muted mb-0">Once you select your layout, we’ll discuss the content needed to tailor your website to YOU.</p>
+                        </div>
+                    </div>
+                    <!--end service-box-->
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-4 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.56s">
+                    <div class="service-box d-flex align-items-start mt-4 p-3">
+                        <div class="service-icon">
+                            <p class="icon"><span class="imbali-service-13-step">4.</span></p>
+                        </div>
+                        <div class="ms-4">
+                            <h6>Buildout</h6>
+                            <p class="text-muted mb-0">You'll receive your first mockup, up to 48 hours after your content is received. Two revision sessions are included.</p>
+                        </div>
+                    </div>
+                    <!--end service-box-->
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-4 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.68s">
+                    <div class="service-box d-flex align-items-start mt-4 p-3">
+                        <div class="service-icon">
+                            <p class="icon"><span class="imbali-service-13-step">5.</span></p>
+                        </div>
+                        <div class="ms-4">
+                            <h6>Testing</h6>
+                            <p class="text-muted mb-0">During this phase your website will be tested for broken links, responsiveness, speed and basic SEO.</p>
+                        </div>
+                    </div>
+                    <!--end service-box-->
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-4 col-md-6 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.8s">
+                    <div class="service-box d-flex align-items-start mt-4 p-3">
+                        <div class="service-icon">
+                            <p class="icon"><span class="imbali-service-13-step">6.</span></p>
+                        </div>
+                        <div class="ms-4">
+                            <h6>Website Launch</h6>
+                            <p class="text-muted mb-0">Congratulations! Your new website is fast, mobile friendly and functions with the way you do business.</p>
+                        </div>
+                    </div>
+                    <!--end service-box-->
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-12 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.95s">
+                    <div class="mt-5 text-center imbali-service-13-cta-footer">
+                        <a href="https://cal.com/imbali.studio" class="theme-btn btn-style fill no-border imbali-service-13-cta imbali-service-13-cta--primary"><span>Book Now</span></a>
+                        <a href="#packages" class="theme-btn btn-style fill no-border imbali-service-13-cta imbali-service-13-cta--secondary"><span>View Packages</span></a>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+        <!-- client testimonial + video: disabled (markup kept in <template> for easy restore; HTML comments break on BEM “--” classes) -->
+        <template id="imbali-disabled-testimonial-video">
+        <div class="rts__section section__padding client__testimonial is__home__one has__background"> 
+            <div class="container"> 
+                <div class="row justify-content-center text-center mb-40"> 
+                    <div class="col-lg-6 wow fadeInUp"> 
+                        <div class="section__topbar"> <span class="h6 subtitle__icon__three mx-auto">Testimonial</span> 
+                            <h2 class="section__title">What Our Client Say</h2> 
+                        </div>                         
+                    </div>                     
+                </div>                 
+                <div class="row position-relative justify-content-center "> 
+                    <div class="col-lg-10"> 
+                        <div class="testimonial__slider overflow-hidden wow fadeInUp" data-wow-delay=".3s"> 
+                            <div class="swiper-wrapper"> 
+                                <div class="swiper-slide"> 
+                                    <div class="single__slider__item is__home "> 
+                                        <div class="slider__rating mb-30"> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star-sharp-half-stroke"></i> 
+                                        </div>                                         <span class="slider__text d-block">Choosing Bokinn was one of the best decisions we've ever made. They have proven to be a reliable and innovative partner, always ready to tackle new challenges with and expertise.Their commitment to and delivering tailored.</span> 
+                                        <div class="slider__author__info"> 
+                                            <div class="slider__author__info__image"> 
+                                                <img src="assets/images/author/author-1.png" alt=""> 
+                                            </div>                                             
+                                            <div class="slider__author__info__content"> 
+                                                <h6 class="mb-0">Sarah Martinez</h6> <span>COO of Apex Solutions</span> 
+                                            </div>                                             
+                                        </div>                                         
+                                    </div>                                     
+                                </div>                                 
+                                <div class="swiper-slide"> 
+                                    <div class="single__slider__item is__home "> 
+                                        <div class="slider__rating mb-30"> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star-sharp-half-stroke"></i> 
+                                        </div>                                         <span class="slider__text d-block">Choosing Bokinn was one of the best decisions we've ever made. They have proven to be a reliable and innovative partner, always ready to tackle new challenges with and expertise.Their commitment to and delivering tailored.</span> 
+                                        <div class="slider__author__info"> 
+                                            <div class="slider__author__info__image"> 
+                                                <img src="assets/images/author/author-1.png" alt=""> 
+                                            </div>                                             
+                                            <div class="slider__author__info__content"> 
+                                                <h6 class="mb-0">Sarah Martinez</h6> <span>COO of Apex Solutions</span> 
+                                            </div>                                             
+                                        </div>                                         
+                                    </div>                                     
+                                </div>                                 
+                                <div class="swiper-slide"> 
+                                    <div class="single__slider__item is__home "> 
+                                        <div class="slider__rating mb-30"> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star"></i> <i class="flaticon-star-sharp-half-stroke"></i> 
+                                        </div>                                         <span class="slider__text d-block">Choosing Bokinn was one of the best decisions we've ever made. They have proven to be a reliable and innovative partner, always ready to tackle new challenges with and expertise.Their commitment to and delivering tailored.</span> 
+                                        <div class="slider__author__info"> 
+                                            <div class="slider__author__info__image"> 
+                                                <img src="assets/images/author/author-1.png" alt=""> 
+                                            </div>                                             
+                                            <div class="slider__author__info__content"> 
+                                                <h6 class="mb-0">Sarah Martinez</h6> <span>COO of Apex Solutions</span> 
+                                            </div>                                             
+                                        </div>                                         
+                                    </div>                                     
+                                </div>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                    <div class="full__width__nav"> 
+                        <div class="rts__slide"> 
+                            <div class="next slider-button-prev"> 
+                                <svg width="41" height="22" viewBox="0 0 41 22" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                                    <path d="M1.25536 9.75546H39.0408C39.7335 9.75546 40.2931 10.3151 40.2931 11.0078C40.2931 11.7005 39.7335 12.2601 39.0408 12.2601H4.28054L11.8807 19.8603C12.3699 20.3495 12.3699 21.1439 11.8807 21.6331C11.3915 22.1223 10.597 22.1223 10.1078 21.6331L0.366985 11.8923C0.00693893 11.5322 -0.098732 10.9961 0.0969467 10.5264C0.292625 10.0607 0.750515 9.75546 1.25536 9.75546Z" fill="#65676B"/> 
+                                    <path d="M11.0079 0.0028038C11.3288 0.0028038 11.6497 0.124125 11.8924 0.370679C12.3816 0.859874 12.3816 1.65432 11.8924 2.14352L2.13979 11.8961C1.6506 12.3853 0.856151 12.3853 0.366956 11.8961C-0.122239 11.4069 -0.122239 10.6125 0.366956 10.1233L10.1195 0.370679C10.3661 0.124125 10.687 0.0028038 11.0079 0.0028038Z" fill="#65676B"/> 
+                                </svg>                                 
+                            </div>                             
+                        </div>                         
+                        <div class="rts__slide"> 
+                            <div class="prev slider-button-next"> 
+                                <svg width="41" height="22" viewBox="0 0 41 22" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                                    <path d="M39.0374 12.2499L1.25198 12.245C0.55928 12.2449 -0.000286104 11.6852 -0.000196778 10.9925C-0.000107452 10.2998 0.559603 9.74024 1.2523 9.74033L36.0125 9.74481L28.4134 2.14371C27.9242 1.65445 27.9243 0.859997 28.4136 0.370865C28.9029 -0.118267 29.6973 -0.118164 30.1864 0.371094L39.926 10.1132C40.286 10.4733 40.3916 11.0095 40.1959 11.4791C40.0001 11.9447 39.5422 12.2499 39.0374 12.2499Z" fill="#65676B"/> 
+                                    <path d="M29.2835 22.0013C28.9626 22.0012 28.6417 21.8799 28.3991 21.6333C27.9099 21.144 27.91 20.3496 28.3993 19.8604L38.1531 10.1091C38.6424 9.61998 39.4368 9.62008 39.926 10.1093C40.4151 10.5986 40.415 11.393 39.9257 11.8822L30.1719 21.6335C29.9253 21.88 29.6044 22.0013 29.2835 22.0013Z" fill="#65676B"/> 
+                                </svg>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+             <div class="rts__section section__padding video"> 
+            <div class="container"> 
+                <div class="row"> 
+                    <div class="col-12"> 
+                        <div class="video__area position-relative wow fadeInUp"> 
+                            <div class="video__area__image jara-mask-2 jarallax"> 
+                                <img class="radius-10 jarallax-img" src="assets/images/video/video-bg.webp" alt=""> 
+                            </div>                             
+                            <div class="video--spinner__wrapper "> 
+                                <div class="rts__circle"> 
+                                    <svg class="spinner" viewBox="0 0 100 100"> 
+                                        <defs> 
+                                            <path id="circle-2" d="M50,50 m-37,0a37,37 0 1,1 74,0a37,37 0 1,1 -74,0"></path>                                             
+                                        </defs>                                         
+                                        <text> 
+                                            <textPath xlink:href="#circle-2">Watch Now * Watch Now * Watch Full Video *</textPath>                                             
+                                        </text>                                         
+                                    </svg>                                     
+                                    <div class="rts__circle--icon"> <a href="https://www.youtube.com/watch?v=qOwxqRGHy5Q" class="video-play"> <i class="flaticon-play"></i> </a> 
+                                    </div>                                     
+                                </div>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        </template>
+        <!-- popup modal -->         
+        <div class="modal similar__modal fade " id="loginModal"> 
+            <div class="modal-dialog modal-dialog-centered"> 
+                <div class="modal-content"> 
+                    <div class="max-content similar__form form__padding"> 
+                        <div class="d-flex mb-3 align-items-center justify-content-between"> 
+                            <h6 class="mb-0">Login To Moonlit</h6> 
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"> 
+</button>                             
+                        </div>                         
+                        <form action="candidate-dashboard.html" method="post" class="d-flex flex-column gap-3"> 
+                            <div class="form-group"> 
+                                <label for="email-popup" class="text-dark mb-3">Your Email</label>                                 
+                                <div class="position-relative"> 
+                                    <input type="email" name="email-popup" id="email-popup" placeholder="Enter your email" required> 
+                                </div>                                 
+                            </div>                             
+                            <div class="form-group"> 
+                                <label for="password" class="text-dark mb-3">Password</label>                                 
+                                <div class="position-relative"> 
+                                    <input type="password" name="password" id="password" placeholder="Enter your password" required> 
+                                </div>                                 
+                            </div>                             
+                            <div class="d-flex flex-wrap justify-content-between align-items-center "> 
+                                <div class="form-check d-flex align-items-center gap-2"> 
+                                    <input class="form-check-input mt-0" type="checkbox" value="" id="flexCheckDefault"> 
+                                    <label class="form-check-label mb-0" for="flexCheckDefault"> 
+                                        Remember me
+</label>                                     
+                                </div>                                 <a href="#" class="forgot__password text-para" data-bs-toggle="modal" data-bs-target="#forgotModal">Forgot Password?</a> 
+                            </div>                             
+                            <div class="form-group my-3"> 
+                                <button class="theme-btn btn-style sm-btn fill w-100"><span>Login</span>
+                                </button>                                 
+                            </div>                             
+                        </form>                         
+                        <div class="d-block has__line text-center"> 
+                            <p>Or</p> 
+                        </div>                         
+                        <div class="d-flex gap-4 flex-wrap justify-content-center mt-20 mb-20"> 
+                            <div class="is__social google"> 
+                                <button class="theme-btn btn-style sm-btn"><span>Continue with Google</span>
+                                </button>                                 
+                            </div>                             
+                            <div class="is__social facebook"> 
+                                <button class="theme-btn btn-style sm-btn"><span>Continue with Facebook</span>
+                                </button>                                 
+                            </div>                             
+                        </div>                         <span class="d-block text-center ">Don`t have an account? <a href="#" data-bs-target="#signupModal" data-bs-toggle="modal" class="text-primary">Sign Up</a> </span> 
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        <!-- signup form -->         
+        <div class="modal similar__modal fade " id="signupModal"> 
+            <div class="modal-dialog modal-dialog-centered"> 
+                <div class="modal-content"> 
+                    <div class="max-content similar__form form__padding"> 
+                        <div class="d-flex mb-3 align-items-center justify-content-between"> 
+                            <h6 class="mb-0">Create A Free Account</h6> 
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"> 
+</button>                             
+                        </div>                         
+                        <form action="#" class="d-flex flex-column gap-3"> 
+                            <div class="form-group"> 
+                                <label for="sname" class=" text-dark mb-3">Your Name</label>                                 
+                                <div class="position-relative"> 
+                                    <input type="text" name="sname" id="sname" placeholder="Candidate" required> <i class="fa-light fa-user icon"></i> 
+                                </div>                                 
+                            </div>                             
+                            <div class="form-group"> 
+                                <label for="signemail" class=" text-dark mb-3">Your Email</label>                                 
+                                <div class="position-relative"> 
+                                    <input type="email" name="signemail" id="signemail" placeholder="Enter your email" required> <i class="fa-sharp fa-light fa-envelope icon"></i> 
+                                </div>                                 
+                            </div>                             
+                            <div class="form-group"> 
+                                <label for="spassword" class=" text-dark mb-3">Password</label>                                 
+                                <div class="position-relative"> 
+                                    <input type="password" name="spassword" id="spassword" placeholder="Enter your password" required> <i class="fa-light fa-lock icon"></i> 
+                                </div>                                 
+                            </div>                             
+                            <div class="form-group my-3"> 
+                                <button class="theme-btn btn-style sm-btn fill w-100"><span>Register</span>
+                                </button>                                 
+                            </div>                             
+                        </form>                         
+                        <div class="d-block has__line text-center"> 
+                            <p>Or</p> 
+                        </div>                         
+                        <div class="d-flex flex-wrap justify-content-center gap-4 mt-20 mb-20"> 
+                            <div class="is__social google"> 
+                                <button class="theme-btn btn-style sm-btn"><span>Continue with Google</span>
+                                </button>                                 
+                            </div>                             
+                            <div class="is__social facebook"> 
+                                <button class="theme-btn btn-style sm-btn"><span>Continue with Facebook</span>
+                                </button>                                 
+                            </div>                             
+                        </div>                         <span class="d-block text-center ">Have an account? <a href="#" data-bs-target="#loginModal" data-bs-toggle="modal" class="text-primary">Login</a> </span> 
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        <!-- forgot password form -->         
+        <div class="modal similar__modal fade " id="forgotModal"> 
+            <div class="modal-dialog modal-dialog-centered"> 
+                <div class="modal-content"> 
+                    <div class="max-content similar__form form__padding"> 
+                        <div class="d-flex mb-3 align-items-center justify-content-between"> 
+                            <h6 class="mb-0">Forgot Password</h6> 
+                            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"> 
+</button>                             
+                        </div>                         
+                        <form action="#" class="d-flex flex-column gap-3"> 
+                            <div class="form-group"> 
+                                <label for="fmail" class=" text-dark mb-3">Your Email</label>                                 
+                                <div class="position-relative"> 
+                                    <input type="email" name="email" id="fmail" placeholder="Enter your email" required> <i class="fa-sharp fa-light fa-envelope icon"></i> 
+                                </div>                                 
+                            </div>                             
+                            <div class="form-group my-3"> 
+                                <button class="theme-btn btn-style sm-btn fill w-100"><span>Reset Password</span>
+                                </button>                                 
+                            </div>                             
+                        </form>                         <span class="d-block text-center ">Remember Your Password?  <a href="#" data-bs-target="#loginModal" data-bs-toggle="modal" class="text-primary">Login</a> </span> 
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        <!-- footer style one -->         
+        <!-- offcanvase menu -->         
+        <div class="offcanvas offcanvas-start" id="offcanvasRight"> 
+            <div class="rts__btstrp__offcanvase"> 
+                <div class="offcanvase__wrapper"> 
+                    <div class="left__side mobile__menu"> 
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>                         
+                        <div class="offcanvase__top"> 
+                            <div class="offcanvase__logo"> <img src="assets/images/logo/imbali_logo_wht.svg" alt=""> 
+                            </div>                             
+                            <p class="description"> 
+                            Welcome to Moonlit, where luxury meets comfort in the heart of canada. Since 1999, we have been dedicated to providing. </p> 
+                        </div>                         
+                        <div class="offcanvase__mobile__menu"> 
+                            <div class="mobile__menu__active"></div>                             
+                        </div>                         
+                        <div class="offcanvase__bottom"> 
+                            <div class="offcanvase__address"> 
+                                <div class="item"> <span class="h6">Phone</span> <a href="tel:+1234567890"><i class="flaticon-phone-flip"></i> +1234567890</a> 
+                                </div>                                 
+                                <div class="item"> <span class="h6">Email</span> <a href="mailto:info@hostie.com"><i class="flaticon-envelope"></i>info@hostie.com</a> 
+                                </div>                                 
+                                <div class="item"> <span class="h6">Address</span> <a href="#"><i class="flaticon-marker"></i> 280 Augusta Avenue, M5T 2L9 Toronto, Canada</a> 
+                                </div>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                    <div class="right__side desktop__menu"> 
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>                         
+                        <div class="rts__desktop__menu"> 
+                            <nav class="desktop__menu offcanvas__menu"> 
+                                <ul class="list-unstyled"> 
+                                    <li class="slide"> <a class="slide__menu__item" href="index.html#packages">View Packages</a> </li>                                     
+                                    <li class="slide"> <a class="slide__menu__item" href="index.html#work">Our Process</a> </li>                                     
+                                    <li class="slide"> <a class="slide__menu__item" href="https://cal.com/imbali.studio">Book a Consultation</a> </li>                                     
+                                    <li class="slide"> <a class="slide__menu__item" href="mailto:info@imbali.studio">Contact Us</a> </li>                                     
+                                </ul>                                 
+                            </nav>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+        </div>         
+        <!-- offcanvase menu end -->         
+        <footer class="rts__section rts__footer is__common__footer footer__background"> 
+            <div class="container"> 
+                <!-- Newsletter row (restore by uncommenting)
+                <div class="row"> 
+                    <div class="footer__newsletter"> <span class="h2">Join Our Newsletter</span> 
+                        <div class="rts__form"> 
+                            <form action="#" method="post"> 
+                                <input type="email" name="email" id="subscription" placeholder="Enter your mail" required> 
+                                <button type="submit">Subscribe</button>                                 
+                            </form>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+                -->
+                <div class="row"> 
+                    <div class="footer__widget__wrapper"> 
+                        <div class="rts__widget"> <div class="imbali-footer-logo-entrance imbali-footer-logo-entrance--hold"><img class="footer__logo logo__class" src="./assets/images/logo/imbali_logo_wht.svg" alt="Imbali Studio"></div> 
+                            <p class="font-sm max-290 mt-20"> 
+                                We design with the same principles found in nature... balance, flow and efficiency, applied to modern digital systems.</p> 
+                        </div>                         
+                        <div class="rts__widget"> <h6>Quick Links</h6> 
+                            <ul>  <li><a href="#about" aria-label="About Us">About Us</a>
+                            </li>   
+                             <li><a href="#packages" aria-label="View Packages">View Packages</a>
+                                </li>   
+                                  <li><a href="#work" aria-label="Our Process">Our Process</a>
+                                </li>  
+                                <li><a href="https://cal.com/imbali.studio" aria-label="Book a Consultation">Book Now</a>
+                                </li>                                 
+                                                             
+                                                             
+                                 
+                                <li><a href="mailto:info@imbali.studio" aria-label="Email us">Contact Us</a>
+                                </li>                             
+                            </ul>                             
+                        </div>                         
+                        <div class="rts__widget"> <h6>Services</h6> 
+                            <ul> 
+                                <li>Custom Branding</li>                                 
+                                <li>Responsive Design</li>                                 
+                                <li>Contact Forms</li>                                 
+                                <li>SEO Setup</li>                                 
+                                <li>QR Cards</li>                                 
+                            </ul>                             
+                        </div>                         
+                        <div class="rts__widget imbali-footer-contact"> <h6>Contact</h6> 
+                            <ul> 
+                                <li><a aria-label="footer__contact" href="tel:+8325602525"><i class="flaticon-phone-flip" aria-hidden="true"></i> (832) 560-2525</a>
+                                </li>                                 
+                                <li><a aria-label="footer__contact" href="mailto:info@imbali.studio"><i class="flaticon-envelope" aria-hidden="true"></i> info@imbali.studio</a>
+                                </li>                                 
+                                <li><a href="https://facebook.com/imbali.web.studio" aria-label="Facebook"><i class="flaticon-facebook" aria-hidden="true"></i> Facebook</a></li>
+                                <li><a href="https://www.instagram.com/imbali_web_studio" aria-label="Instagram"><svg class="imbali-footer-social-svg" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg> Instagram</a></li>
+                                <li><a href="https://www.linkedin.com/company/imbali-web-studio" aria-label="LinkedIn"><i class="flaticon-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+                            </ul>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+            <div class="copyright__text"> 
+                <div class="container"> 
+                    <div class="row"> 
+                        <div class="copyright__wrapper"> 
+                            <p class="mb-0">Copyright © <span id="year"></span> IMBALI Studio. All rights reserved.</p>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+            </div>             
+        </footer>         
+        <!-- footer style one end -->         
+        <!-- back to top -->         
+        <button type="button" class="rts__back__top" id="rts-back-to-top">
+            <svg width="20" height="20" viewBox="0 0 13 22" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                <path d="M7.30201 1.51317L7.29917 21.3422C7.29912 21.7057 6.97211 21.9993 6.5674 21.9993C6.16269 21.9992 5.83577 21.7055 5.83582 21.342L5.83844 3.10055L1.39753 7.08842C1.11169 7.34511 0.647535 7.34506 0.361762 7.0883C0.0759894 6.83155 0.0760493 6.41464 0.361896 6.15795L6.05367 1.04682C6.26405 0.857899 6.5773 0.802482 6.85167 0.905201C7.12374 1.00792 7.30205 1.24823 7.30201 1.51317Z" fill="#FFF"/> 
+                <path d="M12.9991 6.6318C12.9991 6.80021 12.9282 6.96861 12.7841 7.09592C12.4983 7.35261 12.0341 7.35256 11.7483 7.0958L6.05118 1.97719C5.76541 1.72043 5.76547 1.30352 6.05131 1.04684C6.33716 0.790152 6.80131 0.790206 7.08709 1.04696L12.7842 6.16557C12.9283 6.29498 12.9991 6.46339 12.9991 6.6318Z" fill="#FFF"/> 
+            </svg>             
+        </button>         
+        <!-- back to top end -->         
+        <!-- THEME PRELOADER START -->         
+        <div class="loader-wrapper"> 
+            <div class="loader"> 
+</div>             
+            <div class="loader-section section-left"></div>             
+            <div class="loader-section section-right"></div>             
+        </div>         
+        <!-- THEME PRELOADER END -->         
+        <!-- plugin js -->         
+        <script src="assets/js/plugins.min.js" defer></script>         
+        <script src="assets/js/gdpr.js" defer></script>         
+        <!-- custom js -->         
+        <script src="assets/js/main.js" defer></script>         
+        <script src="assets/js/imbali.js?v=31" defer></script>    
+                    <!-- Bootstrap -->
+    <script src="assets/js/plugins/bootstrap.bundle.min.js"></script>     
+        <script>
+            (function () {
+                function groupByRow(elements) {
+                    var rows = new Map();
+                    elements.forEach(function (el) {
+                        var col = el.closest('[class*="col-"]') || el;
+                        var top = Math.round(col.getBoundingClientRect().top);
+                        if (!rows.has(top)) rows.set(top, []);
+                        rows.get(top).push(el);
+                    });
+                    return rows;
+                }
+
+                function equalizePackages() {
+                    var cards = Array.from(document.querySelectorAll('#packages .imbali-packages-grid .room__slide__box .room__content'));
+                    if (!cards.length) return;
+
+                    cards.forEach(function (card) {
+                        var topArea = card.querySelector('ul');
+                        var bottomArea = card.querySelector('.package-card-bottom');
+                        if (topArea) topArea.style.minHeight = '';
+                        if (bottomArea) bottomArea.style.minHeight = '';
+                    });
+
+                    var rows = groupByRow(cards);
+                    rows.forEach(function (rowCards) {
+                        var maxTop = 0;
+                        var maxBottom = 0;
+
+                        rowCards.forEach(function (card) {
+                            var topArea = card.querySelector('ul');
+                            var bottomArea = card.querySelector('.package-card-bottom');
+                            if (topArea) maxTop = Math.max(maxTop, topArea.getBoundingClientRect().height);
+                            if (bottomArea) maxBottom = Math.max(maxBottom, bottomArea.getBoundingClientRect().height);
+                        });
+
+                        rowCards.forEach(function (card) {
+                            var topArea = card.querySelector('ul');
+                            var bottomArea = card.querySelector('.package-card-bottom');
+                            if (topArea) topArea.style.minHeight = maxTop + 'px';
+                            if (bottomArea) bottomArea.style.minHeight = maxBottom + 'px';
+                        });
+                    });
+                }
+
+                /** Double rAF: measure after layout/fonts; avoids a one-time reflow during the first scroll into #packages */
+                function scheduleEqualize() {
+                    window.requestAnimationFrame(function () {
+                        window.requestAnimationFrame(equalizePackages);
+                    });
+                }
+
+                function whenPackageCoverImagesReady(done) {
+                    var imgs = document.querySelectorAll('#packages .imbali-packages-cover-img');
+                    var n = imgs.length;
+                    if (!n) {
+                        done();
+                        return;
+                    }
+                    var remaining = n;
+                    function one() {
+                        remaining--;
+                        if (remaining <= 0) done();
+                    }
+                    Array.prototype.forEach.call(imgs, function (img) {
+                        function afterDecode() {
+                            if (typeof img.decode === 'function') {
+                                img.decode().then(one).catch(one);
+                            } else {
+                                one();
+                            }
+                        }
+                        if (img.complete) {
+                            afterDecode();
+                        } else {
+                            img.addEventListener(
+                                'load',
+                                function () {
+                                    afterDecode();
+                                },
+                                { once: true }
+                            );
+                        }
+                    });
+                }
+
+                window.addEventListener('resize', function () {
+                    window.requestAnimationFrame(equalizePackages);
+                });
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    whenPackageCoverImagesReady(scheduleEqualize);
+                });
+
+                window.addEventListener('load', scheduleEqualize);
+            })();
+        </script><script>
+            (function () {
+                var logo = document.querySelector('.imbali-footer-logo-entrance');
+                if (!logo) return;
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    logo.classList.remove('imbali-footer-logo-entrance--hold');
+                    return;
+                }
+                var played = false;
+                function play() {
+                    if (played) return;
+                    played = true;
+                    logo.classList.remove('imbali-footer-logo-entrance--hold');
+                    logo.classList.add('imbali-footer-logo-entrance--play');
+                }
+                var ctaWrap = document.querySelector('#work.service-13 .imbali-service-13-cta-footer');
+                var ctaCol = ctaWrap ? ctaWrap.closest('.wow') : null;
+                if (ctaCol) {
+                    ctaCol.addEventListener('animationend', function onCtaAnimEnd(e) {
+                        if (e.target !== ctaCol) return;
+                        if (e.animationName !== 'imbali-about-fade-in-up') return;
+                        ctaCol.removeEventListener('animationend', onCtaAnimEnd);
+                        requestAnimationFrame(function () {
+                            requestAnimationFrame(play);
+                        });
+                    });
+                } else {
+                    play();
+                }
+                setTimeout(play, 5000);
+            })();
+        </script>
+    </body>     
+</html>
