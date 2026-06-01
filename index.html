@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="assets/css/style.css?v=525"> 
             
         <!-- Package card photos — desktop/tablet only so mobile first paint isn’t competing with three large JPEGs + hero video -->
-        <link rel="preload" as="image" href="assets/images/Ocean.jpg" media="(min-width: 992px)">
+        <link rel="preload" as="image" href="assets/images/Mountains.jpg" media="(min-width: 992px)">
         <!-- Feature cards JPEG — sync `?v=` with imbali.css `.imbali-feature-thumb-parallax-shift` -->
         <link rel="preload" as="image" href="assets/images/features-cards-bg.jpg?v=515" media="(min-width: 768px)">
         <link rel="preload" as="image" href="assets/images/features-cards-bg.jpg?v=515" media="(max-width: 767.98px)">
@@ -92,10 +92,7 @@
         <div id="imbali-hero" class="rts__section banner__area is__home__video banner__height banner__center"> 
             <div class="banner__video__section"> 
                 <div class="video__area"> 
-                    <video id="imbali-hero-video" class="imbali-hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" poster="assets/images/Ocean.jpg">
-                        <source src="assets/images/video/Imbali_Hero_4MB.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-                        <source src="assets/images/video/Imbali_Hero_4MB.mp4" type="video/mp4">
-                    </video>                     
+                    <video id="imbali-hero-video" class="imbali-hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" poster="assets/images/Mountains.jpg"></video>                     
                     <div class="video__area__overlay"></div>
                     <div class="imbali-hero-flower-mark" aria-hidden="true">
                         <img src="assets/images/logo/imbali_wht_symbol.svg" width="504" height="504" alt="" decoding="async">
@@ -228,7 +225,7 @@
                     <div class="col-12 col-md-6 col-lg-4 wow imbali-about-fade-in-up" data-wow-duration="0.8s" data-wow-delay="0.2s">
                         <div class="room__slide__box"> 
                             <div class="room__thumbnail jara-mask-2 imbali-packages-static-photo"> 
-                                <img height="535" width="420" class="imbali-packages-cover-img" src="assets/images/Ocean.jpg" alt="" loading="eager" fetchpriority="high"> 
+                                <img height="535" width="420" class="imbali-packages-cover-img" src="assets/images/Mountains.jpg" alt="" loading="eager" fetchpriority="high">
                             </div>                                     
                             <div class="room__content"> 
                                 <ul>
@@ -981,55 +978,30 @@
                 }
                 setTimeout(play, 5000);
             })();
-        </script><script>
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
+        <script>
             (function () {
                 var heroVideo = document.getElementById('imbali-hero-video');
                 if (!heroVideo) return;
 
-                var videoArea = heroVideo.closest('.video__area');
-                var fallbackApplied = false;
-                var fallbackTimer = null;
+                var src = 'https://stream.mux.com/rygem01Vk02TIgVXn02c02qW1uSoPK98Cfoau7FFGUitcds.m3u8';
 
-                function applyFallback() {
-                    if (fallbackApplied) return;
-                    fallbackApplied = true;
-                    heroVideo.classList.add('is-fallback-hidden');
-                    if (videoArea) {
-                        videoArea.classList.add('is-video-fallback');
-                    }
-                    if (fallbackTimer) {
-                        clearTimeout(fallbackTimer);
-                        fallbackTimer = null;
+                function startPlayback() {
+                    var playPromise = heroVideo.play();
+                    if (playPromise && typeof playPromise.catch === 'function') {
+                        playPromise.catch(function () {});
                     }
                 }
 
-                function clearFallbackTimer() {
-                    if (!fallbackTimer) return;
-                    clearTimeout(fallbackTimer);
-                    fallbackTimer = null;
-                }
-
-                fallbackTimer = setTimeout(function () {
-                    if (heroVideo.readyState < 2 || heroVideo.videoWidth === 0) {
-                        applyFallback();
-                    }
-                }, 3000);
-
-                heroVideo.addEventListener('loadeddata', clearFallbackTimer, { once: true });
-                heroVideo.addEventListener('playing', clearFallbackTimer, { once: true });
-                heroVideo.addEventListener('canplay', clearFallbackTimer, { once: true });
-                heroVideo.addEventListener('error', applyFallback, { once: true });
-                heroVideo.addEventListener('stalled', applyFallback, { once: true });
-                heroVideo.addEventListener('abort', applyFallback, { once: true });
-                heroVideo.addEventListener('suspend', function () {
-                    if (heroVideo.readyState < 2) applyFallback();
-                }, { once: true });
-
-                var playPromise = heroVideo.play();
-                if (playPromise && typeof playPromise.catch === 'function') {
-                    playPromise.catch(function () {
-                        applyFallback();
-                    });
+                if (window.Hls && Hls.isSupported()) {
+                    var hls = new Hls();
+                    hls.loadSource(src);
+                    hls.attachMedia(heroVideo);
+                    hls.on(Hls.Events.MANIFEST_PARSED, startPlayback);
+                } else if (heroVideo.canPlayType('application/vnd.apple.mpegurl')) {
+                    heroVideo.src = src;
+                    heroVideo.addEventListener('loadedmetadata', startPlayback, { once: true });
                 }
             })();
         </script>

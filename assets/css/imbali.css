@@ -235,16 +235,6 @@ button {
     pointer-events: none;
 }
 
-/* If decode/playback fails on specific laptop GPU/browser combos, hide black video layer and show poster fallback. */
-#imbali-hero.banner__area.is__home__video .video__area.is-video-fallback {
-    background: #000 url("../images/Ocean.jpg") center center / cover no-repeat;
-}
-
-#imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video.is-fallback-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
 #imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls,
 #imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls-enclosure,
 #imbali-hero.banner__area.is__home__video .video__area video.imbali-hero-video::-webkit-media-controls-panel,
@@ -308,8 +298,6 @@ button {
 
 .banner__area .video__area {
     height: 690px;
-    /* Always keep a visible hero frame under the video, including file:// local previews. */
-    background: #000 url("../images/Ocean.jpg") center center / cover no-repeat;
 }
 .banner__area.is__home__video .video__text__slider__item {
     display: flex;
