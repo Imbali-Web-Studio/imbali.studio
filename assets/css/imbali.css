@@ -34,6 +34,9 @@
     --imbali-heading-letter-spacing: -0.03em;
     /* Fixed strip above header (contact + social) */
     --imbali-top-bar-h: 40px;
+    /* Shared radius for all real CTA buttons (.theme-btn family) — change once here, applies everywhere.
+       999px always renders as a full pill/capsule regardless of the button's own height. */
+    --imbali-btn-radius: 999px;
 }
 
 html,
@@ -810,10 +813,29 @@ button {
 }
 
 @media (min-width: 992px) {
-    /* Below hero: keep section side inset visible (don't cancel it with extra negative row offsets). */
-    .rts__section:not(.banner__area) .container > .row {
+    /* Hero + below-hero: same row gutters (don't pull copy past the shared container inset). */
+    .rts__section:not(.banner__area) .container > .row,
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container > .row {
         margin-left: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
         margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5) !important;
+    }
+
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        max-width: 900px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        max-width: 1000px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    #imbali-hero.banner__area.is__home__video .banner__video__section > .container {
+        max-width: 1100px !important;
     }
 }
 
@@ -1041,12 +1063,33 @@ button {
     opacity: 0.95;
 }
 
-/* Same horizontal inset as main layout (50px + half gutter), every breakpoint */
+/* Same horizontal inset + max-width as main layout containers */
 .imbali-top-bar > .container {
-    max-width: none !important;
     width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
     padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + 50px) !important;
+}
+
+@media (min-width: 992px) {
+    .imbali-top-bar > .container {
+        max-width: 900px !important;
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + var(--imbali-desktop-side-inset)) !important;
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + var(--imbali-desktop-side-inset)) !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .imbali-top-bar > .container {
+        max-width: 1000px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .imbali-top-bar > .container {
+        max-width: 1100px !important;
+    }
 }
 
 /* Don’t pull rows inward (header logo nudge): that cancelled container padding and hid the true side inset. */
@@ -1600,7 +1643,7 @@ button {
     .site-header.is-top .main__nav__custom .nav-packages {
         display: inline-flex;
     }
-    /* Full bar: logo aligned with section copy; transform (not margin) so grid + cascade can’t drop the shift */
+    /* Full bar: logo sits on the shared container inset (no extra edge pull) */
     #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo {
         grid-column: 1;
         justify-self: start;
@@ -1608,7 +1651,7 @@ button {
         margin-top: 35px;
         opacity: 1;
         transition: none;
-        transform: translateX(calc(-1 * (var(--imbali-logo-align-pull, 14px) + 8px)));
+        transform: none;
     }
 
     .site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo > a {
@@ -1649,38 +1692,68 @@ button {
 
 }
 
-@media (min-width: 992px) {
-    /* Desktop full-width nav only: keep logo/menu near screen edges with fixed gutters */
-    #siteHeader.site-header:not(.is-compact):not(.is-top) .container {
-        max-width: none !important;
-        width: 100% !important;
-        padding-left: 50px !important;
-        padding-right: 50px !important;
-    }
-
-    /* Undo global desktop `.container > .row` negative margins for header only */
+@media (min-width: 768px) {
+    /*
+     * Full-width bar (no pill): match contact bar inset exactly.
+     * Bootstrap `.row > *` adds half-gutter padding on `.main__header__wrapper` — cancel row + child gutter.
+     */
     #siteHeader.site-header:not(.is-compact):not(.is-top) .container > .row {
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
 
-    /* Desktop full bar only: pull logo + MENU inward by 20px each */
-    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo {
-        transform: translateX(calc(-1 * (var(--imbali-logo-align-pull, 14px) + 8px) + 20px));
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .container > .row > .main__header__wrapper {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo,
     #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .nav-menu-toggle {
-        transform: translateX(-20px);
+        transform: none;
+    }
+
+    /* Full bar: no button side padding; logo SVG has ~30px viewBox inset — pull flush to contact bar */
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .nav-menu-toggle {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo .header-logo-default {
+        margin-left: calc(-30.27px * (70px / 131.16px));
     }
 }
 
-/* Full bar wordmark: tablet vs desktop height; shift SVG 10px left inside img box */
+@media (min-width: 992px) {
+    /* Full-width bar (no pill): same container width/inset as contact bar + page sections */
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .container {
+        max-width: 900px !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + var(--imbali-desktop-side-inset)) !important;
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5 + var(--imbali-desktop-side-inset)) !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .container {
+        max-width: 1000px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    #siteHeader.site-header:not(.is-compact):not(.is-top) .container {
+        max-width: 1100px !important;
+    }
+}
+
+/* Full bar wordmark: tablet vs desktop height */
 @media (min-width: 768px) and (max-width: 991.98px) {
     #siteHeader.site-header:not(.is-compact):not(.is-top) .main__nav__custom .main__logo .header-logo-default {
         height: 70px;
         object-fit: contain;
         object-position: left center;
-        transform: translateX(-10px);
+        transform: none;
     }
 }
 
@@ -1689,7 +1762,7 @@ button {
         height: 70px;
         object-fit: contain;
         object-position: left center;
-        transform: translateX(-10px);
+        transform: none;
     }
 
     /* Home video hero only: larger wordmark (desktop) */
@@ -1973,7 +2046,7 @@ button,
     letter-spacing: var(--imbali-letter-spacing);
     text-transform: uppercase;
     font-weight: 400;
-    border-radius: 18px;
+    border-radius: var(--imbali-btn-radius);
 }
 
 /* Pill chrome: MENU stays pre-bump radius; compact/top still use 12px !important below */
@@ -2523,6 +2596,7 @@ button,
  * Feature cards: gray section strip. Photo (`features-cards-bg.jpg`; bump `?v=` in url when the asset changes — bypasses aggressive JPEG caching).
  * Desktop/tablet: one image tiled across cards via background-size/position per `.imbali-feature-thumb-parallax-shift`.
  * ≤767px: same JPEG sliced vertically across four stacked cards (gray section shows in gutters — no row-wide photo layer).
+ * Rhythm: tightened relative to base .section__padding — sits right after Packages, should feel like a continuation, not an equal "beat."
  */
 .imbali-feature-cards-section.rts__section {
     position: relative;
@@ -2534,6 +2608,8 @@ button,
         rgba(0, 0, 0, 0.018) 42%,
         transparent 68%
     );
+    padding-top: clamp(40px, 6vh, 72px) !important;
+    padding-bottom: clamp(40px, 6vh, 72px) !important;
 }
 
 .imbali-feature-cards-section .imbali-feature-cards-row > [class*="col-"] {
@@ -2581,14 +2657,20 @@ button,
     backface-visibility: hidden;
 }
 
-/* Readability: darken entire card, not just the top pane */
+/* Readability: bottom-heavy gradient so the photo stays visible up top, text stays legible where content sits */
 .imbali-feature-cards-section .imbali-feature-parallax.imbali-feature-parallax-card.room__slide__box::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     border-radius: 23px;
-    background: rgba(0, 0, 0, 0.56);
+    background: linear-gradient(
+        to top,
+        rgba(10, 30, 40, 0.92) 0%,
+        rgba(10, 30, 40, 0.78) 28%,
+        rgba(10, 30, 40, 0.32) 55%,
+        rgba(10, 30, 40, 0) 78%
+    );
     pointer-events: none;
 }
 
@@ -2685,9 +2767,9 @@ button,
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     text-align: center;
-    padding: 0 26px 0;
+    padding: 0 26px 30px;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     background-color: transparent !important;
@@ -2698,7 +2780,7 @@ button,
 
 @media screen and (max-width: 1399.98px) {
     .imbali-feature-parallax__content {
-        padding: 0 20px 0;
+        padding: 0 20px 26px;
     }
 }
 
@@ -3051,7 +3133,7 @@ button,
     flex-shrink: 0;
     white-space: nowrap;
     padding: 16px 22px !important;
-    border-radius: 18px;
+    border-radius: var(--imbali-btn-radius);
     background: #0a4a63 !important;
     border: 1px solid rgba(10, 74, 99, 0.4) !important;
     color: #f2f2f2 !important;
@@ -3244,7 +3326,7 @@ section.service-13 .imbali-service-13-cta.theme-btn.btn-style.fill {
     overflow: visible;
     isolation: isolate;
     padding: 16px 22px !important;
-    border-radius: 18px;
+    border-radius: var(--imbali-btn-radius);
     border: 1px solid transparent !important;
     font-weight: 500 !important;
     text-decoration: none !important;
@@ -4441,7 +4523,7 @@ body {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    border-radius: 18px !important;
+    border-radius: var(--imbali-btn-radius) !important;
     box-sizing: border-box !important;
     border: 0.5px solid rgba(226, 226, 226, 0.11) !important;
     background: #0a4a63 !important;
@@ -4946,3 +5028,183 @@ body {
         margin-right: calc(var(--bs-gutter-x, 1.5rem) * -0.5 - 50px) !important;
     }
 }
+
+/* ===== Migrated from index.html inline <style> — Packages/Testimonials/Ideal Client/FAQ ===== */
+            /* Package card v2 — name band emphasized above photo */
+            .imbali-package-name-band {
+                background: #0A4A63;
+                color: #fff;
+                text-align: center;
+                padding: 18px 12px 16px;
+                border-radius: 8px 8px 0 0;
+            }
+            .imbali-package-name {
+                display: block;
+                font-size: 1.65rem;
+                font-weight: 700;
+                letter-spacing: 0.01em;
+                color: #fff;
+            }
+            .imbali-package-name-band--featured {
+                background: #0A4A63;
+                box-shadow: 0 0 0 3px #C9A24B inset;
+            }
+            .imbali-package-most-chosen {
+                display: block;
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.12em;
+                color: #C9A24B;
+                margin-bottom: 4px;
+                font-weight: 600;
+            }
+            .imbali-package-card-v2 {
+                background: #fff;
+                border-radius: 8px;
+                overflow: hidden;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            .imbali-package-card-v2--featured {
+                transform: scale(1.02);
+            }
+            .imbali-package-card-v2 .room__content {
+                padding: 28px 26px 30px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            .imbali-package-card-v2 ul {
+                list-style: none;
+                padding: 0;
+                margin: 0 0 20px;
+                flex: 1;
+            }
+            .imbali-package-card-v2 ul li {
+                padding: 9px 4px;
+                padding-left: 30px;
+                position: relative;
+                font-size: 0.95rem;
+                color: #333;
+                line-height: 1.45;
+                border-bottom: 1px solid rgba(10, 74, 99, 0.08);
+            }
+            .imbali-package-card-v2 ul li:last-child {
+                border-bottom: none;
+            }
+            .imbali-package-card-v2 ul li:before {
+                content: "✓";
+                position: absolute;
+                left: 0;
+                color: #0A4A63;
+                font-weight: 700;
+            }
+            .imbali-packages-footnote {
+                text-align: center;
+                color: #e8eff2;
+                margin-top: 36px;
+                font-size: 0.95rem;
+                max-width: 640px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Testimonials */
+            /* Rhythm: loosened relative to base — paired with the bg color shift, this should feel like a moment, not a quick beat. */
+            .imbali-testimonials-section {
+                background: #0A4A63;
+                padding-top: clamp(72px, 12vh, 140px) !important;
+                padding-bottom: clamp(72px, 12vh, 140px) !important;
+            }
+            .imbali-testimonials-eyebrow { color: #9FC0CE; }
+            .imbali-testimonials-heading { color: #fff; }
+            .imbali-testimonials-intro { color: #C9D8DE; font-size: 1.02rem; }
+            .imbali-testimonial-card {
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.12);
+                border-radius: 14px;
+                padding: 32px 30px;
+                height: 100%;
+            }
+            .imbali-testimonial-stars {
+                color: #fff;
+                font-size: 1.1rem;
+                letter-spacing: 0.12em;
+                margin-bottom: 18px;
+            }
+            .imbali-testimonial-quote {
+                font-size: 1.02rem;
+                line-height: 1.65;
+                color: #E8EFF2;
+                font-style: italic;
+                margin-bottom: 28px;
+            }
+            .imbali-testimonial-author { display: flex; align-items: center; gap: 14px; }
+            .imbali-testimonial-avatar {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.14);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 0.95rem;
+                flex-shrink: 0;
+            }
+            .imbali-testimonial-author-text { display: flex; flex-direction: column; }
+            .imbali-testimonial-name { font-weight: 700; color: #fff; }
+            .imbali-testimonial-title { font-size: 0.88rem; color: #A9C2CB; }
+
+            /* Ideal client */
+            /* Rhythm: tightened relative to base — recovers pacing after the loose Testimonials section, keeps momentum into FAQ. */
+            .imbali-idealclient-section {
+                background: #fff;
+                padding-top: clamp(40px, 6vh, 72px) !important;
+                padding-bottom: clamp(40px, 6vh, 72px) !important;
+            }
+            .imbali-idealclient-list { list-style: none; padding: 0; margin: 0; }
+            .imbali-idealclient-list li {
+                position: relative;
+                padding: 14px 4px 14px 32px;
+                font-size: 1.05rem;
+                color: #333;
+                border-bottom: 1px solid rgba(10, 74, 99, 0.08);
+            }
+            .imbali-idealclient-list li:last-child {
+                border-bottom: none;
+            }
+            .imbali-idealclient-list li:before {
+                content: "🌿";
+                position: absolute;
+                left: 0;
+                top: 10px;
+                font-size: 1rem;
+            }
+
+            /* FAQ */
+            .imbali-faq-section { background: #F7F5F1; }
+            .imbali-faq-item {
+                border-bottom: 1px solid rgba(10, 74, 99, 0.1);
+                padding: 24px 4px;
+            }
+            .imbali-faq-item:last-child {
+                border-bottom: none;
+            }
+            .imbali-faq-question {
+                color: #0A4A63;
+                font-size: 1.08rem;
+                margin-bottom: 8px;
+            }
+            .imbali-faq-answer {
+                color: #444;
+                font-size: 0.98rem;
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            @media (max-width: 991px) {
+                .imbali-package-card-v2--featured { transform: none; }
+            }
